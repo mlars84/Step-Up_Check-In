@@ -21,20 +21,20 @@ var UserService = require('../services/user');
 /** ---------- PASSPORT SESSION SERIALIZATION ---------- **/
 
 // serialize the user onto the session
-passport.serializeUser(function (users, done) {
-  console.log('serializeUser', users);
-  done(null, users.id);
+passport.serializeUser(function (user, done) {
+  console.log('serializeUser', user);
+  done(null, user.id);
 });
 
 // deserialize the user from the session and provide user object
 passport.deserializeUser(function (id, done) {
-  UserService.findUserById(id, function (err, users) {
+  UserService.findUserById(id, function (err, user) {
     if (err) {
       console.log('deserializeUser err =>', err);
       return done(err);
     }
 
-    return done(null, users);
+    return done(null, user);
   });
 });
 /** ---------- PASSPORT STRATEGY DEFINITION ---------- **/
@@ -47,26 +47,26 @@ passport.use('google', new GoogleStrategy({
   // Google has responded
 
   // does this user exist in our database already?
-  UserService.findUserByGoogleId(profile.id, function (err, users) {
+  UserService.findUserByGoogleId(profile.id, function (err, user) {
       if (err) {
         console.log('findUserByGoogleId err =>', err);
         return done(err);
       }
 
-      if (users) { // user does exist!
-        return done(null, users);
+      if (user) { // user does exist!
+        return done(null, user);
       }
 
       // user does not exist in our database, let's create one!
       UserService.createGoogleUser(profile.id, token, profile.displayName,
         profile.emails[0].value, /* we take first email address */
-        function (err, users) {
+        function (err, user) {
           if (err) {
             console.log('createGoogleUser err =>', err);
             return done(err);
           }
 
-          return done(null, users);
+          return done(null, user);
         });
     });
 

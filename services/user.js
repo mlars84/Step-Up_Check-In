@@ -13,19 +13,29 @@ const config = require('../config/database');
 
 const pool = new pg.Pool(config);
 
-var UserService = {
+// let user = {};
+
+let UserService = {
   findUserById: function (id, callback) {
-  pool.connect(function(err, connection, done) {
-    if(err){
-      return callback(err, null);
-    }else{
-      console.log();
-      let users = connection.query("SELECT * FROM users WHERE id = id");
-      console.log("users =>", users);
-      return callback(null, users);
-    }
-  });
-},
+    pool.connect(function(err, connection, done) {
+      if(err){
+        return callback(err, null);
+      }else{
+        console.log("id =>", id, "callback =>", callback);
+        let resultSet = connection.query("SELECT * FROM users WHERE id = id");
+          resultSet.on('row', function(row) {
+            if(err){
+              console.log(err);
+            }else{
+              console.log("result =>", result);
+              user = result.rows;
+              console.log("user =>", user);
+              return callback(null, user);
+            }
+          });
+        }
+    });
+  },
   // findUserById: function (id, callback) {
   //   User.findById(id, function (err, user) {
   //     if (err) {
@@ -42,9 +52,16 @@ var UserService = {
         return callback(err, null);
       }else{
         console.log();
-        let users = connection.query("SELECT * FROM users WHERE googleId = googleId");
-        console.log("users =>", users);
-        return callback(null, users);
+        connection.query("SELECT * FROM users WHERE googleId = id", function(err, result) {
+          if(err){
+            console.log(err);
+          }else {
+            console.log("result =>", result);
+            user = result.rows;
+            console.log("user =>", user);
+            return callback(null, user);
+          }
+        });
       }
     });
   },
@@ -61,9 +78,6 @@ var UserService = {
   // },
 
   createGoogleUser: function (id, token, name, email, callback) {
-
-
-
     pool.connect(function(err, connection, done) {
       if(err){
         console.log(err);
@@ -92,7 +106,7 @@ var UserService = {
   //
   //     return callback(null, user);
   //   });
-  },
+  }
 }; //end UserService
 
 module.exports = UserService;
