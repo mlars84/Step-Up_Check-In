@@ -17,7 +17,7 @@ app.use('/public', express.static('public'));  // serve files from public
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 /** ---------- DATABASE CONNECTION HANDLING ---------- **/
-database();
+// database();
 /** ---------- SESSION CREATION AND STORAGE ---------- **/
 /**
  * Creates session that will be stored in memory.

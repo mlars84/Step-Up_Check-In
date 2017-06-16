@@ -7,46 +7,90 @@
  * @function findUserByGoogleId finds a User by their Google id
  * @function create a User that will be authenticated by Google
  */
-var User = require('../models/user');
+// var User = require('../models/user');
+const pg = require('pg');
+const config = require('../config/database');
+
+const pool = new pg.Pool(config);
 
 var UserService = {
   findUserById: function (id, callback) {
-    User.findById(id, function (err, user) {
-      if (err) {
-        return callback(err, null);
-      }
-
-      return callback(null, user);
-    });
-  },
+  pool.connect(function(err, connection, done) {
+    if(err){
+      return callback(err, null);
+    }else{
+      console.log(connection);
+      let users = connection.query("SELECT * FROM users WHERE id = id");
+      return callback(null, users);
+    }
+  });
+},
+  // findUserById: function (id, callback) {
+  //   User.findById(id, function (err, user) {
+  //     if (err) {
+  //       return callback(err, null);
+  //     }
+  //
+  //     return callback(null, user);
+  //   });
+  // },
 
   findUserByGoogleId: function (id, callback) {
-    User.findOne({ googleId: id }, function (err, user) {
-
-      if (err) {
+    pool.connect(function(err, connection, done) {
+      if(err){
         return callback(err, null);
+      }else{
+        console.log('connection =>', connection);
+        let users = connection.query("SELECT * FROM users WHERE googleId = googleId");
+        return callback(null, users);
       }
-
-      return callback(null, user);
     });
   },
+
+  // findUserByGoogleId: function (id, callback) {
+  //   User.findOne({ googleId: id }, function (err, user) {
+  //
+  //     if (err) {
+  //       return callback(err, null);
+  //     }
+  //
+  //     return callback(null, user);
+  //   });
+  // },
 
   createGoogleUser: function (id, token, name, email, callback) {
-    var user = new User();
 
-    user.googleId = id;
-    user.googleToken = token;
-    user.googleName = name;
-    user.googleEmail = email;
 
-    user.save(function (err) {
-      if (err) {
-        return callback(err, null);
+
+    pool.connect(function(err, connection, done) {
+      if(err){
+        console.log(err);
+        res.sendStatus(400);
+      } else {
+        console.log("CONNECTED TO DATABASE =>", connection, id, token, name, email);
+        connection.query("INSERT INTO users (googleId, googleToken, googleEmail, googleName) VALUES (id, token, email, name)");
       }
-
-      return callback(null, user);
     });
+
+
+
+
+
+  //   var user = new User();
+  //
+  //   user.googleId = id;
+  //   user.googleToken = token;
+  //   user.googleName = name;
+  //   user.googleEmail = email;
+  //
+  //   user.save(function (err) {
+  //     if (err) {
+  //       return callback(err, null);
+  //     }
+  //
+  //     return callback(null, user);
+  //   });
   },
-};
+}; //end UserService
 
 module.exports = UserService;

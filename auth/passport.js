@@ -21,18 +21,18 @@ var UserService = require('../services/user');
 /** ---------- PASSPORT SESSION SERIALIZATION ---------- **/
 
 // serialize the user onto the session
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
+passport.serializeUser(function (users, done) {
+  done(null, users.id);
 });
 
 // deserialize the user from the session and provide user object
 passport.deserializeUser(function (id, done) {
-  UserService.findUserById(id, function (err, user) {
+  UserService.findUserById(id, function (err, users) {
     if (err) {
       return done(err);
     }
 
-    return done(null, user);
+    return done(null, users);
   });
 });
 /** ---------- PASSPORT STRATEGY DEFINITION ---------- **/
@@ -45,24 +45,24 @@ passport.use('google', new GoogleStrategy({
   // Google has responded
 
   // does this user exist in our database already?
-  UserService.findUserByGoogleId(profile.id, function (err, user) {
+  UserService.findUserByGoogleId(profile.id, function (err, users) {
       if (err) {
         return done(err);
       }
 
-      if (user) { // user does exist!
-        return done(null, user);
+      if (users) { // user does exist!
+        return done(null, users);
       }
 
       // user does not exist in our database, let's create one!
       UserService.createGoogleUser(profile.id, token, profile.displayName,
         profile.emails[0].value, /* we take first email address */
-        function (err, user) {
+        function (err, users) {
           if (err) {
             return done(err);
           }
 
-          return done(null, user);
+          return done(null, users);
         });
     });
 
