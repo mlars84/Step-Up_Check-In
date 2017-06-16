@@ -19,8 +19,9 @@ var UserService = {
     if(err){
       return callback(err, null);
     }else{
-      console.log(connection);
+      console.log();
       let users = connection.query("SELECT * FROM users WHERE id = id");
+      console.log("users =>", users);
       return callback(null, users);
     }
   });
@@ -40,8 +41,9 @@ var UserService = {
       if(err){
         return callback(err, null);
       }else{
-        console.log('connection =>', connection);
+        console.log();
         let users = connection.query("SELECT * FROM users WHERE googleId = googleId");
+        console.log("users =>", users);
         return callback(null, users);
       }
     });
@@ -67,7 +69,7 @@ var UserService = {
         console.log(err);
         res.sendStatus(400);
       } else {
-        console.log("CONNECTED TO DATABASE =>", connection, id, token, name, email);
+        console.log("CONNECTED TO DATABASE =>", id, token, name, email);
         connection.query("INSERT INTO users (googleId, googleToken, googleEmail, googleName) VALUES (id, token, email, name)");
       }
     });
