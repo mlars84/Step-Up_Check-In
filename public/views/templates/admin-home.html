@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<!-- adminHome Controller as ah -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Admin Home</title>
+  <!-- admin view style begin -->
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: white;
+    }
+  </style>
+  <!-- admin view style end -->
+
+  <!-- staff list style start -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- staff list style end -->
+</head>
+
+<body>
+  <h1>ADMIN VIEW</h1>
+  <div class="admin-tab">
+    <!-- admin home tabs -->
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="/interns">Interns</a></li>
+      <li><a href="/updateq">Update Questions</a></li>
+      <li><a href="/importexport">Import/Export</a></li>
+    </ul>
+
+    <!-- step up staff lists -->
+    <h2>Step-Up staff</h2>
+    <div ng-repeat="">
+      <div class="w3-container">
+        <ul class="w3-ul w3-hoverable">
+          <li>Jim</li>
+          <li>Matt</li>
+          <li>Tessa</li>
+          <li>Zee</li>
+        </ul>
+      </div>
+    </div>
+    <!-- add new admin list -->
+    <h2>Add New Admin:</h2>
+    <input type="text" ng-model="" class="inputText" placeholder="First Name">
+    <input type="text" ng-model="" class="inputText" placeholder="Last Name">
+    <input type="text" ng-model="" class="inputText" placeholder="Email">
+    <button class="btn btn-primary" ng-click="">ADD New Admin</button>
+
+</body>
+
+</html>
