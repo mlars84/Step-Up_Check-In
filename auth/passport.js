@@ -21,9 +21,13 @@ var UserService = require('../services/user');
 /** ---------- PASSPORT SESSION SERIALIZATION ---------- **/
 
 // serialize the user onto the session
-passport.serializeUser(function (user, done) {
-  console.log('serializeUser', user);
-  done(null, user.id);
+passport.serializeUser(function (err, user, done) {
+  if (err){
+    return done(err);
+  }else{
+    console.log('serializeUser', user);
+    done(null, user.id);
+  }
 });
 
 // deserialize the user from the session and provide user object
