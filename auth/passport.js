@@ -21,13 +21,9 @@ var UserService = require('../services/user');
 /** ---------- PASSPORT SESSION SERIALIZATION ---------- **/
 
 // serialize the user onto the session
-passport.serializeUser(function (err, user, done) {
-  if (err){
-    return done(err);
-  }else{
+passport.serializeUser(function (user, done) {
     console.log('serializeUser =>', user);
     done(null, user.id);
-  }
 });
 
 // deserialize the user from the session and provide user object
@@ -37,6 +33,7 @@ passport.deserializeUser(function (id, done) {
       console.log('deserializeUser err =>', err);
       return done(err);
     }
+    console.log('deserializeUser in passport.js =>', user);
     return done(null, user);
   });
 });
@@ -56,6 +53,7 @@ passport.use('google', new GoogleStrategy({
         return done(err);
       }
       if (user) { // user does exist!
+        console.log('findUserByGoogleId in passport.js =>', user);
         return done(null, user);
       }
 
@@ -67,6 +65,7 @@ passport.use('google', new GoogleStrategy({
             console.log('createGoogleUser err =>', err);
             return done(err);
           }
+          console.log('createGoogleUser in passport.js =>', user);
           return done(null, user);
         });
     });
