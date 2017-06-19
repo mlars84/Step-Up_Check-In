@@ -25,7 +25,7 @@ passport.serializeUser(function (err, user, done) {
   if (err){
     return done(err);
   }else{
-    console.log('serializeUser', user);
+    console.log('serializeUser =>', user);
     done(null, user.id);
   }
 });
@@ -37,7 +37,6 @@ passport.deserializeUser(function (id, done) {
       console.log('deserializeUser err =>', err);
       return done(err);
     }
-
     return done(null, user);
   });
 });
@@ -56,7 +55,6 @@ passport.use('google', new GoogleStrategy({
         console.log('findUserByGoogleId err =>', err);
         return done(err);
       }
-
       if (user) { // user does exist!
         return done(null, user);
       }
@@ -69,7 +67,6 @@ passport.use('google', new GoogleStrategy({
             console.log('createGoogleUser err =>', err);
             return done(err);
           }
-
           return done(null, user);
         });
     });

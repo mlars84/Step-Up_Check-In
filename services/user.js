@@ -9,29 +9,28 @@
 */
 // var User = require('../models/user');
 const pg = require('pg');
-const config = require('../config/database');
+// const config = require('../config/database');
 
-const pool = new pg.Pool(config);
+const pool = require('../modules/pool');
 
 // let user = {};
 
 const UserService = {
-  findUserById: function (id, callback, res) {
+  findUserById: function (id, callback) {
     pool.connect(function(error, db, done){
       if(error) {
-        res.sendStatus(500);
+        console.log(" findUserById error1=>", error);
       } else {
-        db.query('SELECT * FROM users WHERE id = id;',
+        db.query('SELECT * FROM users WHERE id = $1', [id],
         function(error, result){
           done();
           if(error) {
-            res.sendStatus(500);
+            console.log("findUserById error2=>", error);
           } else {
-            let user = {};
-            console.log('result.rows =>', result.rows);
-            // res.send(result.rows);
-            user = result.rows;
-            return callback(null, user);
+            // let user = {};
+            console.log('result.rows =>', result.rows[0]);
+            // user = result.rows[0];
+            return callback(null, result.rows[0]);
           }
         });
       }
@@ -72,20 +71,19 @@ const UserService = {
   findUserByGoogleId: function (id, callback, res) {
     pool.connect(function(error, db, done){
       if(error) {
-        res.sendStatus(500);
+        console.log("findUserByGoogleId error1=>", "id =>", id, error);
       } else {
-        db.query('SELECT * FROM users WHERE googleId = id;',
+        db.query('SELECT * FROM users WHERE googleid = $1', [id],
         function(error, result){
           done();
           if(error) {
-            res.sendStatus(500);
+            console.log("findUserByGoogleId error2=>", error);
           } else {
-            let user = {};
-            console.log('result.rows =>', result.rows);
-            // res.send(result.rows);
-            user = result.rows;
-            console.log("user =>", user);
-            return callback(null, user);
+            // let user = {};
+            console.log('result.rows =>', result.rows[0]);
+            // user = result.rows[0];
+            // console.log("user =>", user);
+            return callback(null, result.rows[0]);
           }
         });
       }
@@ -123,26 +121,25 @@ const UserService = {
   //   });
   // },
 
-  createGoogleUser: function (id, token, name, email, callback, res) {
+  createGoogleUser: function (id, token, name, email, callback) {
     pool.connect(function(error, db, done){
-      if(error) {
-        res.sendStatus(500);
-      } else {
-        db.query('INSERT INTO users (googleId, googleToken, googleEmail, googleName) VALUES (id, token, email, name);',
+        console.log("id =>", id, "token =>", token, "name =>", name, "email =>", email, "callback =>", callback);
+        db.query('INSERT INTO users (googleid, googletoken, googleemail, googlename) VALUES ($1, $2, $3, $4)', [id, token, email, name],
         function(error, result){
           done();
           if(error) {
-            res.sendStatus(500);
+            console.log("createGoogleUser error=>", error);
+            return callback(null, result.rows[0]);
           } else {
-            let user;
-            console.log(result.rows);
-            // res.send(result.rows);
-            user = result.rows;
-            console.log("user =>", user);
-            return callback(null, user);
+            console.log("result =>", result.rows[0]);
+            db.query("SELECT * FROM users WHERE googleid = $1", function(err, result) {
+              // let user;
+              console.log("result.rows[0] =>", result.rows[0]);
+              //  result = result.rows[0];
+              return callback(null, result.rows[0]);
+            });
           }
         });
-      }
     });
   }
 
