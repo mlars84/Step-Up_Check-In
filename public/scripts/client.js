@@ -3,6 +3,11 @@ var googleAuthApp = angular.module('theGoogles', ['ngRoute']);
 googleAuthApp.config(['$routeProvider', function ($routeProvider) {
 
   $routeProvider
+  .when('/adminhome', {
+    templateUrl: '/public/views/templates/admin-home.html',
+    controller: 'adminHomeController',
+    controllerAs: 'AHC',
+  })
   .when('/calendar', {
     templateUrl: '/public/views/templates/calendar.html',
     controller: 'CalendarController',

@@ -9,7 +9,10 @@ var index = require('./routes/index');
 var auth = require('./routes/auth');
 var isLoggedIn = require('./utils/auth');
 var private = require('./routes/private/index');
-var database = require('./utils/database');
+// var database = require('./utils/database');
+// var pg = require('pg');
+// var database = require('./modules/pool');
+// var userService = require('./services/user');
 /** ---------- EXPRESS APP CONFIG ---------- **/
 var app = express();
 
