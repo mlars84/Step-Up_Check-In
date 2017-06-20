@@ -3,51 +3,51 @@
     <h1>Step Up Check In : Week 1</h1>
 
     <h3>Question 1: To what extent do you feel properly trained for your internship? </h3>
-    <input type="radio">1, not properly trained at all <br />
-    <input type="radio">2, not properly trained <br />
-    <input type="radio">3, somewhat properly trained<br />
-    <input type="radio">4, properly trained<br />
-    <input type="radio">5, very properly trained<br />
+    <input type="radio" value = "1" ng-model="FBFC.q1response"> 1, not properly trained at all <br />
+    <input type="radio" value = "2" ng-model="FBFC.q1response"> 2, not properly trained <br />
+    <input type="radio" value = "3" ng-model="FBFC.q1response"> 3, somewhat properly trained<br />
+    <input type="radio" value = "4" ng-model="FBFC.q1response"> 4, properly trained<br />
+    <input type="radio" value = "5" ng-model="FBFC.q1response"> 5, very properly trained<br />
 
     <h3>Question 2: How challenging are your daily work tasks? </h3>
-    <input type="radio">1, not challenging at all<br />
-    <input type="radio">2, not very challenging<br />
-    <input type="radio">3, somewhat challenging<br />
-    <input type="radio">4, challenging<br />
-    <input type="radio">5, challenging<br />
+    <input type="radio" value = "1" ng-model="FBFC.q2response">1, not challenging at all<br />
+    <input type="radio" value = "2" ng-model="FBFC.q2response">2, not very challenging<br />
+    <input type="radio" value = "3" ng-model="FBFC.q2response">3, somewhat challenging<br />
+    <input type="radio" value = "4" ng-model="FBFC.q2response">4, challenging<br />
+    <input type="radio" value = "5" ng-model="FBFC.q2response">5, very challenging<br />
 
     <h3>Question 3: How supportive is your supervisor? </h3>
-    <input type="radio">1, not supportive at all<br />
-    <input type="radio">2, not very supportive<br />
-    <input type="radio">3, somewhat supportive<br />
-    <input type="radio">4, supportive<br />
-    <input type="radio">5, very supportive<br />
+    <input type="radio" value = "1" ng-model="FBFC.q3response">1, not supportive at all<br />
+    <input type="radio" value = "2" ng-model="FBFC.q3response">2, not very supportive<br />
+    <input type="radio" value = "3" ng-model="FBFC.q3response">3, somewhat supportive<br />
+    <input type="radio" value = "4" ng-model="FBFC.q3response">4, supportive<br />
+    <input type="radio" value = "5" ng-model="FBFC.q3response">5, very supportive<br />
 
     <h3>Question 4: Do you like your internship? </h3>
-    <input type="radio">1, I do not like my internship at all<br />
-    <input type="radio">2, I don't really like my internship<br />
-    <input type="radio">3, My internship is okay<br />
-    <input type="radio">4, I like my internship<br />
-    <input type="radio">5, I like my internship very much!<br />
+    <input type="radio" value = "1" ng-model="FBFC.q4response">1, I do not like my internship at all<br />
+    <input type="radio" value = "2" ng-model="FBFC.q4response">2, I don't really like my internship<br />
+    <input type="radio" value = "3" ng-model="FBFC.q4response">3, My internship is okay<br />
+    <input type="radio" value = "4" ng-model="FBFC.q4response">4, I like my internship<br />
+    <input type="radio" value = "5" ng-model="FBFC.q4response">5, I like my internship very much!<br />
 
     <h3>Question 5: Do you feel welcome in your workplace? </h3>
-    <input type="radio">1, I do not feel welcome in my workplace at all<br />
-    <input type="radio">2, I do not feel very welcome in my workplace<br />
-    <input type="radio">3, I feel somewhat welcome in my workplace<br />
-    <input type="radio">4, I feel welcome in my workplace<br />
-    <input type="radio">5, I feel very welcome in my workplace<br />
+    <input type="radio" value = "1" ng-model="FBFC.q5response">1, I do not feel welcome in my workplace at all<br />
+    <input type="radio" value = "2" ng-model="FBFC.q5response">2, I do not feel very welcome in my workplace<br />
+    <input type="radio" value = "3" ng-model="FBFC.q5response">3, I feel somewhat welcome in my workplace<br />
+    <input type="radio" value = "4" ng-model="FBFC.q5response">4, I feel welcome in my workplace<br />
+    <input type="radio" value = "5" ng-model="FBFC.q5response">5, I feel very welcome in my workplace<br />
 
     <br />
     <h3>Do you want someone from STEP-UP to contact you this week?</h3>
 
 
-    <input type="checkbox"> Yes, please talk with me.
+    <input type="checkbox" ng-model="FBFC.checkbox"> Yes, please talk with me.
 
     <h3>Do you have any other comments?</h3>
 
-    <input type="text" placeholder="write comments here" name="" value="">
+    <input type="text" placeholder="write comments here" name="" value="" ng-model="FBFC.comment">
     <br />
 
-    <button>Submit</button>
+    <button ng-click="FBFC.submitFeedback(FBFC.q1response, FBFC.q2response, FBFC.q3response, FBFC.q4response, FBFC.q5response, FBFC.comment, FBFC.checkbox)">Submit</button>
 
 </DIV>
