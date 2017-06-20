@@ -1,4 +1,4 @@
-googleAuthApp.controller('updateQuestionsController', ['updateQuestionsService', function ($http, updateQuestionsService) {
+googleAuthApp.controller('updateQuestionsController', ['updateQuestionsService', function (updateQuestionsService) {
   console.log('loaded updateQuestionsController');
   const self = this;
 
