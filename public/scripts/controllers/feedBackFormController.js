@@ -1,4 +1,6 @@
-googleAuthApp.controller('feedBackFormController', [function ($http) {
+googleAuthApp.controller('feedBackFormController', ['feedBackFormService', function ($http, feedBackFormService) {
+
+
 
   //'feedBackFormService'
   console.log('loaded feedBackFormController');
