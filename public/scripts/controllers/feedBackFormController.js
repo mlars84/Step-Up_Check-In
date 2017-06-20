@@ -24,8 +24,17 @@ googleAuthApp.controller('feedBackFormController', [function ($http) {
   //   });
 
 this.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
+
   console.log("submitted feedback!");
-  console.log(q1, q2, q3, q4, q5, comment, checkbox);
+  console.log(q1);
+  console.log(q2);
+  console.log(q3);
+  console.log(q4);
+  console.log(q5);
+
+  // console.log(q1, q2, q3, q4, q5, comment, checkbox);
+
+  // $http.post('/private/feedback')
 };
 
 

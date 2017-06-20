@@ -48,6 +48,7 @@
     <input type="text" placeholder="write comments here" name="" value="" ng-model="FBFC.comment">
     <br />
 
-    <button ng-click="FBFC.submitFeedback(FBFC.q1response, FBFC.q2response, FBFC.q3response, FBFC.q4response, FBFC.q5response, FBFC.comment, FBFC.checkbox)">Submit</button>
+<!-- //something weird is happening here: -->
+    <button ng-click="FBFC.submitFeedback(FBFC.q1response.value, FBFC.q2response.value, FBFC.q3response.value, FBFC.q4response.value, FBFC.q5response.value, FBFC.comment, FBFC.checkbox)">Submit</button>
 
 </DIV>
