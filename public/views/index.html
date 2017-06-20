@@ -9,8 +9,9 @@
     <script src="/public/scripts/controllers/navController.js"></script>
     <script src="/public/scripts/controllers/authController.js"></script>
     <script src="/public/scripts/controllers/calendarController.js"></script>
-    <link rel="stylesheet" type="text/css" href="/public/vendors/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/public/vendors/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="/public/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +19,10 @@
     <main class="container" ng-app="theGoogles">
         <!-- NavController is on every page -->
         <header ng-controller="NavController as nav">
-            <h1>Step Up Check In</h1>
+            <h1 class="StepUp">
+              <img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg" >
+              <h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2>
+            </h1>
             <nav id="homepage">
                 <a href="#home">Home</a>
                 <a href="#interns">Interns</a>
