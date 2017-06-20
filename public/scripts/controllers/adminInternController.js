@@ -1,4 +1,4 @@
-googleAuthApp.controller('adminInternController', ['adminInternService', function ($http, adminInternService) {
+googleAuthApp.controller('adminInternController', ['adminInternService', function (adminInternService) {
   console.log('loaded adminInternController');
   const self = this;
 
