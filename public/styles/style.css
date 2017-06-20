@@ -1,32 +1,84 @@
-/************
+/***************************
 General/Index
-*************/
+****************************/
 
-title {
-  /*background-image: url('https://drive.google.com/drive/folders/0B2qialMc0XM9cTM3TWp0VEJkOVU');*/
+.StepUp {
+  text-align: center;
+}
+
+.stepUp {
+  height: 20vw;
+  width: 50%;
+  margin: -1em;
+  padding: 10px;
+}
+
+.CheckIn {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #008AC0;
+  text-decoration: underline;
+  font-size: 5vw;
+}
+
+.CheckInSpan {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #F68628;
+  font-size: 5vw;
+}
+
+/* nav */
+nav {
+  text-align: center;
+}
+
+a:link {
   color: #008AC0;
 }
 
-/*********
+a:hover {
+  color: #006086;
+}
+
+a:visited {
+  color: #F68628;
+}
+
+/***************************
 admin-home
-**********/
+****************************/
 
-/***********
+
+/***************************
 admin-intern
-************/
+****************************/
 
-/***********
+
+/***************************
 feddbackform
-************/
+****************************/
 
-/************
+
+/***************************
 Import-Export
-*************/
+****************************/
 
-/***********
+
+/***************************
 Login
-************/
+****************************/
 
-/*************
+.login {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #008AC0;
+}
+
+.signGoogle {
+  text-align: center;
+}
+
+/***************************
 updateQuestion
-**************/
+****************************/
