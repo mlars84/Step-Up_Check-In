@@ -6,14 +6,6 @@ CREATE TABLE users (
   googleName varchar (80) not null
 );
 
-CREATE TABLE questions (
-    id SERIAL PRIMARY KEY NOT NULL, -- connects this to the responsesnum table
-    qtext VARCHAR(140), -- how to make this really long?
-    active BOOLEAN,
-    qtype VARCHAR(10), -- i don't think it should be varchar?
-    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TABLE response_num (
     question_id INT REFERENCES questions(id) ON DELETE CASCADE, --not sure this data type - this is what connects the questions table to the response table
     intern_id VARCHAR(12) REFERENCES interns(primarykey) ON DELETE CASCADE, --not sure this data type - this is what connects the interns table to the response
@@ -52,11 +44,18 @@ CREATE TABLE interns (
     supervisor VARCHAR(50), --this connects to company table (stretch goals)
     stepup_group_id INT REFERENCES stepup_group(id) ON DELETE CASCADE
  );
+ --COPY CSV file into interns
+ COPY interns FROM '/Users/matthewlarson/Desktop/stepUpDatabaseTest.csv' DELIMITERS ',' CSV;
+
 
  CREATE TABLE stepup_group (
  	id SERIAL PRIMARY KEY,
  	group_name VARCHAR(20)
  );
+ --INSERTS For the two groups
+ INSERT INTO stepup_group (group_name) VALUES ('Achieve');
+ INSERT INTO stepup_group (group_name) VALUES ('Discover');
+
 
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY NOT NULL, -- connects this to the responsesnum table
@@ -66,13 +65,10 @@ CREATE TABLE questions (
     q_type VARCHAR(20), -- i don't think it should be varchar?
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-COPY interns FROM '/Users/matthewlarson/Desktop/stepUpDatabaseTest.csv' DELIMITERS ',' CSV;
-
-INSERT INTO stepup_group (group_name) VALUES ('Discover');
-
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('To what extent do you feel properly trained for your internship?', true, false, 'responsenum');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('How challenging are your daily work tasks?', true, false, 'responsenum');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('How supportive is your supervisor?', true, false, 'responsenum');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you like your internship?', true, false, 'responsenum');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you feel welcome in your workplace?', true, true, 'responsenum');
+--INSERTS for the first six questions
+INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('To what extent do you feel properly trained for your internship?', true, false, 'response_num');
+INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('How challenging are your daily work tasks?', true, false, 'response_num');
+INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('How supportive is your supervisor?', true, false, 'response_num');
+INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you like your internship?', true, false, 'response_num');
+INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you feel welcome in your workplace?', true, true, 'response_num');
+INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you want someone from STEP-UP to contact you this week?', true, true, 'response_checkbox');
