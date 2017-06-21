@@ -2,6 +2,6 @@ googleAuthApp.controller('importExportController', ['importExportService', funct
   console.log('loaded importExportController');
   const self = this;
 
-  self.importCsv = importExportService.importCsv;
+  self.importInterns = importExportService.importInterns;
 
 }]); //end importExportController
