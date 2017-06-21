@@ -17,4 +17,21 @@ googleAuthApp.service('importExportService', function($http) {
     });
   }; // end importInterns POST function
 
+  //function to export all intern response data
+  vm.exportResponseData = function() {
+    console.log('in exportResponseData function');
+  }; //end exportResponseData
+
+  //function to search for interns by lastname
+  vm.searchByLastName = function() {
+    console.log('in searchByLastName');
+    $http({
+      method: 'GET',
+      url: ''
+    }).then(function() {
+
+    });
+
+  }; //end searchByLastName
+
 }); //end importExportService
