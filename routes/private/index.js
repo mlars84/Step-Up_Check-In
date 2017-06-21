@@ -13,10 +13,10 @@ var router  = express.Router();
 // var feedback = require('./feedback');
 
 
-var questions = require('./questions');
-var responses = require('./responses');
-var admin = require('./admin');
-var interns = require('./interns');
+// var questions = require('./questions');
+// var responses = require('./responses');
+// var admin = require('./admin');
+// var interns = require('./interns');
 
 
 /** ---------- SUBROUTES ---------- **/
@@ -28,10 +28,10 @@ var interns = require('./interns');
 // router.use('/feedbackform', feedback);
 
 
-router.use('/questions', questions);
-router.use('/responses', responses);
-router.use('/admin', admin);
-router.use('/interns', interns);
+// router.use('/questions', questions);
+// router.use('/responses', responses);
+// router.use('/admin', admin);
+// router.use('/interns', interns);
 
 
 /**
