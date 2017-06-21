@@ -62,7 +62,6 @@ CREATE TABLE questions (
     q_text VARCHAR(1200), -- how to make this really long?
     active BOOLEAN,
     flagged BOOLEAN,
-    q_type VARCHAR(20), -- i don't think it should be varchar?
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 --INSERTS for the first six questions
