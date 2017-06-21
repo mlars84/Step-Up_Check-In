@@ -6,40 +6,15 @@
  var express = require('express');
  var router  = express.Router();
  const importInterns = require('./importexport');
+ const questions = require('./questions');
+ const response = require('./response');
 
- // var questions = require('./questions');
- // var responses = require('./responses');
- // var admin = require('./admin');
- // var interns = require('./interns');
- // var questions = require('./questions');
- // // var responses = require('./responses');
- // var admin = require('./admin');
- // var interns = require('./interns');
 
 
  /** ---------- SUBROUTES ---------- **/
- router.use('/importInterns', importInterns);
-
-// var questions = require('./questions');
-// var responses = require('./responses');
-// var admin = require('./admin');
-// var interns = require('./interns');
-var questions = require('./questions');
-// // var responses = require('./responses');
-// var admin = require('./admin');
-// var interns = require('./interns');
-
-
-/** ---------- SUBROUTES ---------- **/
-
-
+router.use('/importInterns', importInterns);
 router.use('/getquestions', questions);
-
-// router.use('/questions', questions);
-// router.use('/questions', questions);
-// router.use('/responses', responses);
-// router.use('/admin', admin);
-// router.use('/interns', interns);
+router.use('/postresponsecomments', response);
 
 
 /**
