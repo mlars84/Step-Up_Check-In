@@ -6,6 +6,7 @@
  var express = require('express');
  var router  = express.Router();
  const importInterns = require('./importexport');
+ const searchByLastName = require('./importexport');
 
  // var questions = require('./questions');
  // var responses = require('./responses');
@@ -19,6 +20,7 @@
 
  /** ---------- SUBROUTES ---------- **/
  router.use('/importInterns', importInterns);
+ router.use('/searchByLastName', searchByLastName);
 
 // var questions = require('./questions');
 // var responses = require('./responses');

@@ -7,5 +7,6 @@ googleAuthApp.controller('importExportController', ['importExportService', funct
   self.exportResponseData = importExportService.exportResponseData;
 
   self.searchByLastName = importExportService.searchByLastName;
-  
+  self.lastNameIn = importExportService.lastNameIn;
+
 }]); //end importExportController
