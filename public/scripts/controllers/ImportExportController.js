@@ -8,5 +8,8 @@ googleAuthApp.controller('importExportController', ['importExportService', funct
 
   self.searchByLastName = importExportService.searchByLastName;
   self.lastNameIn = importExportService.lastNameIn;
+  self.lastNameMatch = importExportService.lastNameMatch;
+
+  self.removeIntern = importExportService.removeIntern;
 
 }]); //end importExportController

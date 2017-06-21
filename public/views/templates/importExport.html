@@ -14,5 +14,10 @@
     <label>Search by Lastname</label>
     <input ng-model="IEC.lastNameIn" type="text">
     <button ng-click="IEC.searchByLastName(IEC.lastNameIn)" type="button" name="button" md-button>Submit</button>
+    <div ng-repeat="intern in IEC.lastNameMatch.name">
+        <md-content flex layout-padding>
+          <p>Intern:</p>{{intern.first_name}} {{intern.last_name}} {{intern.phone}}<button ng-click="IEC.removeIntern()" type="button" name="button" md-button>Remove</button>
+        </md-content>
+    </div>
   </md-input-container>
 </main>

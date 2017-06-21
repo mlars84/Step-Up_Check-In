@@ -2,7 +2,7 @@ googleAuthApp.service('importExportService', function($http) {
   const vm = this;
 
   vm.interns = [];
-  vm.lastNameMatch = [];
+  vm.lastNameMatch = {name: []};
 
   //function to get all interns from database
   vm.importInterns = function() {
@@ -36,12 +36,17 @@ googleAuthApp.service('importExportService', function($http) {
       for (var i = 0; i < res.data.length; i++) {
         // console.log(res.data[i].last_name, lastNameToSearchBy);
         if(res.data[i].last_name === lastNameToSearchBy){
-          vm.lastNameMatch.push(res.data[i]);
+          vm.lastNameMatch.name.push(res.data[i]);
           console.log("vm.lastNameMatch =>", vm.lastNameMatch);
         }
       }
     });
 
   }; //end searchByLastName
+
+  //function to completely remove an intern from the database
+  vm.removeIntern = function() {
+    console.log('in removeIntern');
+  }; //end removeIntern
 
 }); //end importExportService
