@@ -12,14 +12,14 @@
 	</md-content>
 </div>
 <h2>Step up Staff</h2>
-<div>
+<div ng-init="AHC.getAllAdmins()">
 	<md-content layout="column" layout-gt-sm="row" layout-padding>
-		<p>ng repeat it here</p>
+
 		<md-divider ></md-divider>
 	</md-content>
 </div>
 <h2>Add new Admin</h2>
-<div md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+<div layout-gt-sm="row" layout-padding>
 	<md-content>
 		<md-input-container>
 			<label>First Name</label>
