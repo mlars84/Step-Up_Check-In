@@ -1,4 +1,4 @@
-googleAuthApp.controller('feedBackFormController', ['feedBackFormService', function (feedBackFormService) {
+googleAuthApp.controller('feedBackFormController', ['$http','feedBackFormService', function ($http, feedBackFormService) {
   //'feedBackFormService'
   console.log('loaded feedBackFormController');
   const self = this;
@@ -11,6 +11,16 @@ googleAuthApp.controller('feedBackFormController', ['feedBackFormService', funct
   let q4 = this.q4response;
   let q5 = this.q5response;
 
+self.getQuestions = function(){
+  console.log("in get questions!");
+  return $http({
+    method: 'GET',
+    url: '/private/getQuestions'
+  }).then(function(response){
+    console.log("response from server in get Questions", response.data);
+    return response.data;
+  });
+}; // end getQuestions
 
 //we will need to do something with this and authentication to only show on certain pages
   // $http.get('/private/feedback')
@@ -22,7 +32,7 @@ googleAuthApp.controller('feedBackFormController', ['feedBackFormService', funct
   //     }
   //   });
 
-this.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
+self.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
 
   console.log("submitted feedback!");
   console.log(q1);

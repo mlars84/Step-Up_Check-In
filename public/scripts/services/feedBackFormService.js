@@ -1,11 +1,11 @@
-googleAuthApp.service('feedBackFormController', function($http){
+googleAuthApp.service('feedBackFormService', function($http){
   console.log("feedback form service");
 
   this.getQuestions = function(){
     console.log("in get questions");
     return $http({
       method: 'GET',
-      url: '/private/questions'
+      url: '/private/getquestions'
     }).then(function(response){
       console.log("response from server in get questions: ", response);
       return response.data;
