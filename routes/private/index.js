@@ -6,6 +6,7 @@
  var express = require('express');
  var router  = express.Router();
  const importInterns = require('./importexport');
+ const adminHome = require('./adminhome');
 
  // var questions = require('./questions');
  // var responses = require('./responses');
@@ -16,9 +17,8 @@
  // var admin = require('./admin');
  // var interns = require('./interns');
 
-
- /** ---------- SUBROUTES ---------- **/
- router.use('/importInterns', importInterns);
+router.use('/getAdmins', adminHome);
+router.use('/importInterns', importInterns);
 
 // var questions = require('./questions');
 // var responses = require('./responses');
