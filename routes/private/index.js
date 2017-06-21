@@ -7,7 +7,6 @@
  var router  = express.Router();
  const importInterns = require('./importexport');
 
-
  // var questions = require('./questions');
  // var responses = require('./responses');
  // var admin = require('./admin');
@@ -20,6 +19,21 @@
 
  /** ---------- SUBROUTES ---------- **/
  router.use('/importInterns', importInterns);
+
+// var questions = require('./questions');
+// var responses = require('./responses');
+// var admin = require('./admin');
+// var interns = require('./interns');
+var questions = require('./questions');
+// // var responses = require('./responses');
+// var admin = require('./admin');
+// var interns = require('./interns');
+
+
+/** ---------- SUBROUTES ---------- **/
+
+
+router.use('/getquestions', questions);
 
 // router.use('/questions', questions);
 // router.use('/questions', questions);
