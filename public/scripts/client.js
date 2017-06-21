@@ -21,7 +21,7 @@ googleAuthApp.config(['$routeProvider', '$locationProvider', function ($routePro
   })
   .when('/updateQuestions', {
     templateUrl: '/public/views/templates/updateQuestions.html',
-  controller: 'updateQuestionsController',
+    controller: 'updateQuestionsController',
     controllerAs: 'UQC',
   })
   .when('/importExport', {

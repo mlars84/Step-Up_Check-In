@@ -45,6 +45,7 @@ CREATE TABLE interns (
     stepup_group_id INT REFERENCES stepup_group(id) ON DELETE CASCADE
  );
  --COPY CSV file into interns
+ -- '/Users/yourUserName/Desktop/stepUpDatabaseTest.csv'
  COPY interns FROM '/Users/matthewlarson/Desktop/stepUpDatabaseTest.csv' DELIMITERS ',' CSV;
 
 
