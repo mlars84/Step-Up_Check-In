@@ -1,0 +1,92 @@
+/***************************
+General/Index
+****************************/
+
+.StepUp {
+  text-align: center;
+}
+
+.stepUp {
+  height: 20vw;
+  width: 50%;
+  margin: -1em;
+  padding: 10px;
+}
+
+.CheckIn {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #008AC0;
+  text-decoration: underline;
+  font-size: 5vw;
+}
+
+.CheckInSpan {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #F68628;
+  font-size: 5vw;
+}
+
+/* nav */
+nav {
+  text-align: center;
+}
+
+a:link {
+  color: #008AC0;
+}
+
+a:hover {
+  color: #006086;
+}
+
+a:visited {
+  color: #F68628;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/***************************
+admin-home
+****************************/
+
+
+/***************************
+admin-intern
+****************************/
+
+
+/***************************
+feddbackform
+****************************/
+
+/*//attempts to style the radio button*/
+/*input[type='radio'] {
+    transform: scale(2);
+}*/
+
+/***************************
+Import-Export
+****************************/
+
+
+/***************************
+Login
+****************************/
+
+.login {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #008AC0;
+}
+
+.signGoogle {
+  text-align: center;
+}
+
+/***************************
+updateQuestion
+****************************/

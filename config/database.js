@@ -7,11 +7,11 @@
  */
 
 // set up config for the pool
-const config = {
-  database: 'stepUpCheckIn',
-  host: 'localhost',
-  port: 5432,
-  max: 100
-};
-
-module.exports = config;
+// const config = {
+//   database: 'stepUpCheckIn',
+//   host: 'localhost',
+//   port: 5432,
+//   max: 100
+// };
+//
+// module.exports = config;
