@@ -1,11 +1,23 @@
 <main class="container" ng-app="theGoogles">
+  <md-toolbar layout="column">
+    <h1>Step-Up Check-In</h1>
+  </md-toolbar>
   <div class="importExport">
     <h1>Import/Export</h1>
   </div>
-  <h2>Add CRV file</h2><button ng-click="IEC.importInterns()" type="button" name="button">Import</button>
-  <h2>Export Response Data</h2><button type="button" name="button">Export</button>
+  <h2>Add CRV file</h2><button ng-click="IEC.importInterns()" type="button" name="button" md-button>Import</button>
+  <h2>Export Response Data</h2><button ng-click="IEC.exportResponseData()" type="button" name="button" md-button>Export</button>
   <br><br><br><br>
   <h2>Remove Interns:</h2>
-  <h3>Lastname: </h3><input type="text" name="" value="" placeholder="search by lastname"><button type="button" name="button">Submit</button>
-
+  <h3>Lastname: </h3>
+  <md-input-container>
+    <label>Search by Lastname</label>
+    <input ng-model="IEC.lastNameIn" type="text">
+    <button ng-click="IEC.searchByLastName(IEC.lastNameIn)" type="button" name="button" md-button>Submit</button>
+    <div ng-repeat="intern in IEC.lastNameMatch.name">
+        <md-content flex layout-padding>
+          <p>Intern:</p>{{intern.first_name}} {{intern.last_name}} {{intern.phone}}<button ng-click="IEC.removeIntern()" type="button" name="button" md-button>Remove</button>
+        </md-content>
+    </div>
+  </md-input-container>
 </main>
