@@ -1,4 +1,4 @@
-var googleAuthApp = angular.module('theGoogles', ['ngRoute']);
+var googleAuthApp = angular.module('theGoogles', ['ngRoute', 'ngMaterial']);
 
 googleAuthApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   // $locationProvider.html5Mode(true);
