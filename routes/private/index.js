@@ -3,23 +3,23 @@
  *
  * @module routes/private/index
  */
-var express = require('express');
-var router  = express.Router();
+ var express = require('express');
+ var router  = express.Router();
+ const importInterns = require('./importexport');
 
 
-// var questions = require('./questions');
-// var responses = require('./responses');
-// var admin = require('./admin');
-// var interns = require('./interns');
-// var questions = require('./questions');
-// // var responses = require('./responses');
-// var admin = require('./admin');
-// var interns = require('./interns');
+ // var questions = require('./questions');
+ // var responses = require('./responses');
+ // var admin = require('./admin');
+ // var interns = require('./interns');
+ // var questions = require('./questions');
+ // // var responses = require('./responses');
+ // var admin = require('./admin');
+ // var interns = require('./interns');
 
 
-/** ---------- SUBROUTES ---------- **/
-
-
+ /** ---------- SUBROUTES ---------- **/
+ router.use('/importInterns', importInterns);
 
 // router.use('/questions', questions);
 // router.use('/questions', questions);
