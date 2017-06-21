@@ -11,7 +11,7 @@ var router  = express.Router();
 // var responses = require('./responses');
 // var admin = require('./admin');
 // var interns = require('./interns');
-// var questions = require('./questions');
+var questions = require('./questions');
 // // var responses = require('./responses');
 // var admin = require('./admin');
 // var interns = require('./interns');
@@ -20,7 +20,7 @@ var router  = express.Router();
 /** ---------- SUBROUTES ---------- **/
 
 
-
+router.use('/getquestions', questions);
 // router.use('/questions', questions);
 // router.use('/questions', questions);
 // router.use('/responses', responses);
