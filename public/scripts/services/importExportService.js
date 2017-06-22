@@ -1,4 +1,4 @@
-googleAuthApp.service('importExportService', function($http) {
+googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($http, $mdDialog) {
   const vm = this;
 
   vm.interns = [];
@@ -72,4 +72,21 @@ googleAuthApp.service('importExportService', function($http) {
     }); //end editPhone PUT
   }; //end editPhone function
 
-}); //end importExportService
+  vm.showConfirm = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+    .title('Are you sure you want to remove this intern?')
+    .textContent('All of the banks have agreed to forgive you your debts.')
+    .ariaLabel('Lucky day')
+    .targetEvent(ev)
+    .ok('Please do it!')
+    .cancel('Sounds like a scam');
+
+    $mdDialog.show(confirm).then(function() {
+      vm.status = 'You decided to get rid of your debt.';
+    }, function() {
+      vm.status = 'You decided to keep your debt.';
+    });
+  };
+
+}]); //end importExportService

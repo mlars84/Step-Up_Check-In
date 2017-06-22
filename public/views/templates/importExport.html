@@ -23,7 +23,7 @@
           <button ng-show="intern.editMode" ng-click="IEC.editPhone(intern.primarykey, intern.phoneIn)" class="md-raised md-primary" type="button" name="button" md-button>Save</button>
           <button ng-hide="intern.editMode" ng-click="intern.editMode = !intern.editMode" class="md-raised md-primary" type="button" name="edit" md-button>Edit Phone Number</button>
           <button ng-show="intern.editMode" ng-click="intern.editMode = !intern.editMode" class="md-raised md-primary" type="button" name="button" md-button>Cancel Edit</button>
-          <button ng-hide="intern.editMode" ng-click="IEC.removeIntern(intern.primarykey)" class="md-raised md-warn" type="button" name="delete" md-button>Remove</button>
+          <button ng-hide="intern.editMode" ng-click="IEC.showConfirm($event); IEC.removeIntern(intern.primarykey)" class="md-raised md-warn" type="button" name="delete" md-button>Remove</button>
         </md-content>
       </div>
     </md-input-container>
