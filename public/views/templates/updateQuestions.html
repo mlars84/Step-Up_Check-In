@@ -1,8 +1,7 @@
 <!-- Jim's Work -->
 <main class="container" ng-app="theGoogles">
   <div class="updateQuestions">
-    <h1>Update Questions</h1><br>
-
+    <h1>Update Questions:</h1>
     <div layout="column">
       <md-input-container>
         <label>Question 1</label>
@@ -42,14 +41,14 @@
         <input ng-model="UQC.questionIn">
       </md-input-container>
       <md-input-container class="md-block">
-        <md-checkbox name="tos" ng-model="project.tos">
+        <md-checkbox name="tos" ng-model="UQC.flaggedIn">
           Yes, this is a flagged question.
         </md-checkbox>
       </md-input-container>
       <md-button ng-click ="UQC.addQuestion()" class="md-raised md-primary">Add Question</md-button>
     </div>
-    <br><br><br>
-    <button>Send This Week's Questions</button>
+    <br><br>
+    <md-button ng-click ="UQC.addQuestion()" class="md-raised md-primary">Send Questions</md-button>
   </div>
 </main>
 

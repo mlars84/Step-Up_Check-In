@@ -8,18 +8,19 @@ googleAuthApp.service('updateQuestionsService', function($http) {
     console.log('add question button clicked');
     let objectToSend = {
       q_text: vm.questionIn,
-      flagged: vm.flaggedIn,
-      q_type: vm.typeIn
     }; // end objectToSend
     console.log('update objectToSend', objectToSend);
 
     $http({
-      method: 'GET',
+      method: 'POST',
       url: '/private/updateQuestion',
       data: objectToSend
     }).then(function(res) {
-      console.log('this is the response for get ');
-    })
+      console.log('back from the server with', response);
+    });// end $http
+    vm.questionIn="";
+    // swal
+    swal("Question Added!", "A new question was added to your database!", "success");
   }; // end updateQuestion
 
 }); //end updateQuestionsService
