@@ -10,6 +10,7 @@
  const searchByLastName = require('./importexport');
 
  const adminHome = require('./adminhome');
+ const removeIntern = require('./importexport');
 
 
  // var questions = require('./questions');
@@ -29,6 +30,8 @@
 
 router.use('/getAdmins', adminHome);
 router.use('/importInterns', importInterns);
+router.use('/removeIntern', removeIntern);
+
 
 
 // var questions = require('./questions');

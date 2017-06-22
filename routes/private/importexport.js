@@ -25,6 +25,23 @@ router.get('/', function(req, res) {
   });
 }); //end importInterns GET
 
+//function to delete an intern from the DB
+router.delete('/', function(req, res) {
+  let primarykeyToDelete = req.query.primarykey;
+  console.log('primarykeyToDelete =>', primarykeyToDelete);
+  pool.connect(function(error, db, done) {
+    if(error){
+      console.log('removeIntern error1 =>', error);
+    } else {
+      let resultSet = db.query( 'DELETE FROM interns WHERE primarykey=$1', [primarykeyToDelete] );
+      resultSet.on('end', function() {
+        done();
+        res.sendStatus(200);
+      });
+    }
+  });
+}); //end removeIntern DELETE
+
 //get to search interns by last name
 // router.get('/', function(req, res) {
 //   console.log('in searchByLastName ROUTE =>', req.body);

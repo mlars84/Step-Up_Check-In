@@ -45,8 +45,15 @@ googleAuthApp.service('importExportService', function($http) {
   }; //end searchByLastName
 
   //function to completely remove an intern from the database
-  vm.removeIntern = function() {
+  vm.removeIntern = function(primarykey) {
     console.log('in removeIntern');
+    $http({
+      method: 'DELETE',
+      url: '/private/removeIntern',
+      params: { primarykey: primarykey }
+    }).then(function(res) {
+      console.log(res.data);
+    }); //end removeIntern DELETE
   }; //end removeIntern
 
 }); //end importExportService
