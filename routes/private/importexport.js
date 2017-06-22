@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
   });
 }); //end importInterns GET
 
-//function to delete an intern from the DB
+//route to delete an intern from the DB
 router.delete('/', function(req, res) {
   let primarykeyToDelete = req.query.primarykey;
   console.log('primarykeyToDelete =>', primarykeyToDelete);
@@ -41,6 +41,11 @@ router.delete('/', function(req, res) {
     }
   });
 }); //end removeIntern DELETE
+
+//route to edit an interns phone number based on lastName search and primarykey
+router.put('/', function(req, res) {
+  console.log('in editPhone PUT =>', req.body.primarykey);
+}); //editPhone PUT
 
 //get to search interns by last name
 // router.get('/', function(req, res) {

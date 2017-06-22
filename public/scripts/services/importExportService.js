@@ -56,4 +56,19 @@ googleAuthApp.service('importExportService', function($http) {
     }); //end removeIntern DELETE
   }; //end removeIntern
 
+  //function to edit an intern's phone number
+  vm.editPhone = function(primarykey) {
+    console.log('in editPhone function =>', primarykey);
+    let internToEdit = {
+      primarykey: primarykey
+    };
+    $http({
+      method: 'PUT',
+      url: '/private/editPhone',
+      data: internToEdit
+    }).then(function(res) {
+      console.log('editPhone =>', res.data);
+    }); //end editPhone PUT
+  }; //end editPhone function
+
 }); //end importExportService
