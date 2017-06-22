@@ -75,7 +75,9 @@ feddbackform
 /***************************
 Import-Export
 ****************************/
-
+.importExportMain {
+  margin-left: 3vmin;
+}
 
 /***************************
 Login

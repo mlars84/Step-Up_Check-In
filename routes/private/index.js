@@ -10,6 +10,8 @@
  const response = require('./response');
  const searchByLastName = require('./importexport');
  const adminHome = require('./adminhome');
+ const removeIntern = require('./importexport');
+ const editPhone = require('./importexport');
 
  /** ---------- SUBROUTES ---------- **/
 
@@ -19,6 +21,9 @@ router.use('/importInterns', importInterns);
 
 router.use('/getAdmins', adminHome);
 router.use('/importInterns', importInterns);
+router.use('/removeIntern', removeIntern);
+router.use('/editPhone', editPhone);
+
 
 // var questions = require('./questions');
 

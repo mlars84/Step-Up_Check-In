@@ -1,4 +1,4 @@
-googleAuthApp.service('importExportService', function($http) {
+googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($http, $mdDialog) {
   const vm = this;
 
   vm.interns = [];
@@ -41,12 +41,52 @@ googleAuthApp.service('importExportService', function($http) {
         }
       }
     });
-
   }; //end searchByLastName
 
   //function to completely remove an intern from the database
-  vm.removeIntern = function() {
+  vm.removeIntern = function(primarykey) {
     console.log('in removeIntern');
+    $http({
+      method: 'DELETE',
+      url: '/private/removeIntern',
+      params: { primarykey: primarykey }
+    }).then(function(res) {
+      console.log(res.data);
+    }); //end removeIntern DELETE
   }; //end removeIntern
 
-}); //end importExportService
+  //function to edit an intern's phone number
+  vm.editPhone = function(primarykey, phone) {
+    console.log('in editPhone function =>', phone);
+    let internToEdit = {
+      primarykey: primarykey,
+      phone: phone
+    };
+    console.log(internToEdit);
+    $http({
+      method: 'PUT',
+      url: '/private/editPhone',
+      data: internToEdit
+    }).then(function(res) {
+      console.log('editPhone =>', res.data);
+    }); //end editPhone PUT
+  }; //end editPhone function
+
+  vm.showConfirm = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+    .title('Are you sure you want to remove this intern?')
+    .textContent('All of the banks have agreed to forgive you your debts.')
+    .ariaLabel('Lucky day')
+    .targetEvent(ev)
+    .ok('Please do it!')
+    .cancel('Sounds like a scam');
+
+    $mdDialog.show(confirm).then(function() {
+      vm.status = 'You decided to get rid of your debt.';
+    }, function() {
+      vm.status = 'You decided to keep your debt.';
+    });
+  };
+
+}]); //end importExportService
