@@ -1,56 +1,108 @@
-<DIV class = "container" ng-init="">
+<md-toolbar layout="column">
+	<h1>Step-Up Check-In Week X </h1>
+</md-toolbar>
 
-    <h1>Step Up Check In : Week 1</h1>
 
-    <button ng-click="FBFC.getQuestions()">Get Questions</button>
+<DIV class = "feedbackform" ng-init="">
 
-    <h3>Question 1: To what extent do you feel properly trained for your internship? </h3>
-    <input type="radio" value = "1" ng-model="FBFC.q1response"> 1, not properly trained at all <br />
-    <input type="radio" value = "2" ng-model="FBFC.q1response"> 2, not properly trained <br />
-    <input type="radio" value = "3" ng-model="FBFC.q1response"> 3, somewhat properly trained<br />
-    <input type="radio" value = "4" ng-model="FBFC.q1response"> 4, properly trained<br />
-    <input type="radio" value = "5" ng-model="FBFC.q1response"> 5, very properly trained<br />
+    <md-button ng-click="FBFC.getQuestions()">Get Questions</md-button>
+
+
+    <div>
+    <form ng-submit="submit()" ng-cloak>
+      <h3>Question 1: To what extent do you feel properly trained for your internship? </h3>
+      <p>Selected Value: <span class="radioValue">{{ data.group1 }}</span> </p>
+
+      <md-radio-group ng-model="data.group1">
+
+        <md-radio-button value = "1" ng-model="FBFC.q1response"> not properly trained at all </md-radio-button>
+        <md-radio-button value = "2" ng-model="FBFC.q1response"> not properly trained </md-radio-button>
+        <md-radio-button value = "3" ng-model="FBFC.q1response"> somewhat properly trained</md-radio-button>
+        <md-radio-button value = "4" ng-model="FBFC.q1response"> properly trained</md-radio-button>
+        <md-radio-button value = "5" ng-model="FBFC.q1response"> very properly trained</md-radio-button>
+
+
+      </md-radio-group>
+
+
 
     <h3>Question 2: How challenging are your daily work tasks? </h3>
-    <input type="radio" value = "1" ng-model="FBFC.q2response">1, not challenging at all<br />
-    <input type="radio" value = "2" ng-model="FBFC.q2response">2, not very challenging<br />
-    <input type="radio" value = "3" ng-model="FBFC.q2response">3, somewhat challenging<br />
-    <input type="radio" value = "4" ng-model="FBFC.q2response">4, challenging<br />
-    <input type="radio" value = "5" ng-model="FBFC.q2response">5, very challenging<br />
+    <p>Selected Value: <span class="radioValue">{{ data.group2 }}</span> </p>
+
+    <md-radio-group ng-model="data.group2">
+
+      <md-radio-button value = "1" ng-model="FBFC.q2response">not challenging at all</md-radio-button>
+      <md-radio-button value = "2" ng-model="FBFC.q2response">not very challenging</md-radio-button>
+      <md-radio-button value = "3" ng-model="FBFC.q2response">somewhat challenging</md-radio-button>
+      <md-radio-button value = "4" ng-model="FBFC.q2response">challenging</md-radio-button>
+      <md-radio-button value = "5" ng-model="FBFC.q2response">very challenging</md-radio-button>
+
+
+    </md-radio-group>
+
 
     <h3>Question 3: How supportive is your supervisor? </h3>
-    <input type="radio" value = "1" ng-model="FBFC.q3response">1, not supportive at all<br />
-    <input type="radio" value = "2" ng-model="FBFC.q3response">2, not very supportive<br />
-    <input type="radio" value = "3" ng-model="FBFC.q3response">3, somewhat supportive<br />
-    <input type="radio" value = "4" ng-model="FBFC.q3response">4, supportive<br />
-    <input type="radio" value = "5" ng-model="FBFC.q3response">5, very supportive<br />
+
+
+    <p>Selected Value: <span class="radioValue">{{ data.group3 }}</span> </p>
+
+    <md-radio-group ng-model="data.group3">
+
+      <md-radio-button value = "1" ng-model="FBFC.q3response">not supportive at all</md-radio-button>
+      <md-radio-button value = "2" ng-model="FBFC.q3response">not very supportive</md-radio-button>
+      <md-radio-button value = "3" ng-model="FBFC.q3response">somewhat supportive</md-radio-button>
+      <md-radio-button value = "4" ng-model="FBFC.q3response">supportive</md-radio-button>
+      <md-radio-button value = "5" ng-model="FBFC.q3response">very supportive</md-radio-button>
+
+    </md-radio-group>
 
     <h3>Question 4: Do you like your internship? </h3>
-    <input type="radio" value = "1" ng-model="FBFC.q4response">1, I do not like my internship at all<br />
-    <input type="radio" value = "2" ng-model="FBFC.q4response">2, I don't really like my internship<br />
-    <input type="radio" value = "3" ng-model="FBFC.q4response">3, My internship is okay<br />
-    <input type="radio" value = "4" ng-model="FBFC.q4response">4, I like my internship<br />
-    <input type="radio" value = "5" ng-model="FBFC.q4response">5, I like my internship very much!<br />
+    <p>Selected Value: <span class="radioValue">{{ data.group4 }}</span> </p>
+
+    <md-radio-group ng-model="data.group4">
+
+      <md-radio-button value = "1" ng-model="FBFC.q4response">1, I do not like my internship at all</md-radio-button>
+      <md-radio-button value = "2" ng-model="FBFC.q4response">2, I don't really like my internship</md-radio-button>
+      <md-radio-button value = "3" ng-model="FBFC.q4response">3, My internship is okay</md-radio-button>
+      <md-radio-button value = "4" ng-model="FBFC.q4response">4, I like my internship</md-radio-button>
+      <md-radio-button value = "5" ng-model="FBFC.q4response">5, I like my internship very much!</md-radio-button>
+
+    </md-radio-group>
+
 
     <h3>Question 5: Do you feel welcome in your workplace? </h3>
-    <input type="radio" value = "1" ng-model="FBFC.q5response">1, I do not feel welcome in my workplace at all<br />
-    <input type="radio" value = "2" ng-model="FBFC.q5response">2, I do not feel very welcome in my workplace<br />
-    <input type="radio" value = "3" ng-model="FBFC.q5response">3, I feel somewhat welcome in my workplace<br />
-    <input type="radio" value = "4" ng-model="FBFC.q5response">4, I feel welcome in my workplace<br />
-    <input type="radio" value = "5" ng-model="FBFC.q5response">5, I feel very welcome in my workplace<br />
+
+    <p>Selected Value: <span class="radioValue">{{ data.group5 }}</span> </p>
+
+    <md-radio-group ng-model="data.group5">
+
+      <md-radio-button value = "1" ng-model="FBFC.q5response">I do not feel welcome in my workplace at all</md-radio-button>
+      <md-radio-button value = "2" ng-model="FBFC.q5response">I do not feel very welcome in my workplace</md-radio-button>
+      <md-radio-button  value = "3" ng-model="FBFC.q5response">I feel somewhat welcome in my workplace</md-radio-button>
+      <md-radio-button value = "4" ng-model="FBFC.q4response">I feel welcome in my workplace</md-radio-button>
+      <md-radio-button value = "5" ng-model="FBFC.q4response">I feel very welcome in my workplace</md-radio-button>
+
+    </md-radio-group>
 
     <br />
     <h3>Do you want someone from STEP-UP to contact you this week?</h3>
+    <div flex-gt-sm="50">
+              <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+              Yes, please talk with me. {{ data.cb1 }}
+              </md-checkbox>
+            </div>
 
-
-    <input type="checkbox" ng-model="FBFC.checkbox"> Yes, please talk with me.
-
+<!-- ng-model="FBFC.checkbox">  -->
     <h3>Do you have any other comments?</h3>
+    <md-input-container>
+            <label>Write here:</label>
+            <input ng-model="data.comment">
+          </md-input-container>
 
-    <input type="text" placeholder="write comments here" name="" value="" ng-model="FBFC.comment">
+    <!-- <input type="text" placeholder="write comments here" name="" value="" ng-model="FBFC.comment"> -->
     <br />
 
 <!-- //something weird is happening here: -->
-    <button ng-click="FBFC.submitFeedback(FBFC.q1response.value, FBFC.q2response.value, FBFC.q3response.value, FBFC.q4response.value, FBFC.q5response.value, FBFC.comment, FBFC.checkbox)">Submit</button>
+    <md-button ng-click="FBFC.submitFeedback(FBFC.q1response.value, FBFC.q2response.value, FBFC.q3response.value, FBFC.q4response.value, FBFC.q5response.value, FBFC.comment, FBFC.checkbox)">Submit</md-button>
 
 </DIV>
