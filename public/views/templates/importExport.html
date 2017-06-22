@@ -15,10 +15,15 @@
     <input ng-model="IEC.lastNameIn" type="text">
     <button ng-click="IEC.searchByLastName(IEC.lastNameIn)" class="md-raised md-primary" type="button" name="button" md-button>Submit</button>
     <div ng-repeat="intern in IEC.lastNameMatch.name">
-        <md-content flex layout-padding>
-          <p>Intern:</p>{{intern.first_name}} {{intern.last_name}} {{intern.phone}}<button ng-click="IEC.editPhone(intern.primarykey)" class="md-raised md-primary" type="button" name="edit" md-button>Edit Phone Number</button>
-          <button ng-click="IEC.removeIntern(intern.primarykey)" class="md-raised md-warn" type="button" name="delete" md-button>Remove</button>
+      <md-content flex layout-padding>
+        <p>Intern:</p>{{intern.first_name}} {{intern.last_name}}
+        <span ng-show="intern.editMode" ><md-input-container><input ng-model="intern.phoneIn" type="text" ng-value="IEC.phone"></md-input-container></span>
+          <span ng-hide="intern.editMode" >{{intern.phone}}</span>
+          <button ng-show="intern.editMode" ng-click="IEC.editPhone(intern.primarykey, intern.phoneIn)" class="md-raised md-primary" type="button" name="button" md-button>Save</button>
+          <button ng-hide="intern.editMode" ng-click="intern.editMode = !intern.editMode" class="md-raised md-primary" type="button" name="edit" md-button>Edit Phone Number</button>
+          <button ng-show="intern.editMode" ng-click="intern.editMode = !intern.editMode" class="md-raised md-primary" type="button" name="button" md-button>Cancel Edit</button>
+          <button ng-hide="intern.editMode" ng-click="IEC.removeIntern(intern.primarykey)" class="md-raised md-warn" type="button" name="delete" md-button>Remove</button>
         </md-content>
-    </div>
-  </md-input-container>
-</main>
+      </div>
+    </md-input-container>
+  </main>

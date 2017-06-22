@@ -41,7 +41,6 @@ googleAuthApp.service('importExportService', function($http) {
         }
       }
     });
-
   }; //end searchByLastName
 
   //function to completely remove an intern from the database
@@ -57,11 +56,13 @@ googleAuthApp.service('importExportService', function($http) {
   }; //end removeIntern
 
   //function to edit an intern's phone number
-  vm.editPhone = function(primarykey) {
-    console.log('in editPhone function =>', primarykey);
+  vm.editPhone = function(primarykey, phone) {
+    console.log('in editPhone function =>', phone);
     let internToEdit = {
-      primarykey: primarykey
+      primarykey: primarykey,
+      phone: phone
     };
+    console.log(internToEdit);
     $http({
       method: 'PUT',
       url: '/private/editPhone',
