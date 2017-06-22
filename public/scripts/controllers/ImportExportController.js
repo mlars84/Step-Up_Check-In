@@ -12,5 +12,7 @@ googleAuthApp.controller('importExportController', ['importExportService', funct
 
   self.removeIntern = importExportService.removeIntern;
   self.editPhone = importExportService.editPhone;
+  self.showConfirm = importExportService.showConfirm;
+  self.confirm = importExportService.confirm;
 
 }]); //end importExportController
