@@ -3,14 +3,6 @@ googleAuthApp.controller('feedBackFormController', ['$http','feedBackFormService
   console.log('loaded feedBackFormController');
   const self = this;
 
-  let comment = this.comment;
-  let checkbox = this.checkbox;
-  let q1 = this.q1response;
-  let q2 = this.q2response;
-  let q3 = this.q3response;
-  let q4 = this.q4response;
-  let q5 = this.q5response;
-
 self.getQuestions = function(){
   console.log("in get questions!");
   return $http({
@@ -40,8 +32,28 @@ self.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
   console.log(q3);
   console.log(q4);
   console.log(q5);
+  console.log(comment);
+  console.log(checkbox);
 
-  // console.log(q1, q2, q3, q4, q5, comment, checkbox);
+  responseToSend = {
+    question1: q1,
+    question2: q2,
+    question3: q3,
+    question4: q4,
+    question5: q5,
+    comment: comment,
+    checkbox: checkbox
+  };
+
+
+  return $http({
+    method: 'POST',
+    url: '/private/postresponse',
+    data: responseToSend,
+  }).then(function(response){
+    console.log("response from server in get Questions", response.data);
+    return response.data;
+  });
 
   // $http.post('/private/feedback')
 };

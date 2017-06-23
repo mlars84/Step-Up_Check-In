@@ -42,6 +42,7 @@ router.use('/editPhone', editPhone);
 /** ---------- SUBROUTES ---------- **/
 
 router.use('/getquestions', questions);
+router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
 
 // router.use('/questions', questions);

@@ -2,10 +2,12 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
+var pool = require('../../modules/pool.js');
+
 
 router.post('/', function(req, res) {
   console.log(req.body);
-  console.log(req.body.name);
+  // console.log(req.body.name);
   pool.connect(function(err, connection, done){
     if (err) {
       res.send("error in the post on creating responses");
