@@ -3,12 +3,15 @@ googleAuthApp.service('updateQuestionsService', function($http) {
 
   const vm = this;
 
-  vm.addQuestion = function(questionIn) {
+  vm.addQuestion = function(questionIn, flaggedIn) {
     console.log('add question button clicked', questionIn);
+    if(flaggedIn === undefined){
+      flaggedIn = false;
+    }
     let objectToSend = {
       q_text: questionIn,
       active: true,
-      flagged: false
+      flagged: flaggedIn
     }; // end objectToSend
     console.log('update objectToSend', objectToSend);
 
