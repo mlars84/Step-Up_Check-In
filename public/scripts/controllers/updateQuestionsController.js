@@ -5,5 +5,6 @@ googleAuthApp.controller('updateQuestionsController', ['updateQuestionsService',
 
   // exporting updateQuestion, maybe? ref: importExportController.js
   self.addQuestion = updateQuestionsService.addQuestion;
+  self.sendQuestion = updateQuestionsService.sendQuestion;
 
 }]); //end updateQuestionsController
