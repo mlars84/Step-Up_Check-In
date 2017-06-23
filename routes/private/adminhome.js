@@ -2,11 +2,10 @@ var express = require('express');
 var router = express.Router();
 var pool = require('../../modules/pool');
 //Getting staff list(admins)?
+
 router.get('/', function(req, res) {
   console.log('In the admin route', req.body);
-
   let adminStaff = [];
-
   pool.connect(function(error, connection, done) {
     if (error) {
       console.log('adminRouteError', error);
@@ -20,7 +19,7 @@ router.get('/', function(req, res) {
       }); //row end
       resultSet.on('end', function() {
 
-      done();
+        done();
         res.send(adminStaff);
       }); // resultSet end
     } //end else
@@ -37,8 +36,8 @@ router.post('/', function(req, res){
     else {
       console.log('adminDB connection ready');
       connection.query('INSERT INTO admin (firstname, lastname, email, active) VALUES ($1, $2, $3, $4)', [req.body.firstname, req.body.lastname, req.body.email, req.body.active]);
-        done();
-        res.sendStatus(200);
+      done();
+      res.sendStatus(200);
     } // end else
   }); // pool.connect end
 });// router.POST end

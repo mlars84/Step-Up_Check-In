@@ -20,9 +20,12 @@ var config = require('../config/auth');
 var UserService = require('../services/user');
 /** ---------- PASSPORT SESSION SERIALIZATION ---------- **/
 
+var userTest =
+
 // serialize the user onto the session
 passport.serializeUser(function (user, done) {
     console.log('serializeUser =>', user);
+    userTest = user;
     done(null, user.id);
 });
 
