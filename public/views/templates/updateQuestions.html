@@ -38,14 +38,14 @@
     <div>
       <md-input-container class="md-block">
         <label>Enter Question</label>
-        <input ng-model="UQC.questionIn">
+        <input ng-model="UQC.questionIn" type="text">
       </md-input-container>
       <md-input-container class="md-block">
         <md-checkbox name="tos" ng-model="UQC.flaggedIn">
           Yes, this is a flagged question.
         </md-checkbox>
       </md-input-container>
-      <md-button ng-click ="UQC.addQuestion()" class="md-raised md-primary">Add Question</md-button>
+      <md-button ng-click ="UQC.addQuestion(UQC.questionIn)" class="md-raised md-primary">Add Question</md-button>
     </div>
     <br><br>
     <md-button ng-click ="UQC.addQuestion()" class="md-raised md-primary">Send Questions</md-button>

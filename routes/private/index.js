@@ -6,7 +6,7 @@
  var express = require('express');
  var router  = express.Router();
  const importInterns = require('./importexport');
- //NOTE add require
+ const addQuestion = require('./updateq');
 
  // var questions = require('./questions');
  // var responses = require('./responses');
@@ -35,6 +35,7 @@ var questions = require('./questions');
 
 
 router.use('/getquestions', questions);
+router.use('/addQuestion', addQuestion);
 
 // router.use('/questions', questions);
 // router.use('/questions', questions);
