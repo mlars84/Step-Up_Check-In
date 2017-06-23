@@ -96,3 +96,8 @@ Login
 /***************************
 updateQuestion
 ****************************/
+
+.updateQuestions {
+  /*text-align: center;*/
+  font-family: 'Oswald', sans-serif;
+}

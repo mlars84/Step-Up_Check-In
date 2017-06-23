@@ -44,7 +44,10 @@ CREATE TABLE interns (
     supervisor VARCHAR(50), --this connects to company table (stretch goals)
     stepup_group_id INT REFERENCES stepup_group(id) ON DELETE CASCADE
  );
-
+ 
+ --COPY CSV file into interns
+ -- '/Users/yourUserName/Desktop/stepUpDatabaseTest.csv'
+ COPY interns FROM '/Users/matthewlarson/Desktop/stepUpDatabaseTest.csv' DELIMITERS ',' CSV;
  CREATE TABLE stepup_group (
  	id SERIAL PRIMARY KEY,
  	group_name VARCHAR(20)

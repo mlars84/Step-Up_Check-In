@@ -1,3 +1,4 @@
+// requires
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
@@ -12,7 +13,7 @@ router.get('/', function(req, res) {
       res.send(400);
     } else {
       console.log('connected to database');
-      var resultset = connection.query("SELECT * from questions");
+      let resultset = connection.query("SELECT * from questions");
       resultset.on('row', function(row){
         allQuestions.push(row);
       });
@@ -23,6 +24,8 @@ router.get('/', function(req, res) {
     }
   });
 });
+
+// and router.post here
 
 
 module.exports = router;

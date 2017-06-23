@@ -6,6 +6,17 @@
  var express = require('express');
  var router  = express.Router();
  const importInterns = require('./importexport');
+ const addQuestion = require('./updateq');
+
+ // var questions = require('./questions');
+ // var responses = require('./responses');
+ // var admin = require('./admin');
+ // var interns = require('./interns');
+ // var questions = require('./questions');
+ // // var responses = require('./responses');
+ // var admin = require('./admin');
+ // var interns = require('./interns');
+
  const questions = require('./questions');
  const response = require('./response');
  const searchByLastName = require('./importexport');
@@ -31,13 +42,20 @@ router.use('/editPhone', editPhone);
 /** ---------- SUBROUTES ---------- **/
 
 router.use('/getquestions', questions);
+router.use('/addQuestion', addQuestion);
+
+// router.use('/questions', questions);
+// router.use('/questions', questions);
+// router.use('/responses', responses);
+// router.use('/admin', admin);
+// router.use('/interns', interns);
 router.use('/postresponsecomments', response);
 
 
 /**
  * GET private/index
  */
- 
+
 router.get('/', function (req, res) {
   res.redirect('/'); // they made it!
 });
