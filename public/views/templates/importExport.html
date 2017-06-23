@@ -6,7 +6,13 @@
     <div class="importExport">
       <h1>Import/Export</h1>
     </div>
-    <h2>Add CRV file</h2><button ng-click="IEC.importInterns()" class="md-raised md-primary" type="button" name="button" md-button>Import</button>
+    <h2>Upload CSV file to Import Interns</h2>
+    <input id="fileInput" type="file">
+    <md-button class="md-raised md-primary" ng-click="IEC.uploadInterns()">
+      <label>Import Interns</label>
+    </md-button>
+
+    <!-- <button ng-click="IEC.importInterns()" class="md-raised md-primary" type="button" name="button" md-button>Import</button> -->
     <h2>Export Response Data</h2><button ng-click="IEC.exportResponseData()" class="md-raised md-primary" type="button" name="button" md-button>Export</button>
     <br><br><br><br>
     <h2>Remove Interns:</h2>

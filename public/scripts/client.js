@@ -26,7 +26,7 @@ googleAuthApp.config(['$routeProvider', '$locationProvider', function ($routePro
   })
   .when('/importExport', {
     templateUrl: '/public/views/templates/importExport.html',
-  controller: 'importExportController',
+    controller: 'importExportController',
     controllerAs: 'IEC',
   })
   .when('/feedbackform', {

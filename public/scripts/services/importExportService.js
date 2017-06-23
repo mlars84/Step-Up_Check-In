@@ -3,6 +3,22 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
 
   vm.interns = [];
   vm.lastNameMatch = {name: []};
+  vm.internCSV = [];
+
+  //function to upload intern CSV with filepicker
+  // vm.uploadInterns = function(interns) {
+  //   console.log('in uploadInterns function', interns);
+  //   vm.internCSV.push(interns);
+  //   console.log(vm.internCSV);
+  //   // let internCSV = angular.element(document.querySelector('#fileInput')).click();
+  //   // console.log(internCSV);
+  //   // vm.importInterns(internCSV);
+  // }; //end uploadInterns
+
+  vm.uploadInterns = function () {
+    angular.element(document.querySelector('#fileInput')).click();
+  };
+
 
   //function to get all interns from database
   vm.importInterns = function() {
