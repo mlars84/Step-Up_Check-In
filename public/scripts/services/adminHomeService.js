@@ -3,7 +3,7 @@ googleAuthApp.service('adminHomeService', function($http) {
 
   vm.adminArray = [];
 
-  vm.getAdmins = function(firstname, lastname, email) {
+  vm.getAdmins = function() {
     console.log("in getAdmins");
     return $http({
       method: 'GET',
