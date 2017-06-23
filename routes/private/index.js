@@ -26,13 +26,13 @@ router.use('/importInterns', importInterns);
 /** ---------- SUBROUTES ---------- **/
 
 router.use('/getquestions', questions);
-router.use('/postresponsecomments', response);
+router.use('/postresponse', response);
 
 
 /**
  * GET private/index
  */
- 
+
 router.get('/', function (req, res) {
   res.redirect('/'); // they made it!
 });
