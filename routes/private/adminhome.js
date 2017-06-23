@@ -27,5 +27,20 @@ router.get('/', function(req, res) {
   }); //pool.connect end
 }); //router.GET end
 
+router.post('/', function(req, res){
+  console.log('In the admin post route', req.body);
+  pool.connect(function(err, connection, done){
+    if (error) {
+      console.log('POST adminRouteError', error);
+      res.send(400);
+    } //end if
+    else {
+      console.log('adminDB connection ready');
+      connection.query('INSERT INTO admin (firstname, lastname, email, active) VALUES ($1, $2, $3, $4)', [req.body.firstname, req.body.lastname, req.body.email, req.body.active]);
+        done();
+        res.sendStatus(200);
+    } // end else
+  }); // pool.connect end
+});// router.POST end
 
 module.exports = router;

@@ -31,6 +31,7 @@ router.use('/importInterns', importInterns);
  router.use('/searchByLastName', searchByLastName);
 
 router.use('/getAdmins', adminHome);
+router.use('/postAdmins', adminHome);
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
