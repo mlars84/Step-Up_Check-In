@@ -46,6 +46,7 @@ router.use('/editPhone', editPhone);
 router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
+// router.use('/')
 
 // router.use('/questions', questions);
 // router.use('/questions', questions);

@@ -1,8 +1,14 @@
-googleAuthApp.controller('feedBackFormController', ['$http','feedBackFormService', function ($http, feedBackFormService) {
+googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', function ($http, AuthFactory, feedBackFormService) {
   //'feedBackFormService'
+
   console.log('loaded feedBackFormController');
   const self = this;
   self.activeQuestions = [];
+  authFactory = AuthFactory;
+  self.internid = 0;
+  self.useremail = '';
+  self.username = '';
+
 
 self.getQuestions = function(){
   console.log("in get questions!");
@@ -18,10 +24,45 @@ self.getQuestions = function(){
 }; // end getQuestions
 
 
-// for
+// Getting user name and email from auth, we still need to go to the database, lookup by email,
+//find primary key id, bring back to client, then send intern ID with response
+authFactory.isLoggedIn()
+.then(function (response) {
+  if (response.data.status) {
+    self.displayLogout = true;
+    authFactory.setLoggedIn(true);
+    self.username = response.data;
+    console.log(response.data);
+    console.log(response.data.email);
+    // console.log("IS THIS THE USER?!?! ->", self.username);
+
+  } else { // is not logged in on server
+    self.displayLogout = false;
+    authFactory.setLoggedIn(false);
+  }
+},
+function () {
+  _this.message.text = 'Unable to properly authenticate user';
+  _this.message.type = 'error';
+});
 
 
-
+self.checkEmail = function(email, name){
+  //go to database, check for email, return the primary key id
+  console.log("in check email route on server");
+  var emailToSend = {
+    name : self.username,
+    email : self.useremail
+  };
+  return $http({
+    method: 'GET',
+    url: '/private/checkuser',
+    data: emailToSend,
+  }).then(function(response){
+    console.log("response from server in checkuser email thing", response.data);
+    return response.data;
+  });
+};
 
 //we will need to do something with this and authentication to only show on certain pages
   // $http.get('/private/feedback')
@@ -60,10 +101,9 @@ self.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
     question4: q4,
     question5: q5,
     comment: comment,
-    checkbox: checkbox2
+    checkbox: checkbox2,
+    internid: internid
   };
-
-
 
   return $http({
     method: 'POST',
@@ -73,8 +113,6 @@ self.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
     console.log("response from server in get Questions", response.data);
     return response.data;
   });
-
-  // $http.post('/private/feedback')
 };
 
 
