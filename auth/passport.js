@@ -56,6 +56,9 @@ passport.use('google', new GoogleStrategy({
         console.log('findUserByGoogleId in passport.js =>', user);
         return done(null, user);
       }
+      //is this user allowed to log in/authenticate? cross reference the user
+      //and admin tables. if so create new google user and link to admin tables
+      //
 
       // user does not exist in our database, let's create one!
       UserService.createGoogleUser(profile.id, token, profile.displayName,

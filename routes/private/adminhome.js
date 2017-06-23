@@ -30,8 +30,8 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res){
   console.log('In the admin post route', req.body);
   pool.connect(function(err, connection, done){
-    if (error) {
-      console.log('POST adminRouteError', error);
+    if (err) {
+      console.log('POST adminRouteError', err);
       res.send(400);
     } //end if
     else {

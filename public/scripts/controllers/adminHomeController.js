@@ -3,9 +3,10 @@ googleAuthApp.controller('adminHomeController', ['adminHomeService', function (a
   const self = this;
 
   //getting admin GET info from service
-    self.getAllAdmins = adminHomeService.getAdmins;
+  self.getAdmins = adminHomeService.getAdmins;
 // console.log(self.getAllAdmins);
 
-self.postAllAdmins = adminHomeService.postAdmins;
-console.log(self.postAllAdmins);
+  self.postAdmins = adminHomeService.postAdmins;
+  self.adminArray = adminHomeService.adminArray;
+// console.log(self.postAllAdmins);
 }]); //end adminHomeController

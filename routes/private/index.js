@@ -20,18 +20,19 @@
  const questions = require('./questions');
  const response = require('./response');
  const searchByLastName = require('./importexport');
- const adminHome = require('./adminhome');
+ const postAdmins = require('./adminhome');
+ const getAdmins = require('./adminhome');
  const removeIntern = require('./importexport');
  const editPhone = require('./importexport');
 
  /** ---------- SUBROUTES ---------- **/
 
 router.use('/importInterns', importInterns);
- router.use('/importInterns', importInterns);
- router.use('/searchByLastName', searchByLastName);
+router.use('/importInterns', importInterns);
+router.use('/searchByLastName', searchByLastName);
 
-router.use('/getAdmins', adminHome);
-router.use('/postAdmins', adminHome);
+router.use('/getAdmins', getAdmins);
+router.use('/postAdmins', postAdmins);
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
