@@ -5,4 +5,7 @@ googleAuthApp.controller('adminHomeController', ['adminHomeService', function (a
   //getting admin GET info from service
     self.getAllAdmins = adminHomeService.getAdmins;
 // console.log(self.getAllAdmins);
+
+self.postAllAdmins = adminHomeService.postAdmins;
+console.log(self.postAllAdmins);
 }]); //end adminHomeController

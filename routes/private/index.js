@@ -18,6 +18,7 @@
  // var interns = require('./interns');
 
 router.use('/getAdmins', adminHome);
+router.use('/postAdmins', adminHome);
 router.use('/importInterns', importInterns);
 
 // var questions = require('./questions');
