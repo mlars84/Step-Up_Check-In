@@ -46,13 +46,29 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
   //function to completely remove an intern from the database
   vm.removeIntern = function(primarykey) {
     console.log('in removeIntern');
-    $http({
-      method: 'DELETE',
-      url: '/private/removeIntern',
-      params: { primarykey: primarykey }
-    }).then(function(res) {
-      console.log(res.data);
-    }); //end removeIntern DELETE
+
+    vm.showConfirm = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+      .title('Are you sure you want to remove this intern?')
+      .textContent('They will be permanently deleted from the system.')
+      .ariaLabel('Lucky day')
+      .targetEvent(ev)
+      .ok('I am sure!', $http({
+        method: 'DELETE',
+        url: '/private/removeIntern',
+        params: { primarykey: primarykey }
+      }).then(function(res) {
+        console.log(res.data);
+      })); //end removeIntern DELETE)
+      .cancel('Cancel');
+      $mdDialog.show(confirm).then(function() {
+        vm.status = 'You decided to get rid of your debt.';
+      }, function() {
+        vm.status = 'You decided to keep your debt.';
+      });
+    };
+
   }; //end removeIntern
 
   //function to edit an intern's phone number
@@ -71,22 +87,5 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       console.log('editPhone =>', res.data);
     }); //end editPhone PUT
   }; //end editPhone function
-
-  vm.showConfirm = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
-    .title('Are you sure you want to remove this intern?')
-    .textContent('All of the banks have agreed to forgive you your debts.')
-    .ariaLabel('Lucky day')
-    .targetEvent(ev)
-    .ok('Please do it!')
-    .cancel('Sounds like a scam');
-
-    $mdDialog.show(confirm).then(function() {
-      vm.status = 'You decided to get rid of your debt.';
-    }, function() {
-      vm.status = 'You decided to keep your debt.';
-    });
-  };
 
 }]); //end importExportService
