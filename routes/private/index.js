@@ -17,22 +17,29 @@
  // var admin = require('./admin');
  // var interns = require('./interns');
 
+ const questions = require('./questions');
+ const response = require('./response');
+ const searchByLastName = require('./importexport');
+ const adminHome = require('./adminhome');
+ const removeIntern = require('./importexport');
+ const editPhone = require('./importexport');
 
  /** ---------- SUBROUTES ---------- **/
+
+router.use('/importInterns', importInterns);
  router.use('/importInterns', importInterns);
+ router.use('/searchByLastName', searchByLastName);
+
+router.use('/getAdmins', adminHome);
+router.use('/importInterns', importInterns);
+router.use('/removeIntern', removeIntern);
+router.use('/editPhone', editPhone);
+
 
 // var questions = require('./questions');
-// var responses = require('./responses');
-// var admin = require('./admin');
-// var interns = require('./interns');
-var questions = require('./questions');
-// // var responses = require('./responses');
-// var admin = require('./admin');
-// var interns = require('./interns');
 
 
 /** ---------- SUBROUTES ---------- **/
-
 
 router.use('/getquestions', questions);
 router.use('/addQuestion', addQuestion);
@@ -42,11 +49,13 @@ router.use('/addQuestion', addQuestion);
 // router.use('/responses', responses);
 // router.use('/admin', admin);
 // router.use('/interns', interns);
+router.use('/postresponsecomments', response);
 
 
 /**
  * GET private/index
  */
+
 router.get('/', function (req, res) {
   res.redirect('/'); // they made it!
 });

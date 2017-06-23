@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 router.post('/', function(req, res) {
   console.log(req.body);
   console.log(req.body.name);
-
   pool.connect(function(err, connection, done){
     if (err) {
       res.send("error in the post on creating responses");
@@ -19,6 +18,4 @@ router.post('/', function(req, res) {
     }
   });
 });
-
-
 module.exports = router;

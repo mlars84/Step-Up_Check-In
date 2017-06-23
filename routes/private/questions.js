@@ -19,14 +19,10 @@ router.get('/', function(req, res) {
       });
       resultset.on('end', function(){
         done();
-
         res.send(allQuestions);
       });
     }
-
   });
-
-
 });
 
 // and router.post here

@@ -68,10 +68,16 @@ feddbackform
     transform: scale(2);
 }*/
 
+.feedbackform {
+  /*text-align: center;*/
+}
+
 /***************************
 Import-Export
 ****************************/
-
+.importExportMain {
+  margin-left: 3vmin;
+}
 
 /***************************
 Login
