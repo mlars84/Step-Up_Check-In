@@ -44,18 +44,14 @@ CREATE TABLE interns (
     supervisor VARCHAR(50), --this connects to company table (stretch goals)
     stepup_group_id INT REFERENCES stepup_group(id) ON DELETE CASCADE
  );
+ 
  --COPY CSV file into interns
+ -- '/Users/yourUserName/Desktop/stepUpDatabaseTest.csv'
  COPY interns FROM '/Users/matthewlarson/Desktop/stepUpDatabaseTest.csv' DELIMITERS ',' CSV;
-
-
  CREATE TABLE stepup_group (
  	id SERIAL PRIMARY KEY,
  	group_name VARCHAR(20)
  );
- --INSERTS For the two groups
- INSERT INTO stepup_group (group_name) VALUES ('Achieve');
- INSERT INTO stepup_group (group_name) VALUES ('Discover');
-
 
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY NOT NULL, -- connects this to the responsesnum table
@@ -64,10 +60,15 @@ CREATE TABLE questions (
     flagged BOOLEAN,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
---INSERTS for the first six questions
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('To what extent do you feel properly trained for your internship?', true, false, 'response_num');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('How challenging are your daily work tasks?', true, false, 'response_num');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('How supportive is your supervisor?', true, false, 'response_num');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you like your internship?', true, false, 'response_num');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you feel welcome in your workplace?', true, true, 'response_num');
-INSERT INTO questions (q_text, active, flagged, q_type) VALUES ('Do you want someone from STEP-UP to contact you this week?', true, true, 'response_checkbox');
+
+COPY interns FROM '/Users/matthewlarson/Desktop/stepUpDatabaseTest.csv' DELIMITERS ',' CSV;
+
+INSERT INTO stepup_group (group_name) VALUES ('Achieve');
+INSERT INTO stepup_group (group_name) VALUES ('Discover');
+
+INSERT INTO questions (q_text, active, flagged) VALUES ('To what extent do you feel properly trained for your internship?', true, false);
+INSERT INTO questions (q_text, active, flagged) VALUES ('How challenging are your daily work tasks?', true, false);
+INSERT INTO questions (q_text, active, flagged) VALUES ('How supportive is your supervisor?', true, false);
+INSERT INTO questions (q_text, active, flagged) VALUES ('Do you like your internship?', true, false);
+INSERT INTO questions (q_text, active, flagged) VALUES ('Do you feel welcome in your workplace?', true, true);
+INSERT INTO questions (q_text, active, flagged) VALUES ('Do you want someone from STEP-UP to contact you this week?', true, true, 'response_checkbox');

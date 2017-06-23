@@ -25,6 +25,39 @@ router.get('/', function(req, res) {
   });
 }); //end importInterns GET
 
+//route to delete an intern from the DB
+router.delete('/', function(req, res) {
+  let primarykeyToDelete = req.query.primarykey;
+  console.log('primarykeyToDelete =>', primarykeyToDelete);
+  pool.connect(function(error, db, done) {
+    if(error){
+      console.log('removeIntern error =>', error);
+    } else {
+      let resultSet = db.query( 'DELETE FROM interns WHERE primarykey=$1', [primarykeyToDelete] );
+      resultSet.on('end', function() {
+        done();
+        res.sendStatus(200);
+      });
+    }
+  });
+}); //end removeIntern DELETE
+
+//route to edit an interns phone number based on lastName search and primarykey
+router.put('/', function(req, res) {
+  console.log('in editPhone PUT =>', req.body.primarykey, req.body.phone);
+  pool.connect(function(error, db, done) {
+    if(error) {
+      console.log('editPhone PUT error =>', error);
+    } else {
+      let resultSet = db.query ( 'UPDATE interns SET phone=$1 WHERE primarykey=$2', [req.body.phone, req.body.primarykey] );
+      resultSet.on('end', function() {
+        done();
+        res.sendStatus(200);
+      });
+    }
+  });
+}); //editPhone PUT
+
 //get to search interns by last name
 // router.get('/', function(req, res) {
 //   console.log('in searchByLastName ROUTE =>', req.body);

@@ -75,7 +75,9 @@ feddbackform
 /***************************
 Import-Export
 ****************************/
-
+.importExportMain {
+  margin-left: 3vmin;
+}
 
 /***************************
 Login
@@ -94,3 +96,8 @@ Login
 /***************************
 updateQuestion
 ****************************/
+
+.updateQuestions {
+  /*text-align: center;*/
+  font-family: 'Oswald', sans-serif;
+}

@@ -1,15 +1,56 @@
+<!-- Jim's Work -->
 <main class="container" ng-app="theGoogles">
   <div class="updateQuestions">
-    <h1>Update Questions</h1><br>
-    <h3>Q1 <select class="" name="" style="width:10vmax"></select></h3>
-    <h3>Q2 <select class="" name="" style="width:10vmax"></select></h3>
-    <h3>Q3 <select class="" name="" style="width:10vmax"></select></h3>
-    <h3>Q4 <select class="" name="" style="width:10vmax"></select></h3>
-    <h3>Q5 <select class="" name="" style="width:10vmax"></select></h3>
-    <button type="button" name="button">Save Weekly Questions</button>
+    <h1>Update Questions:</h1>
+    <div layout="column">
+      <md-input-container>
+        <label>Question 1</label>
+        <md-select name="type" ng-model="">
+          <md-option>Questions form DB</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Question 2</label>
+        <md-select name="type" ng-model="">
+          <md-option>Questions form DB</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Question 3</label>
+        <md-select name="type" ng-model="">
+          <md-option>Questions form DB</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Question 4</label>
+        <md-select name="type" ng-model="">
+          <md-option>Questions form DB</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Question 5</label>
+        <md-select name="type" ng-model="">
+          <md-option>Questions form DB</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
     <h2>Create New Question:</h2>
-    <input type="text" name="" value=""><button type="button" name="button">Add Question</button>
-    <br><br><br>
-    <button type="button" name="button">Send This Week's Questions</button>
+    <div>
+      <md-input-container class="md-block">
+        <label>Enter Question</label>
+        <input ng-model="UQC.questionIn" type="text">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <md-checkbox name="tos" ng-model="UQC.flaggedIn">
+          Yes, this is a flagged question.
+        </md-checkbox>
+      </md-input-container>
+      <md-button ng-click ="UQC.addQuestion(UQC.questionIn)" class="md-raised md-primary">Add Question</md-button>
+    </div>
+    <br><br>
+    <md-button ng-click ="UQC.addQuestion()" class="md-raised md-primary">Send Questions</md-button>
   </div>
 </main>
+
+<md-input-container>
+</md-input-container>
