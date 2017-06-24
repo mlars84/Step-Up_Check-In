@@ -59,7 +59,9 @@ admin-home
 /***************************
 admin-intern
 ****************************/
-
+.adminIntern {
+  margin-left: 3vmin;
+}
 
 /***************************
 feddbackform
