@@ -35,6 +35,18 @@ googleAuthApp.service('adminHomeService', function($http) {
     }).then(function(response) {
       console.log('postAdmins to send response', response.data);
       // return response;
+
     }); //end response
   };//end postAdmins
+
+vm.deleteAdmins = function(id){
+  console.log('in deleteAdmins');
+  return $http({
+    method:'DELETE',
+    url:'/private/deleteAdmins',
+    params:{id: id}
+  }).then(function(response){
+    console.log(response);
+  });
+};//end deleteAdmins
 }); //end adminHomeService

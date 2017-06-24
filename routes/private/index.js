@@ -22,6 +22,7 @@
  const searchByLastName = require('./importexport');
  const postAdmins = require('./adminhome');
  const getAdmins = require('./adminhome');
+ const deleteAdmins = require('./adminhome');
  const removeIntern = require('./importexport');
  const editPhone = require('./importexport');
 
@@ -33,6 +34,7 @@ router.use('/searchByLastName', searchByLastName);
 
 router.use('/getAdmins', getAdmins);
 router.use('/postAdmins', postAdmins);
+router.use('/deleteAdmins', deleteAdmins);
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);

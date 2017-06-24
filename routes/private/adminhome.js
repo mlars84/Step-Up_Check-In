@@ -42,4 +42,23 @@ router.post('/', function(req, res){
   }); // pool.connect end
 });// router.POST end
 
+//delete admin router
+router.delete('/', function(req, res){
+console.log('In the admin delete route');
+let adminDelete = req.query.id;
+console.log('adminDelete params', adminDelete);
+pool.connect(function(error, connection, done){
+  if(error){
+    console.log('error in deleting admins', error);
+  }//end if
+  else{
+    let resultSet = connection.query('DELETE FROM admin WHERE id = $1',[adminDelete]);
+    resultSet.on('end', function(){
+      done();
+      res.sendStatus(200);
+    }); //end resultSet
+  }//end else
+});
+});//end router.DELETE
+
 module.exports = router;
