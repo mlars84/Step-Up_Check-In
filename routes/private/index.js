@@ -25,6 +25,7 @@
  const deleteAdmins = require('./adminhome');
  const removeIntern = require('./importexport');
  const editPhone = require('./importexport');
+ const checkemail = require('./checkemail');
 
  /** ---------- SUBROUTES ---------- **/
 
@@ -48,6 +49,7 @@ router.use('/editPhone', editPhone);
 router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
+router.use('/checkemail', checkemail);
 // router.use('/')
 
 // router.use('/questions', questions);

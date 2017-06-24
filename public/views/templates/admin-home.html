@@ -10,6 +10,15 @@
 			<h4>Email:</h4>{{admin.email}}
       <md-divider ></md-divider>
       <button ng-click="AHC.deleteAdmins(admin.id)" md-button class="md-raised md-primary">Remove</button>
+<div class="adminHome">
+	<h2>Step up Staff</h2>
+<div class="adminHome" ng-init="AHC.getAdmins()">
+	<md-content class="adminHome" layout="column" layout-gt-sm="row" layout-padding>
+		<div class="adminHome" ng-repeat="admin in AHC.adminArray">
+			<h4>{{admin.firstname}}</h4>
+			<h4>{{admin.lastname}}</h4>
+			<h4>{{admin.email}}</h4>
+      <button ng-click="AHC.deleteAdmins(admin.id)" md-button>Remove</button>
 		</div>
 		<md-divider ></md-divider>
 	</md-content>
@@ -17,6 +26,9 @@
 <h2>Add New Admin</h2>
 <div layout-gt-sm="row" layout-padding>
 	<md-content>
+<h2>Add new Admin</h2>
+<div class="adminHome" layout-gt-sm="row" layout-padding>
+	<md-content class="adminHome">
 		<md-input-container>
 			<label>First Name</label>
 			<input ng-model="AHC.adminFirstNameIn" type="name">
