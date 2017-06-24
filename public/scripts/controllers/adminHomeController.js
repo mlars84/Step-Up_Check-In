@@ -8,8 +8,13 @@ googleAuthApp.controller('adminHomeController', ['adminHomeService', function (a
 
   self.postAdmins = adminHomeService.postAdmins;
   self.adminArray = adminHomeService.adminArray;
+  console.log('self.adminArray');
 
-  self.deleteAdmins = adminHomeService.deleteAdmins;
+  self.deleteAdmins = function(id){
+    adminHomeService.deleteAdmins(id).then(function(){
+      self.getAdmins();
+  });
+};
 
 // console.log(self.postAllAdmins);
 }]); //end adminHomeController
