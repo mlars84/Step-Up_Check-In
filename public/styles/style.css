@@ -2,7 +2,7 @@
 General/Index
 ****************************/
 
-html, body, nav {
+html, body, nav, .navPad {
   background-color: #faf0e6;
 }
 
