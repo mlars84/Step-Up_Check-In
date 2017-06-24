@@ -8,6 +8,7 @@ googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feed
   self.internid = 0;
   self.useremail = '';
   self.username = '';
+  // self.getQuestions();
 
 
 self.getQuestions = function(){
@@ -19,7 +20,11 @@ self.getQuestions = function(){
     // console.log("response from server in get Questions", response.data);
     self.activeQuestions = response.data;
     console.log(self.activeQuestions);
-
+    for (var i = 0; i < self.activeQuestions.length; i++) {
+      self.activeQuestions[i].count = i+1;
+      self.activeQuestions[i].group = "group"+(i+1);
+    }
+    console.log(self.activeQuestions);
     return response.data;
   });
 }; // end getQuestions
@@ -66,7 +71,10 @@ function () {
   });
 };
 
-self.submitFeedback = function(q1, q1r, q2, q2r, q3, q3r, q4, q4r, q5, q5r, comment, checkbox){
+self.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
+
+  console.log(q1, q2, q3, q4, q5, comment, checkbox);
+
   let checkbox2 = false;
   if (checkbox === undefined) {
     checkbox2 = false;
@@ -77,15 +85,15 @@ self.submitFeedback = function(q1, q1r, q2, q2r, q3, q3r, q4, q4r, q5, q5r, comm
 
   responseToSend = {
     question1id:q1,
-    question1: q1r,
+    // question1: q1r,
     question2id: q2,
-    question2: q2r,
+    // question2: q2r,
     question3id: q3,
-    question3: q3r,
+    // question3: q3r,
     question4id: q4,
-    question4: q4r,
+    // question4: q4r,
     question5id: q5,
-    question5: q5r,
+    // question5: q5r,
     comment: comment,
     checkbox: checkbox2,
     internid: self.internid
