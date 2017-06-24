@@ -18,6 +18,7 @@ let client = new twilio(accountSid, authToken);
 router.get('/', function(req, res){
   console.log('made to send question route');
   let phoneNumbers = [];
+  let phoneNumbersObject = [];
   pool.connect(function(err, connection, done){
     if (err){
       console.log(err);
@@ -32,25 +33,33 @@ router.get('/', function(req, res){
       }); // end resultSet 'row'
       resultSet.on('end', function(){
         done();
-        res.send(phoneNumbers);
+        // res.send(phoneNumbers);
         console.log('psi phone#', phoneNumbers);
+        for (var i = 0; i < phoneNumbers.length; i++) {
+          phoneNumbersObject.push(phoneNumbers[i].phone);
+          console.log('-----phoneNumbersObject-----', phoneNumbersObject);
+          // return phoneNumbersObject;
+        }// end for loop
+        jim(phoneNumbersObject);
       });// end resultSet 'end'
-    } // end pool.conncect else
+    } // end else
     // NOTE Jim
-    phoneNumbers.forEach(function(value){console.log(value);
-      client.messages.create({
-          to: value, // value here to iterate phoneNumbers array
-          from: "+19522227366", // registered Twilio account number
-          body: "This is a SPIKE TEST for Jim's Twilio account", // message to send
-      }, function(err, message) {
-        if (err) {
-          console.log(err);
-        }// end if
-        else {
-          console.log(message.sid);
-        } // end else
-      });// end Jim's client.message.create
-    });// end phoneNumbers iteration
+    let jim = function (numberArr){
+      numberArr.forEach(function(value){console.log(value);
+        client.messages.create({
+            to: value, // value here to iterate phoneNumbers array
+            from: "+19522227366", // registered Twilio account number
+            body: "This is a SPIKE TEST for Jim's Twilio account", // message to send
+        }, function(err, message) {
+          if (err) {
+            console.log(err);
+          }// end if
+          else {
+            console.log(message.sid);
+          } // end else
+        });// end Jim's client.message.create
+      });// end phoneNumbers iteration
+    };// end jim
   });// end pool.connect
 
 });// end post
