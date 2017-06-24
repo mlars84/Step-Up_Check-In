@@ -2,15 +2,29 @@
 General/Index
 ****************************/
 
+html, body, nav, .navPad {
+  background-color: #faf0e6;
+}
+
+#toolbar {
+  background-color: #008AC0;
+  color: white;
+}
+
+#toolBarText {
+  margin-left: 3vmin;
+}
+
 .StepUp {
   text-align: center;
 }
 
 .stepUp {
-  height: 20vw;
-  width: 50%;
-  margin: -1em;
-  padding: 10px;
+  height: 35%;
+  width: 35%;
+  margin: auto;
+  /*margin: -1em;*/
+  /*padding: 10px;*/
 }
 
 .CheckIn {
@@ -81,6 +95,10 @@ Import-Export
 ****************************/
 .importExportMain {
   margin-left: 3vmin;
+}
+
+.mainButtons {
+  background-color: #008AC0;
 }
 
 /***************************
