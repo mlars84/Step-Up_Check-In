@@ -1,6 +1,5 @@
 googleAuthApp.service('updateQuestionsService', function($http) {
   console.log('update question from service');
-
   //global
   const vm = this;
 
@@ -32,18 +31,31 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   // begin sendQuestion
   vm.sendQuestion = function (){
     console.log('Send Question button clicked!');
-    let questionToSend = {
-      // first_name: first_name,
-      phone: phone
-    };// end questionToSend
-    console.log('question to send', questionToSend);
     $http({
-      method: 'POST',
+      method: 'GET',
       url: '/private/sendQuestion',
-      data: questionToSend
-    }).then(function success(res){
-      console.log('res->', res);
-    });// end $http
+    }).then(function(response){
+      for (var i = 0; i < response.data.length; i++) {
+        console.log('response.data.[i].phone --->', response.data[i].phone);
+      }// end for loop
+      // vm.sendLink(response.data[i].data);
+    }); // end $http
   };// end sendQuestion
 
 }); //end updateQuestionsService
+
+// // begin sendQuestion
+// vm.sendQuestion = function (phone){
+//   console.log('Send Question button clicked!', phone);
+//   let questionToSend = {
+//     phone: "+1" + phone
+//   };// end questionToSend
+//   console.log('question to send', questionToSend);
+//   $http({
+//     method: 'POST',
+//     url: '/private/sendQuestion',
+//     data: questionToSend
+//   }).then(function success(res){
+//     console.log('res->', res);
+//   });// end $http
+// };// end sendQuestion
