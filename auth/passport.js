@@ -20,9 +20,12 @@ var config = require('../config/auth');
 var UserService = require('../services/user');
 /** ---------- PASSPORT SESSION SERIALIZATION ---------- **/
 
+var userTest =
+
 // serialize the user onto the session
 passport.serializeUser(function (user, done) {
     console.log('serializeUser =>', user);
+    userTest = user;
     done(null, user.id);
 });
 
@@ -56,6 +59,9 @@ passport.use('google', new GoogleStrategy({
         console.log('findUserByGoogleId in passport.js =>', user);
         return done(null, user);
       }
+      //is this user allowed to log in/authenticate? cross reference the user
+      //and admin tables. if so create new google user and link to admin tables
+      //
 
       // user does not exist in our database, let's create one!
       UserService.createGoogleUser(profile.id, token, profile.displayName,

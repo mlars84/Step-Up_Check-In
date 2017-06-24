@@ -1,35 +1,36 @@
+<div class="adminIntern">
   <title>Admin Intern View</title>
   <style>
   /*list styles*/
-    ul.a {
-      list-style-type: circle;
-    }
-    /*list style end*/
+  ul.a {
+    list-style-type: circle;
+  }
+  /*list style end*/
   </style>
-  <div class="admin-tab">
-    <!-- admin home tabs -->
-    <ul>
-      <li><a class="active" href="#home">Home</a></li>
-      <li><a href="/updateq">Update Questions</a></li>
-      <li><a href="/importexport">Import/Export</a></li>
-    </ul>
-  </div>
   <!-- contact interns list -->
-<h2>Achieve: 30% have responded</h2>
-<h2>Discover: 50% have responded</h2>
-  <h2>Interns who have checked the box</h2>
-  <ul class="a">
-    <li>FirstName, LastName, Phone</li>
-    <li>FirstName, LastName, Phone</li>
-    <li>FirstName, LastName, Phone</li>
-  </ul>
-  <h2>Flagged Interns(1-2 responses)</h2>
-  <ul class="a">
-    <li>FirstName, LastName, Phone</li>
-    <li>FirstName, LastName, Phone</li>
-    <li>FirstName, LastName, Phone</li>
-  </ul>
-  <h2>This week's comments</h2>
-  <p>Woohoo this is the start</p>
-  <p>Caribou rocks</p>
-  <li><a href="">View All</a></li>
+  <h2>Achieve: 30% have responded</h2>
+  <h2>Discover: 50% have responded</h2>
+  <md-content class="adminIntern">
+    <h2>Interns who wish to be contacted:</h2>
+    <ul class="a">
+      <md-list flex>FirstName, LastName, Phone</md-list>
+      <md-list flex>FirstName, LastName, Phone</md-list>
+      <md-list flex>FirstName, LastName, Phone</md-list>
+    </ul>
+  </md-content>
+  <md-content class="adminIntern">
+    <h2>Flagged Interns (1-2 Range Reseponses):</h2>
+    <ul class="a">
+      <md-list flex>FirstName, LastName, Phone</md-list>
+      <md-list flex>FirstName, LastName, Phone</md-list>
+      <md-list flex>FirstName, LastName, Phone</md-list>
+    </ul>
+  </md-content>
+  <h2>This week's comments:</h2>
+  <md-tabs>
+    <md-tab label="Comment #1"><p>Woohoo this is the start</p></md-tab>
+    <md-tab label="Comment #2"><p>Caribou rocks</p></md-tab>
+    <md-tab label="Comment #3"><p>Comment tabs are super cool!</p></md-tab>
+    <md-tab><a href="" md-highlight-text="searchTerm">View All Comments</a></md-tab>
+  </md-tabs>
+</div>

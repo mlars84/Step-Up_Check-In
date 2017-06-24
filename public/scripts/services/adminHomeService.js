@@ -3,35 +3,50 @@ googleAuthApp.service('adminHomeService', function($http) {
 
   vm.adminArray = [];
 
-  this.getAdmins = function(firstname, lastname, email) {
+  vm.getAdmins = function() {
     console.log("in getAdmins");
     return $http({
       method: 'GET',
       url: '/private/getAdmins'
     }).then(function(response) {
-      console.log('response', response);
+      console.log('response =>', response.data);
       for (var i = 0; i < response.data.length; i++) {
         console.log(response.data[i]);
+        vm.adminArray.push(response.data[i]);
+        console.log(vm.adminArray);
       }//end for
     });
   }; //end getAdmins
-
   //admin to send info
-  var adminToSend = {
-    firstname: firstname,
-    lastname: lastname,
-    email: email,
-    active: active,
-  };
-  this.postAdmins = function() {
+
+  vm.postAdmins = function(adminFirst, adminLast, adminEmail) {
     console.log("in postAdmins");
+    var adminToSend = {
+      firstname: adminFirst,
+      lastname: adminLast,
+      email: adminEmail,
+      active: true
+    };
+    console.log("adminToSend =>", adminToSend);
     return $http({
       method: 'POST',
       url: '/private/postAdmins',
       data: adminToSend
     }).then(function(response) {
-      console.log('postAdmins to send response', response);
-      return response;
+      console.log('postAdmins to send response', response.data);
+      // return response;
+
     }); //end response
   };//end postAdmins
+
+vm.deleteAdmins = function(id){
+  console.log('in deleteAdmins');
+  return $http({
+    method:'DELETE',
+    url:'/private/deleteAdmins',
+    params:{id: id}
+  }).then(function(response){
+    console.log(response);
+  });
+};//end deleteAdmins
 }); //end adminHomeService

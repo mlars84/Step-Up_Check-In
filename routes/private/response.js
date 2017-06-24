@@ -14,10 +14,14 @@ router.post('/', function(req, res) {
       res.send(400);
     }
     else {
-      console.log("this is a successful connection on the server, nothing will be put in the database");
+      console.log("this is a successful connection on the server, nothing will be put in the database MAYBE");
+      connection.query('INSERT INTO response_checkbox (intern_id, response_checkbox) VALUES ($1, $2)', ["STU036824", req.body.checkbox, ]);
+      connection.query('INSERT INTO response_comments (intern_id, response_comment) VALUES ($1, $2)', ["STU036824", req.body.comment]);
       done();
       res.send(200);
     }
   });
 });
+
+
 module.exports = router;
