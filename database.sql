@@ -44,10 +44,11 @@ CREATE TABLE interns (
     supervisor VARCHAR(50), --this connects to company table (stretch goals)
     stepup_group_id INT REFERENCES stepup_group(id) ON DELETE CASCADE
  );
- 
+
  --COPY CSV file into interns
  -- '/Users/yourUserName/Desktop/stepUpDatabaseTest.csv'
  COPY interns FROM '/Users/matthewlarson/Desktop/stepUpDatabaseTest.csv' DELIMITERS ',' CSV;
+
  CREATE TABLE stepup_group (
  	id SERIAL PRIMARY KEY,
  	group_name VARCHAR(20)
@@ -72,3 +73,15 @@ INSERT INTO questions (q_text, active, flagged) VALUES ('How supportive is your 
 INSERT INTO questions (q_text, active, flagged) VALUES ('Do you like your internship?', true, false);
 INSERT INTO questions (q_text, active, flagged) VALUES ('Do you feel welcome in your workplace?', true, true);
 INSERT INTO questions (q_text, active, flagged) VALUES ('Do you want someone from STEP-UP to contact you this week?', true, true, 'response_checkbox');
+
+-- Dummy Test for Twilio SMS
+CREATE TABLE psi (
+    id serial primary key not null,
+    first_name VARCHAR(30),
+    phone VARCHAR(20)
+);
+
+INSERT INTO psi (first_name, phone) VALUES ('jim', 6127085437);
+INSERT INTO psi (first_name, phone) VALUES ('zee', 6512468417);
+INSERT INTO psi (first_name, phone) VALUES ('tessa', 6083702621);
+INSERT INTO psi (first_name, phone) VALUES ('matt', 6122516818);

@@ -7,6 +7,7 @@
  var router  = express.Router();
  const importInterns = require('./importexport');
  const addQuestion = require('./updateq');
+ const twilio = require('./twilio'); // NOTE require twilio
 
  // var questions = require('./questions');
  // var responses = require('./responses');
@@ -36,6 +37,7 @@ router.use('/searchByLastName', searchByLastName);
 router.use('/getAdmins', getAdmins);
 router.use('/postAdmins', postAdmins);
 router.use('/deleteAdmins', deleteAdmins);
+
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
@@ -49,8 +51,10 @@ router.use('/editPhone', editPhone);
 router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
+
+router.use('/sendQuestion', twilio); // NOTE Add twilio router here
 router.use('/checkemail', checkemail);
-// router.use('/')
+
 
 // router.use('/questions', questions);
 // router.use('/questions', questions);
