@@ -132,5 +132,25 @@ updateQuestion
 
 .adminHomeStyle{
   font-family: 'Oswald', sans-serif;
+}
 
+.pickQuestions,
+.create {
+  text-align: center;
+}
+
+#addQuestion {
+  background-color: #008AC0;
+}
+
+#sendFeedback {
+  background-color: #F68628;
+}
+
+.addQuestion {
+  text-align: center;
+}
+
+.sendSMS {
+  text-align: center;
 }

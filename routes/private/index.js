@@ -7,7 +7,9 @@
  var router  = express.Router();
  const importInterns = require('./importexport');
  const addQuestion = require('./updateq');
+ const grabQuestion = require('./updateq'); // NOTE Add grabQuestion
  const twilio = require('./twilio'); // NOTE require twilio
+
 
  // var questions = require('./questions');
  // var responses = require('./responses');
@@ -57,7 +59,7 @@ router.use('/editPhone', editPhone);
 router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
-
+router.use('/grabQuestion', grabQuestion); // NOTE Add grabQuestion
 router.use('/sendQuestion', twilio); // NOTE Add twilio router here
 router.use('/checkemail', checkemail);
 router.use('/interndata', interndata);
