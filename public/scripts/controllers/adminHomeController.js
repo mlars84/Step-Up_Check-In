@@ -1,20 +1,17 @@
 googleAuthApp.controller('adminHomeController', ['adminHomeService', function (adminHomeService) {
   console.log('loaded adminHomeController');
-  const self = this;
+  const vm = this;
 
   //getting admin GET info from service
-  self.getAdmins = adminHomeService.getAdmins;
+  vm.getAdmins = adminHomeService.getAdmins;
 // console.log(self.getAllAdmins);
 
-  self.postAdmins = adminHomeService.postAdmins;
-  self.adminArray = adminHomeService.adminArray;
-  console.log('self.adminArray');
+  vm.postAdmins = adminHomeService.postAdmins;
 
-  self.deleteAdmins = function(id){
-    adminHomeService.deleteAdmins(id).then(function(){
-      self.getAdmins();
-  });
-};
+  vm.adminObject = adminHomeService.adminObject;
+  // console.log('self.adminArray');
 
-// console.log(self.postAllAdmins);
+  vm.deleteAdmins = adminHomeService.deleteAdmins;
+
+
 }]); //end adminHomeController
