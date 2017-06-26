@@ -13,7 +13,7 @@ googleAuthApp.service('updateQuestionsService', function($http) {
     }
     let objectToSend = {
       q_text: questionIn,
-      active: true,
+      active: false,
       flagged: flaggedIn
     }; // end objectToSend
     console.log('update objectToSend', objectToSend);
@@ -54,12 +54,7 @@ googleAuthApp.service('updateQuestionsService', function($http) {
     }).then(function(response){
       console.log('grabbing questions ----->', response.data);
       self.questionCont.questions = response.data;
-      console.log('self.questions --->', self.questionCont);
-      // self.questionCont = [];
-      // for (var i = 0; i < response.data.length; i++) {
-      //   self.questionCont.push(response.data[i]);
-      //   console.log('--- self.questionCont---', self.questionCont);
-      // }
+      console.log('self.questionCont --->', self.questionCont);
     });// end $http
   };// end grabQuestion
 
