@@ -1,11 +1,11 @@
 googleAuthApp.service('updateQuestionsService', function($http) {
   console.log('update question from service');
   //global
-  const vm = this;
-  vm.item = '';
+  const self = this;
+  self.questionCont = {};
 
   // begin addQuestion
-  vm.addQuestion = function(questionIn, flaggedIn) {
+  self.addQuestion = function(questionIn, flaggedIn) {
     console.log('add question button clicked', questionIn);
     if(flaggedIn === undefined){
       flaggedIn = false;
@@ -30,7 +30,7 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   }; // end updateQuestion
 
   // begin sendQuestion
-  vm.sendQuestion = function (){
+  self.sendQuestion = function (){
     console.log('Send Question button clicked!');
     $http({
       method: 'GET',
@@ -43,20 +43,20 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   };// end sendQuestion
 
   // begin grabQuestion
-  vm.grabQuestion = function(){
+  self.grabQuestion = function(){
     console.log('grabing question function running');
     $http({
       method: 'GET',
       url: '/private/grabQuestion'
     }).then(function(response){
       console.log('grabbing questions ----->', response.data);
-      item = response.data;
-      console.log('item--->', item);
+      self.questionCont.questions = response.data;
+      console.log('self.questions --->', self.questionCont);
       // return response.data;
     });// end $http
   };// end grabQuestion
 
   // NOTE
-  vm.grabQuestion(); // call function in order to see questions being grab
+  self.grabQuestion(); // call function in order to see questions being grab
 
 }); //end updateQuestionsService
