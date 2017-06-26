@@ -1,13 +1,17 @@
 <main class="container" ng-app="theGoogles">
   <div class="importExportMain">
     <div class="importExport">
-      <h1>Import/Export</h1>
+      <h1>Annual Import/Export</h1>
     </div>
-    <h2>Upload CSV file to Import Interns</h2>
-    <input id="fileInput" type="file">
-    <md-button class="md-raised md-primary" ng-click="IEC.importInterns()" style="background-color: #008AC0">
-      <label>Import Interns</label>
-    </md-button>
+    <div class="importFileContainer">
+      <br>
+      <h3>Please select the CSV file that you'd like to import!</h3>
+      <input type="file" id="files" name="file" accept=".csv"/>
+      <div id="progress_bar"><div class="percent">0%</div></div>
+    </div>
+    <!-- <md-button class="md-raised md-primary" ng-click="IEC.uploadInterns()" style="background-color: #008AC0"> -->
+      <!-- <label>Import Interns</label> -->
+    <!-- </md-button> -->
 
     <!-- <button ng-click="IEC.importInterns()" class="md-raised md-primary" type="button" name="button" md-button>Import</button> -->
     <h2>Export Response Data</h2><button ng-click="IEC.exportResponseData()" class="md-raised md-primary" type="button" name="button" style="background-color: #008AC0" md-button>Export</button>

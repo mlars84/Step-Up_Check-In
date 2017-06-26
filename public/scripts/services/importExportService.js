@@ -5,34 +5,49 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
   vm.lastNameMatch = {name: []};
   vm.internCSV = [];
 
-  //function to upload intern CSV with filepicker
-  // vm.uploadInterns = function(interns) {
-  //   console.log('in uploadInterns function', interns);
-  //   vm.internCSV.push(interns);
-  //   console.log(vm.internCSV);
-  //   // let internCSV = angular.element(document.querySelector('#fileInput')).click();
-  //   // console.log(internCSV);
-  //   // vm.importInterns(internCSV);
-  // }; //end uploadInterns
+  vm.showAlert = function(message) {
+     $mdDialog.show(
+       $mdDialog.alert()
+         .clickOutsideToClose(true)
+         .title(message)
+         .ariaLabel(message)
+         .ok('Ok')
+     );
+ };
 
-  vm.uploadInterns = function () {
-    angular.element(document.querySelector('#fileInput')).click();
+ // uploadInterns = function(internCSV) {
+ //   console.log('uploading interns CSV', internCSV);
+ //   $http ({
+ //     method: 'POST',
+ //     url: '/private/uploadInterns',
+ //     data: internCSV
+ //   }).then(function(res) {
+ //    console.log(res.data);
+ //   });
+ // };
+
+ vm.sendCSV = function(csv) {
+    var csvToPost = {};
+    csvToPost.fileContent = csv;
+    $http.post('/private/sendCSV', csvToPost).then(function(response) {
+      vm.showAlert(response.data);
+    });
   };
 
-
   //function to get all interns from database
-  vm.importInterns = function() {
-    console.log('in importInterns function');
-    $http ({
-      method: 'GET',
-      url: '/private/importInterns'
-    }).then(function(res) {
-      console.log(res.data);
-      for (var i = 0; i < res.data.length; i++) {
-        console.log(res.data[i]);
-      }
-    });
-  }; // end importInterns POST function
+  // vm.importInterns = function() {
+  //   console.log('in importInterns function');
+  //   $http ({
+  //     method: 'GET',
+  //     url: '/private/importInterns'
+  //   }).then(function(res) {
+  //     vm.showAlert(res.data);
+  //     console.log(res.data);
+  //     for (var i = 0; i < res.data.length; i++) {
+  //       console.log(res.data[i]);
+  //     }
+  //   });
+  // }; // end importInterns POST function
 
   //function to export all intern response data
   vm.exportResponseData = function() {
@@ -59,33 +74,17 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
     });
   }; //end searchByLastName
 
-  //function to completely remove an intern from the database
-  // vm.removeIntern = function(primarykey) {
-  //   console.log('in removeIntern');
-  //
-  //   vm.showConfirm = function(ev) {
-  //     // Appending dialog to document.body to cover sidenav in docs app
-  //     var confirm = $mdDialog.confirm()
-  //     .title('Are you sure you want to remove this intern?')
-  //     .textContent('They will be permanently deleted from the system.')
-  //     .ariaLabel('Lucky day')
-  //     .targetEvent(ev)
-  //     .ok('I am sure!', $http({
-  //       method: 'DELETE',
-  //       url: '/private/removeIntern',
-  //       params: { primarykey: primarykey }
-  //     }).then(function(res) {
-  //       console.log(res.data);
-  //     })); //end removeIntern DELETE)
-  //     .cancel('Cancel');
-  //     $mdDialog.show(confirm).then(function() {
-  //       vm.status = 'You decided to get rid of your debt.';
-  //     }, function() {
-  //       vm.status = 'You decided to keep your debt.';
-  //     });
-  //   };
-  //
-  // }; //end removeIntern
+  // function to completely remove an intern from the database
+  vm.removeIntern = function(primarykey) {
+    console.log('in removeIntern');
+      $http({
+        method: 'DELETE',
+        url: '/private/removeIntern',
+        params: { primarykey: primarykey }
+      }).then(function(res) {
+        console.log(res.data);
+      }); //end removeIntern DELETE)
+  }; //end removeIntern
 
   //function to edit an intern's phone number
   vm.editPhone = function(primarykey, phone) {
