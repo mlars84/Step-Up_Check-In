@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
       res.send(400);
     } else {
       console.log('connected to database');
-      let resultset = connection.query("SELECT * from questions");
+      let resultset = connection.query("SELECT * from questions WHERE active=TRUE");
       resultset.on('row', function(row){
         allQuestions.push(row);
       });

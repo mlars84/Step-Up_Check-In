@@ -9,22 +9,26 @@
   </style>
   <!-- contact interns list -->
 
-  <md-button ng-click="AIC.getData()">Get Data</md-button>
-  <md-button ng-click="AIC.getComments()">Get Comments</md-button>
-  <md-button ng-click="AIC.getCheckbox()">Get Checkbox</md-button>
-  <md-button ng-click="AIC.getFlags()">Get Flags</md-button>
-
-
+  <!-- <md-button ng-click="AIC.getData()">Get Data</md-button> -->
+  <!-- <md-button ng-click="AIC.getComments()">Get Comments</md-button> -->
+  <!-- <md-button ng-click="AIC.getCheckbox()">Get Checkbox</md-button> -->
+  <!-- <md-button ng-click="AIC.getFlags()">Get Flags</md-button> -->
   <!-- <md-button ng-click="AIC.getData()">Get Checkboxes</md-button> -->
 
 <!--
   <h2>Achieve: 30% have responded</h2>
   <h2>Discover: 50% have responded</h2> -->
   <md-content class="adminIntern">
-    <h2>Interns who wish to be contacted:</h2>
+    <h2>Contact these Interns:</h2>
+    <!-- {{AIC.checkbox[0].first_name}} {{AIC.checkbox[0].last_name}} {{AIC.checkbox[0].phone}} {{AIC.checkbox[0].email}} {{AIC.checkbox[0].created}}
+    {{AIC.checkbox[1].first_name}} {{AIC.checkbox[1].last_name}} {{AIC.checkbox[1].phone}} {{AIC.checkbox[1].email}} {{AIC.checkbox[1].created}}
+    {{AIC.checkbox[2].first_name}} {{AIC.checkbox[2].last_name}} {{AIC.checkbox[2].phone}} {{AIC.checkbox[2].email}} {{AIC.checkbox[2].created}} -->
+
     <div ng-repeat="checkbox in AIC.checkbox">
         <p>{{checkbox.first_name}} {{checkbox.last_name}} {{checkbox.phone}} {{checkbox.email}} {{checkbox.created}}</p>
     </div>
+    <md-button ng-click="AIC.getCheckbox()">View All</md-button>
+
     <!-- <ul class="a">
       <md-list flex>FirstName, LastName, Phone</md-list>
       <md-list flex>FirstName, LastName, Phone</md-list>
@@ -36,6 +40,8 @@
     <div ng-repeat="flag in AIC.flags">
         <p>{{flag.first_name}} {{flag.last_name}} {{flag.phone}} {{flag.email}} {{flag.created}}</p>
     </div>
+    <md-button ng-click="AIC.getFlags()">View All</md-button>
+
     <!-- <ul class="a">
       <md-list flex>FirstName, LastName, Phone</md-list>
       <md-list flex>FirstName, LastName, Phone</md-list>
@@ -46,6 +52,8 @@
   <div ng-repeat="comment in AIC.comments">
       <p>"{{comment.response_comment}}" -  {{comment.first_name}} {{comment.last_name}} {{comment.phone}} {{comment.email}}</p>
   </div>
+  <md-button ng-click="AIC.getComments()">View All</md-button>
+
 
   <!-- <md-tabs>
     <md-tab label="Comment #1"><p>Woohoo this is the start</p></md-tab>
