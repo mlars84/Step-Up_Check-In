@@ -1,7 +1,7 @@
 <div class="adminHomeStyle">
-	<h2>Step Up Admins</h2>
 	<div ng-init="AHC.getAdmins()">
-		<md-content layout-gt-sm="row" layout-padding>
+		<h2 >Step Up Admins</h2>
+		<md-content layout-gt-sm="row" layout-padding layout-align="center center">
 			<div ng-repeat="admin in AHC.adminObject.admins">
 				<h4>First Name:</h4>{{admin.firstname}}
 				<md-divider></md-divider>
@@ -14,10 +14,9 @@
 			<md-divider></md-divider>
 		</md-content>
 	</div>
-	<div layout-gt-sm="row" layout-padding>
-		<h2>Add New Admin</h2>
-
+	<div layout-gt-sm="row" layout-padding  layout-align="center center">
 		<md-content>
+			<h2>Add New Admin</h2>
 			<md-input-container>
 				<label>First Name</label>
 				<input ng-model="AHC.adminFirstNameIn" type="name">
