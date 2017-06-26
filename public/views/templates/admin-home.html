@@ -1,8 +1,8 @@
 <div class="adminHomeStyle">
-	<h2>Step Up Staff</h2>
+	<h2>Step Up Admins</h2>
 	<div ng-init= "AHC.getAdmins()">
 		<md-content layout-gt-sm="row" layout-padding>
-			<div ng-repeat="admin in AHC.adminArray" layout='column'>
+			<div ng-repeat="admin in AHC.adminArray.admins" >
 				<h4>First Name:</h4>{{admin.firstname}}
 				<md-divider ></md-divider>
 				<h4>Last Name:</h4>{{admin.lastname}}
