@@ -9,6 +9,7 @@
  const addQuestion = require('./updateq');
  const grabQuestion = require('./updateq'); // NOTE Add grabQuestion
  const twilio = require('./twilio'); // NOTE require twilio
+ const sendCSV = require('./importexport');
 
 
  // var questions = require('./questions');
@@ -49,6 +50,7 @@ router.use('/deleteAdmins', deleteAdmins);
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
+router.use('/sendCSV', sendCSV);
 
 
 // var questions = require('./questions');
