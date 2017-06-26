@@ -3,6 +3,7 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   //global
   const self = this;
   self.questionCont = {};
+  // self.questionCont = [];
 
   // begin addQuestion
   self.addQuestion = function(questionIn, flaggedIn) {
@@ -24,7 +25,9 @@ googleAuthApp.service('updateQuestionsService', function($http) {
       console.log('back from the server with', res.data);
     });// end $http
     // NOTE not clearing input after adding question
-    questionIn="";
+    // self.questionIn="";
+    // self.true="";
+    // self.flaggedIn="";
     // NOTE swal
     // swal("Question Added!", "A new question was added to your database!", "success");
   }; // end updateQuestion
@@ -52,7 +55,11 @@ googleAuthApp.service('updateQuestionsService', function($http) {
       console.log('grabbing questions ----->', response.data);
       self.questionCont.questions = response.data;
       console.log('self.questions --->', self.questionCont);
-      // return response.data;
+      // self.questionCont = [];
+      // for (var i = 0; i < response.data.length; i++) {
+      //   self.questionCont.push(response.data[i]);
+      //   console.log('--- self.questionCont---', self.questionCont);
+      // }
     });// end $http
   };// end grabQuestion
 

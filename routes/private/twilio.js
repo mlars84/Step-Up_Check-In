@@ -49,7 +49,7 @@ router.get('/', function(req, res){
         client.messages.create({
             to: value, // value here to iterate phoneNumbers array
             from: "+19522227366", // registered Twilio account number
-            body: "This is a SPIKE TEST for Jim's Twilio account", // message to send
+            body: "This is a text from Jim's AWESOME Twilio number!!!", // message to send
         }, function(err, message) {
           if (err) {
             console.log(err);
