@@ -8,8 +8,8 @@
 
 			<div ng-repeat="question in FBFC.activeQuestions">
 				<div id="{{question.id}}">
-					<h3>Question {{question.count}}: {{question.q_text}} {{question.group}}</h3>
-					<md-radio-group data="{{question.group}}">
+					<h3>Question {{question.count}}: {{question.q_text}}</h3>
+					<md-radio-group ng-model="question.data">
 
 						<md-radio-button value="1"> 1 </md-radio-button>
 						<md-radio-button value="2"> 2 </md-radio-button>
@@ -146,6 +146,6 @@
 
 			<br />
 
-			<md-button ng-click="FBFC.submitFeedback(group1, group2, group3, group4, group5, comment, cb1)">Submit</md-button>
-
+			<md-button ng-click="FBFC.submitFeedback(comment, cb1)">Submit</md-button>
+<!-- group1, group2, group3, group4, group5,  -->
 	</DIV>

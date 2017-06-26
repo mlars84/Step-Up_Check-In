@@ -71,9 +71,10 @@ function () {
   });
 };
 
-self.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
+self.submitFeedback = function(comment, checkbox){
 
-  console.log(q1, q2, q3, q4, q5, comment, checkbox);
+  console.log(comment, checkbox);
+  console.log(self.activeQuestions);
 
   let checkbox2 = false;
   if (checkbox === undefined) {
@@ -84,16 +85,16 @@ self.submitFeedback = function(q1, q2, q3, q4, q5, comment, checkbox){
   }
 
   responseToSend = {
-    question1id:q1,
-    // question1: q1r,
-    question2id: q2,
-    // question2: q2r,
-    question3id: q3,
-    // question3: q3r,
-    question4id: q4,
-    // question4: q4r,
-    question5id: q5,
-    // question5: q5r,
+    question1id: self.activeQuestions[0].id,
+    question1: self.activeQuestions[0].data,
+    question2id: self.activeQuestions[1].id,
+    question2: self.activeQuestions[1].data,
+    question3id: self.activeQuestions[2].id,
+    question3: self.activeQuestions[2].data,
+    question4id: self.activeQuestions[3].id,
+    question4: self.activeQuestions[3].data,
+    question5id: self.activeQuestions[4].id,
+    question5: self.activeQuestions[4].data,
     comment: comment,
     checkbox: checkbox2,
     internid: self.internid
