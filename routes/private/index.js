@@ -27,6 +27,12 @@
  const removeIntern = require('./importexport');
  const editPhone = require('./importexport');
  const checkemail = require('./checkemail');
+ const interndata = require('./interndata');
+ const interncomments = require('./comments');
+ const interncheckbox = require('./checkbox');
+ const internresponses = require('./numresponse');
+
+
 
  /** ---------- SUBROUTES ---------- **/
 
@@ -54,6 +60,11 @@ router.use('/addQuestion', addQuestion);
 
 router.use('/sendQuestion', twilio); // NOTE Add twilio router here
 router.use('/checkemail', checkemail);
+router.use('/interndata', interndata);
+router.use('/getComments', interncomments);
+router.use('/getCheckbox', interncheckbox);
+router.use('/getFlags', internresponses);
+
 
 
 // router.use('/questions', questions);

@@ -9,29 +9,48 @@
   </style>
   <!-- contact interns list -->
 
+  <md-button ng-click="AIC.getData()">Get Data</md-button>
+  <md-button ng-click="AIC.getComments()">Get Comments</md-button>
+  <md-button ng-click="AIC.getCheckbox()">Get Checkbox</md-button>
+  <md-button ng-click="AIC.getFlags()">Get Flags</md-button>
+
+
+  <!-- <md-button ng-click="AIC.getData()">Get Checkboxes</md-button> -->
+
+<!--
   <h2>Achieve: 30% have responded</h2>
-  <h2>Discover: 50% have responded</h2>
+  <h2>Discover: 50% have responded</h2> -->
   <md-content class="adminIntern">
     <h2>Interns who wish to be contacted:</h2>
-    <ul class="a">
+    <div ng-repeat="checkbox in AIC.checkbox">
+        <p>{{checkbox.first_name}} {{checkbox.last_name}} {{checkbox.phone}} {{checkbox.email}} {{checkbox.created}}</p>
+    </div>
+    <!-- <ul class="a">
       <md-list flex>FirstName, LastName, Phone</md-list>
       <md-list flex>FirstName, LastName, Phone</md-list>
       <md-list flex>FirstName, LastName, Phone</md-list>
-    </ul>
+    </ul> -->
   </md-content>
   <md-content class="adminIntern">
-    <h2>Flagged Interns (1-2 Range Reseponses):</h2>
-    <ul class="a">
+    <h2>Flagged Interns:</h2>
+    <div ng-repeat="flag in AIC.flags">
+        <p>{{flag.first_name}} {{flag.last_name}} {{flag.phone}} {{flag.email}} {{flag.created}}</p>
+    </div>
+    <!-- <ul class="a">
       <md-list flex>FirstName, LastName, Phone</md-list>
       <md-list flex>FirstName, LastName, Phone</md-list>
       <md-list flex>FirstName, LastName, Phone</md-list>
-    </ul>
+    </ul> -->
   </md-content>
-  <h2>This week's comments:</h2>
-  <md-tabs>
+  <h2>Comments:</h2>
+  <div ng-repeat="comment in AIC.comments">
+      <p>"{{comment.response_comment}}" -  {{comment.first_name}} {{comment.last_name}} {{comment.phone}} {{comment.email}}</p>
+  </div>
+
+  <!-- <md-tabs>
     <md-tab label="Comment #1"><p>Woohoo this is the start</p></md-tab>
     <md-tab label="Comment #2"><p>Caribou rocks</p></md-tab>
     <md-tab label="Comment #3"><p>Comment tabs are super cool!</p></md-tab>
     <md-tab><a href="" md-highlight-text="searchTerm">View All Comments</a></md-tab>
-  </md-tabs>
+  </md-tabs> -->
 </div>
