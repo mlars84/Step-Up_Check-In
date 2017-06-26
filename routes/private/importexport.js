@@ -99,7 +99,6 @@ router.put('/', function(req, res) {
 // Handles POST request with new volunteer data
 router.post('/', function(req, res, next) {
   // console.log(req.body.fileContent);
-  if(req.isAuthenticated()) {
     var fileContent = req.body.fileContent;
     var message = '';
     // converts fileContent to JSON
@@ -110,39 +109,27 @@ router.post('/', function(req, res, next) {
       pool.connect(function(error, db , done) {
         if(error) {
           console.log('Error connecting to the database');
+          res.sendStatus(401);
         } else {
           for (var i = 0; i < jsonArrObj.length; i++) {
             let jsonObject = jsonArrObj[i];
-            console.log('primarykeys =>', jsonObject.primarykey);
             db.query('INSERT INTO interns (primarykey, first_name, last_name, email, phone, company, supervisor, stepup_group_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);',
             [jsonObject.primarykey, jsonObject.first_name, jsonObject.last_name, jsonObject.email, jsonObject.phone, jsonObject.company, jsonObject.supervisor, jsonObject.stepup_group_id],
-            function(queryError, result) {
-              if (queryError) {
-                console.log('Error inserting into interns table');
-              }
-            });
+            function(error, result) {
+             if (error) {
+               console.log("queryError =>", error);
+               message = 'Error importing interns.';
+               res.sendStatus(500);
+             } else {
+               message = 'Import successful! ' + result.rowCount + ' interns added to the database.';
+              //  res.sendStatus(200);
+             }
+           });
           } // end of for loop
-          // Moves information into volunteer table
-          db.query("INSERT INTO interns (first_name, last_name, email) " +
-          "SELECT INITCAP(info ->> 'First Name') AS first_name, INITCAP(info ->> 'Last Name') AS last_name, " +
-          "LOWER(info ->> 'Email') AS email FROM interns " +
-          "ON CONFLICT DO NOTHING;",
-           function(queryError,result) {
-            done();
-            if (queryError) {
-              message = 'Error importing volunteers.';
-              res.send(message);
-            } else {
-              message = 'Import successful. ' + result.rowCount + ' interns added to the database.';
-              res.send(message);
-            }
-          });
         }
+         done();
       }); // pool.connect
     }); // end of csvtojson
-  } else {
-    res.sendStatus(401);
-  }
 });
 
 //get to search interns by last name
