@@ -3,19 +3,20 @@ googleAuthApp.controller('adminInternController', ['$http','adminInternService',
   const self = this;
   self.internData = [];
 
-  self.getData = function(){
-    console.log("in get data!");
+  // self.getData = function(){
+  //   console.log("in get data!");
+  //
+  //   return $http({
+  //     method: 'GET',
+  //     url: '/private/interndata'
+  //   }).then(function(response){
+  //     console.log("response from server in get Intern Data: ", response.data);
+  //     self.internData = response.data;
+  //
+  //     return response.data;
+  //   });
+  // }; // end getData
 
-    return $http({
-      method: 'GET',
-      url: '/private/interndata'
-    }).then(function(response){
-      console.log("response from server in get Intern Data: ", response.data);
-      self.internData = response.data;
-
-      return response.data;
-    });
-  }; // end getData
 
   self.getComments = function(){
     console.log("in get comments!");
@@ -69,5 +70,7 @@ googleAuthApp.controller('adminInternController', ['$http','adminInternService',
   // - get all interns who want to be contacted (firstname, lastname, phone)
   // - get all interns who have chosen 1 or 2 in flagged Questions
   // - get all comments from interns
-
+  self.getComments();
+  self.getCheckbox();
+  self.getFlags();
 }]); //end adminInternController
