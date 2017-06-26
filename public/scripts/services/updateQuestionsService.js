@@ -2,6 +2,7 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   console.log('update question from service');
   //global
   const vm = this;
+  vm.item = '';
 
   // begin addQuestion
   vm.addQuestion = function(questionIn, flaggedIn) {
@@ -48,12 +49,14 @@ googleAuthApp.service('updateQuestionsService', function($http) {
       method: 'GET',
       url: '/private/grabQuestion'
     }).then(function(response){
-      console.log('this the response for grabbing questions ----->', response.data);
-      vm.item = response.data;
+      console.log('grabbing questions ----->', response.data);
+      item = response.data;
+      console.log('item--->', item);
+      // return response.data;
     });// end $http
   };// end grabQuestion
 
   // NOTE
-  // vm.grabQuestion(); // call function in order to see question
+  vm.grabQuestion(); // call function in order to see questions being grab
 
 }); //end updateQuestionsService

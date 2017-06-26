@@ -2,15 +2,16 @@
 <main class="container" ng-app="theGoogles">
   <div class="updateQuestions">
     <h1>Update Questions:</h1>
-    <div layout="column">
+    <div layout="column" >
       <md-input-container>
         <label>Question 1</label>
-        <md-select name="type" ng-model="">
+        <md-select ng-model="UQC.item">
           <md-option><em>None</em></md-option>
-          <md-option ng-repeat="question in UQC.item">Questions from DB</md-option>
+          <md-option ng-repeat="question in UQC.item" ng-vaule="question.q_text">{{question.q_text}}</md-option>
         </md-select>
       </md-input-container>
-      <md-input-container>
+      <!-- <md-button ng-click="UQC.grabQuestion()" class="md-raised md-primary" style="background-color: #008AC0">Grab Question</md-button> -->
+      <!-- <md-input-container>
         <label>Question 2</label>
         <md-select name="type" ng-model="">
           <md-option>Questions from DB</md-option>
@@ -33,7 +34,7 @@
         <md-select name="type" ng-model="">
           <md-option>Questions from DB</md-option>
         </md-select>
-      </md-input-container>
+      </md-input-container> -->
     </div>
     <h2>Create New Question:</h2>
     <div>
