@@ -1,4 +1,4 @@
-// requires 
+// requires
 var express = require('express');
 var router = express.Router();
 var path = require('path'); // added path
@@ -24,5 +24,27 @@ router.post('/', function(req, res){
     } // end else
   }); // end pool connect
 });// end rounter.post
+
+router.get('/', function(req, res){
+  console.log('rounter to grab question running');
+  let showQuestion = [];
+  pool.connect(function(err, connection, done){
+    if (err) {
+      console.log(err);
+      res.send(400);
+    }// end if
+    else {
+      console.log('connected to grab question from database');
+      let resultSet = connection.query('SELECT q_text FROM questions');
+      resultSet.on('row', function(row){
+        showQuestion.push(row);
+      });
+      resultSet.on('end', function(){
+        done();
+        res.send(showQuestion);
+      });// end resultSet.on
+    }// end else
+  });// end pool.connect
+});// end router.get
 
 module.exports = router;
