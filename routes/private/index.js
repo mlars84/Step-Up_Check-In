@@ -35,6 +35,8 @@
  const interncheckbox = require('./checkbox');
  const internresponses = require('./numresponse');
  const checkadmin = require('./checkadmin');
+ const internAllData = require('./getInternData');
+
 
 
 
@@ -70,6 +72,7 @@ router.use('/interndata', interndata);
 router.use('/getComments', interncomments);
 router.use('/getCheckbox', interncheckbox);
 router.use('/getFlags', internresponses);
+router.use('/getNumericData', internAllData);
 
 
 

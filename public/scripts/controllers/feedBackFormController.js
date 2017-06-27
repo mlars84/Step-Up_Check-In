@@ -30,8 +30,6 @@ self.getQuestions = function(){
 }; // end getQuestions
 
 
-// Getting user name and email from auth, we still need to go to the database, lookup by email,
-//find primary key id, bring back to client, then send intern ID with response
 authFactory.isLoggedIn()
 .then(function (response) {
   if (response.data.status) {
@@ -42,7 +40,6 @@ authFactory.isLoggedIn()
     console.log(response.data);
     console.log(response.data.email);
     checkEmail(response.data.email);
-    // console.log("IS THIS THE USER?!?! ->", self.username);
 
   } else { // is not logged in on server
     self.displayLogout = false;
