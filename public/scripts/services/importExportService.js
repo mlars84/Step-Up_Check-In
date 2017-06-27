@@ -67,13 +67,19 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
 
   // function to completely remove an intern from the database
   self.removeIntern = function(primarykey) {
-    console.log('in removeIntern');
+    console.log('in removeIntern', primarykey);
     $http({
       method: 'DELETE',
       url: '/private/removeIntern',
       params: { primarykey: primarykey }
     }).then(function(res) {
       console.log(res.data);
+      for (var i = 0; i < self.lastNameMatch.name.length; i++) {
+        console.log(self.lastNameMatch.name[i]);
+        if (self.lastNameMatch.name[i].primarykey === primarykey) {
+            // self.lastNameMatch.name = [];
+        }
+      }
     }); //end removeIntern DELETE)
   }; //end removeIntern
 
