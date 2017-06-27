@@ -5,6 +5,17 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   self.questionCont = {};
   // self.questionCont = [];
 
+  self.showAlert = function(message) {
+     $mdDialog.show(
+       $mdDialog.alert()
+       .clickOutsideToClose(true)
+       .title('This is an alert title')
+       .textContent('You can specify some description text in here.')
+       .ariaLabel('Alert Dialog Demo')
+       .ok('Got it!')
+      );
+ };
+
   // begin addQuestion
   self.addQuestion = function(questionIn, flaggedIn) {
     console.log('add question button clicked', questionIn);
@@ -41,6 +52,7 @@ googleAuthApp.service('updateQuestionsService', function($http) {
     }).then(function(response){
       console.log('response.data for send question', response.data);
     }); // end $http
+    // REVIEW SWAL
     swal("Feedback Link Sent!", "A link to the feedback form was has beed sent to interns!", "success");
   };// end sendQuestion
 
