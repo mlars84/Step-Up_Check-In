@@ -1,4 +1,4 @@
-googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', function ($http, AuthFactory, feedBackFormService) {
+googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', '$mdDialog', function ($http, AuthFactory, feedBackFormService, $mdDialog) {
   //'feedBackFormService'
 
   console.log('loaded feedBackFormController');
@@ -72,7 +72,7 @@ self.submitFeedback = function(comment, checkbox){
 
   console.log(comment, checkbox);
   console.log(self.activeQuestions);
-
+  self.showAlert("Your feedback has been submitted.");
   let checkbox2 = false;
   if (checkbox === undefined) {
     checkbox2 = false;
@@ -108,6 +108,14 @@ self.submitFeedback = function(comment, checkbox){
   });
 };
 
-
+self.showAlert = function(message) {
+  $mdDialog.show(
+    $mdDialog.alert()
+    .clickOutsideToClose(true)
+    .title(message)
+    .ariaLabel(message)
+    .ok('Ok')
+  );
+};
 
 }]); //end feedBackFormController
