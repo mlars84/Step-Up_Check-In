@@ -99,4 +99,16 @@ router.put('/', function(req, res) {
   });
 }); //editPhone PUT
 
+//exportResponseData GET route export intern's feedback responses
+router.get('/', function(req, res) {
+  console.log('in exportResponseData GET route');
+  pool.connect(function(error, db, done) {
+    if (error) {
+      console.log('exportResponseData error =>', error);
+    } else {
+      let resultSet = db.query('SELECT * FROM ')
+    }
+  });
+}); //end exportResponseData GET route
+
 module.exports = router;
