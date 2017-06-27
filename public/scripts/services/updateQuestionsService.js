@@ -39,10 +39,9 @@ googleAuthApp.service('updateQuestionsService', function($http) {
       method: 'GET',
       url: '/private/sendQuestion',
     }).then(function(response){
-      for (var i = 0; i < response.data.length; i++) {
-        console.log('response.data.[i].phone --->', response.data[i].phone);
-      }// end for loop
+      console.log('response.data for send question', response.data);
     }); // end $http
+    swal("Feedback Link Sent!", "A link to the feedback form was has beed sent to interns!", "success");
   };// end sendQuestion
 
   // begin grabQuestion

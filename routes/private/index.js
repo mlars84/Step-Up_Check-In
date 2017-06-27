@@ -7,8 +7,8 @@
  var router  = express.Router();
  const importInterns = require('./importexport');
  const addQuestion = require('./updateq');
- const grabQuestion = require('./updateq'); // NOTE Add grabQuestion
- const twilio = require('./twilio'); // NOTE require twilio
+ const grabQuestion = require('./updateq');
+ const twilio = require('./twilio');
  const sendCSV = require('./importexport');
 
 
@@ -61,8 +61,8 @@ router.use('/sendCSV', sendCSV);
 router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
-router.use('/grabQuestion', grabQuestion); // NOTE Add grabQuestion
-router.use('/sendQuestion', twilio); // NOTE Add twilio router here
+router.use('/grabQuestion', grabQuestion);
+router.use('/sendQuestion', twilio);
 router.use('/checkemail', checkemail);
 router.use('/interndata', interndata);
 router.use('/getComments', interncomments);
