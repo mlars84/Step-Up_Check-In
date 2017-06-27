@@ -3,7 +3,7 @@ General/Index
 ****************************/
 
 html, body, nav, .navPad {
-  background-color: #e8e8ee;
+  background-color: white;
 }
 
 #toolbar {
@@ -16,15 +16,35 @@ html, body, nav, .navPad {
 }
 
 .StepUp {
-  text-align: center;
+  text-align: left;
 }
 
+div.md-tool-bar {
+  display: inline;
+}
+
+
+
 .stepUp {
-  height: 35%;
-  width: 35%;
+  height: 40%;
+  width: 30%;
   margin: auto;
+  align: left;
+  display: inline;
   /*margin: -1em;*/
   /*padding: 10px;*/
+}
+
+span {
+  display: inline;
+  /*align: left;*/
+}
+
+.navbar {
+  display: inline;
+  align: right;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .CheckIn {
@@ -44,7 +64,7 @@ html, body, nav, .navPad {
 
 /* nav */
 nav {
-  text-align: center;
+  text-align: right;
 }
 
 a:link {

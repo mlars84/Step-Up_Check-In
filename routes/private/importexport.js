@@ -40,8 +40,6 @@ const json2csv = require('json2csv');
 //   });
 // });
 
-
-
 //Get to import all interns from DB
 // router.get('/', function(req, res) {
 //   console.log('in importInterns Route', req.body);

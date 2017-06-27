@@ -43,24 +43,36 @@
   <main class="container" ng-app="theGoogles">
     <!-- NavController is on every page -->
     <header ng-controller="NavController as nav">
-      <div class="StepUp">
-        <img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg">
-        <h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2>
-      </div>
-      <md-list layout="row" layout-align="center" class="six columns" ng-show="nav.displayLogout">Hi {{nav.username}}! | <a href="#" ng-click="nav.logout()">Logout</a></md-list>
-      <div layout="row" layout-align="center" ng-show="nav.navBar">
+      <!-- <div class="StepUp"> -->
+        <!-- <span><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span> -->
+        <!-- <h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2> -->
+      <div layout="row" layout-align="right" ng-show="nav.navBar">
         <md-content class="md-padding navPad">
-          <md-colors>
+          <!-- <img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"> -->
+          <img class="stepUp"  src="public/image/STEP-UP logo no tag with white.jpg">
+
+          <!-- <md-colors> -->
           <md-nav-bar class="navBar">
+            <!-- <div class="logo"> style="align:right display:inline"
+              <span><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
+            </div> -->
+            <!-- <img class="stepUp" style="align:right" src="public/image/STEP-UP logo no tag with white.jpg"> -->
+
             <md-nav-item md-nav-href="#admin-home" name="Home">Home</md-nav-item>
             <md-nav-item md-nav-href="#admin-intern" name="Interns">Interns</md-nav-item>
             <md-nav-item md-nav-href="#updateQuestions" name="Update Questions">Update Questions</md-nav-item>
             <md-nav-item md-nav-href="#importExport" name="Import/Export">Import/Export</md-nav-item>
-            <md-nav-item md-nav-href="#feedbackform" name="Import/Export">Feedback Form</md-nav-item>
+            <md-nav-item md-nav-href="#feedbackform" name="Feedback Form">Feedback Form</md-nav-item>
+            <md-list layout="row" layout-align="center" class="six columns" ng-show="nav.displayLogout">Hi {{nav.username}}! | <a href="#" ng-click="nav.logout()">Logout</a></md-list>
+
           </md-nav-bar>
-          </md-colors>
+          <!-- <md-list layout="row" layout-align="center" class="six columns" ng-show="nav.displayLogout">Hi {{nav.username}}! | <a href="#" ng-click="nav.logout()">Logout</a></md-list> -->
+
+          <!-- </md-colors> -->
         </md-content>
       </div>
+
+    <!--</div>  end step up -->
       <md-toolbar id="toolbar" layout="column" ng-show="nav.toolbar">
         <h1 id="toolBarText">Step-Up Check-In</h1>
       </md-toolbar>
