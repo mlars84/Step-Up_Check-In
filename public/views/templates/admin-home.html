@@ -12,7 +12,10 @@
 				<md-divider></md-divider>
 				<h4>Email:</h4>{{admin.email}}
 				<md-divider></md-divider>
-				<button ng-click="AHC.deleteAdmins(admin.id)"  md-button style="background-color: #F68628" >Remove</button>
+				<div class="dialog-content" layout="row" layout-wrap layout-margin layout-align="center">
+					<md-button class="md-primary md-raised" ng-click="AHC.deleteAdmins($event, admin.id)" style="background-color: #F68628" >
+			       Remove
+			     </md-button>
 			</div>
 			<md-divider></md-divider>
 		</md-content>
