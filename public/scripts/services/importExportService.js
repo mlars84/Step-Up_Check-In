@@ -1,93 +1,84 @@
 googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($http, $mdDialog) {
-  const vm = this;
+  const self = this;
 
-  vm.interns = [];
-  vm.lastNameMatch = {name: []};
-  vm.internCSV = [];
+  self.interns = [];
+  self.lastNameMatch = {name: []};
+  self.internCSV = [];
 
-  vm.showAlert = function(message) {
-     $mdDialog.show(
-       $mdDialog.alert()
-         .clickOutsideToClose(true)
-         .title(message)
-         .ariaLabel(message)
-         .ok('Ok')
-     );
- };
+  self.showAlert = function(message) {
+    $mdDialog.show(
+      $mdDialog.alert()
+      .clickOutsideToClose(true)
+      .title(message)
+      .ariaLabel(message)
+      .ok('Ok')
+    );
+  };
 
- // uploadInterns = function(internCSV) {
- //   console.log('uploading interns CSV', internCSV);
- //   $http ({
- //     method: 'POST',
- //     url: '/private/uploadInterns',
- //     data: internCSV
- //   }).then(function(res) {
- //    console.log(res.data);
- //   });
- // };
-
- vm.sendCSV = function(csv) {
-    var csvToPost = {};
+  self.sendCSV = function(csv) {
+    let csvToPost = {};
     csvToPost.fileContent = csv;
     $http.post('/private/sendCSV', csvToPost).then(function(response) {
-      vm.showAlert(response.data);
+      self.importInterns();
+      console.log(response.data);
+      self.showAlert(response.data);
     });
   };
 
-  //function to get all interns from database
-  // vm.importInterns = function() {
-  //   console.log('in importInterns function');
-  //   $http ({
-  //     method: 'GET',
-  //     url: '/private/importInterns'
-  //   }).then(function(res) {
-  //     vm.showAlert(res.data);
-  //     console.log(res.data);
-  //     for (var i = 0; i < res.data.length; i++) {
-  //       console.log(res.data[i]);
-  //     }
-  //   });
-  // }; // end importInterns POST function
+  //function to get all interns from database after CSV has been uploaded
+  self.importInterns = function() {
+    console.log('in importInterns function');
+    $http ({
+      method: 'GET',
+      url: '/private/importInterns'
+    }).then(function(res) {
+      self.showAlert(res.data);
+      console.log(res.data);
+      for (var i = 0; i < res.data.length; i++) {
+        console.log(res.data[i]);
+      }
+    });
+  }; // end importInterns GET function
 
   //function to export all intern response data
-  vm.exportResponseData = function() {
+  self.exportResponseData = function() {
     console.log('in exportResponseData function');
   }; //end exportResponseData
 
   //function to search for interns by lastname
-  vm.searchByLastName = function(lastName) {
+  self.searchByLastName = function(lastName) {
     console.log('in searchByLastName');
-    lastNameToSearchBy = lastName;
+    let lastNameToSearchBy = lastName;
     console.log(lastNameToSearchBy);
     $http({
       method: 'GET',
-      url: '/private/searchByLastName',
+      url: '/private/searchByLastName'
     }).then(function(res) {
-      // console.log(res.data);
+      console.log(res.data);
       for (var i = 0; i < res.data.length; i++) {
-        // console.log(res.data[i].last_name, lastNameToSearchBy);
+        console.log(res. data[i].last_name, lastNameToSearchBy);
         if(res.data[i].last_name === lastNameToSearchBy){
-          vm.lastNameMatch.name.push(res.data[i]);
-          console.log("vm.lastNameMatch =>", vm.lastNameMatch);
+          self.lastNameMatch.name.push(res.data[i]);
+          console.log("self.lastNameMatch =>", self.lastNameMatch);
         }
       }
     });
   }; //end searchByLastName
 
   // function to completely remove an intern from the database
-  vm.removeIntern = function(primarykey) {
+  self.removeIntern = function(primarykey) {
     console.log('in removeIntern');
-      $http({
-        method: 'DELETE',
-        url: '/private/removeIntern',
-        params: { primarykey: primarykey }
-      }).then(function(res) {
-        console.log(res.data);
-      }); //end removeIntern DELETE)
+    $http({
+      method: 'DELETE',
+      url: '/private/removeIntern',
+      params: { primarykey: primarykey }
+    }).then(function(res) {
+      console.log(res.data);
+    }); //end removeIntern DELETE)
   }; //end removeIntern
 
   //function to edit an intern's phone number
-  vm.editPhone = function(primarykey, phone) {
+  self.editPhone = function(primarykey, phone) {
     console.log('in editPhone function =>', phone);
     let internToEdit = {
       primarykey: primarykey,
