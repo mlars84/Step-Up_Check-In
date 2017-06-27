@@ -47,17 +47,16 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
 
   //function to search for interns by lastname
   self.searchByLastName = function(lastName) {
-    console.log('in searchByLastName');
-    let lastNameToSearchBy = lastName;
-    console.log(lastNameToSearchBy);
+    console.log('in searchByLastName', lastName);
     $http({
       method: 'GET',
-      url: '/private/searchByLastName'
+      url: '/private/searchByLastName/' + lastName
     }).then(function(res) {
       console.log(res.data);
+      self.lastNameMatch.name = [];
       for (var i = 0; i < res.data.length; i++) {
-        console.log(res. data[i].last_name, lastNameToSearchBy);
-        if(res.data[i].last_name === lastNameToSearchBy){
+        console.log(res. data[i].last_name, lastName);
+        if(res.data[i].last_name === lastName){
           self.lastNameMatch.name.push(res.data[i]);
           console.log("self.lastNameMatch =>", self.lastNameMatch);
         }
@@ -65,23 +64,42 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
     });
   }; //end searchByLastName
 
-  // function to completely remove an intern from the database
-  self.removeIntern = function(primarykey) {
-    console.log('in removeIntern', primarykey);
-    $http({
-      method: 'DELETE',
-      url: '/private/removeIntern',
-      params: { primarykey: primarykey }
-    }).then(function(res) {
-      console.log(res.data);
-      for (var i = 0; i < self.lastNameMatch.name.length; i++) {
-        console.log(self.lastNameMatch.name[i]);
-        if (self.lastNameMatch.name[i].primarykey === primarykey) {
-            // self.lastNameMatch.name = [];
-        }
-      }
-    }); //end removeIntern DELETE)
+  //function to completely remove an intern from the database
+  self.removeIntern = function(ev, primarykey, lastname) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+      .title('Would you like to remove this intern?')
+      .textContent('They will be permanently removed from the system.')
+      .ariaLabel('Lucky day')
+      .targetEvent(ev)
+      .ok('Please do it!')
+      .cancel('Cancel!');
+    $mdDialog.show(confirm).then(function() {
+      self.status = 'You deleted the intern.';
+      $http({
+        method: 'DELETE',
+        url: '/private/removeIntern',
+        params: { primarykey: primarykey }
+      }).then(function(res) {
+        console.log(res.data);
+        self.searchByLastName(lastname);
+      });
+    }, function() {
+      self.status = 'You decided to keep the intern.';
+    });
   }; //end removeIntern
+
+  // function to completely remove an intern from the database
+  // self.removeIntern = function(evprimarykey, lastname) {
+  //   console.log('in removeIntern', primarykey, lastname);
+  //   $http({
+  //     method: 'DELETE',
+  //     url: '/private/removeIntern',
+  //     params: { primarykey: primarykey }
+  //   }).then(function(res) {
+  //     console.log(res.data);
+  //   }); //end removeIntern DELETE)
+  // }; //end removeIntern
 
   //function to edit an intern's phone number
   self.editPhone = function(primarykey, phone) {

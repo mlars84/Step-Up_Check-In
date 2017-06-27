@@ -29,13 +29,15 @@ router.post('/', function(req, res, next) {
                console.log("queryError =>", error);
                message = 'Error importing interns.';
                res.sendStatus(500);
-             } else {
-               console.log(result);
-              //  message = result.row.first_name + 'uploaded successfully!';
-               res.send(result.row);
+               resultSet(result);
              }
            });
           } // end of for loop
+          let resulSet = function(result) {
+            console.log(result);
+            message = result.row.first_name + 'uploaded successfully!';
+            res.send(result.row);
+          };
         }
          done();
       }); // pool.connect
@@ -43,47 +45,26 @@ router.post('/', function(req, res, next) {
 });
 
 //importInterns GET route after CSV uploaded
-router.get('/', function(req, res) {
-  console.log('in importInterns route');
-  let interns = [];
+router.get('/:last', function(req, res) {
+  console.log('in importInterns route', req.params.last);
+  let internsByLast = [];
   pool.connect(function(error, db, done){
     if (error) {
       console.log(error);
       res.sendStatus(500);
     } else {
-      let resultSet = db.query('SELECT * FROM interns;');
+      let resultSet = db.query('SELECT * FROM interns WHERE last_name=$1;', [req.params.last]);
       resultSet.on('row', function(row) {
-        interns.push(row);
+        internsByLast.push(row);
       }); //end on row
       resultSet.on('end', function() {
+        console.log('interns =>', internsByLast);
         done();
-        console.log('interns =>', interns);
-        res.send(interns);
+        res.send(internsByLast);
       });
     } //end else
   }); //end pool.connect
 }); //end GET route to importInterns
-
-//get to search interns by last name
-router.get('/', function(req, res) {
-  console.log('in searchByLastName ROUTE =>', req.body);
-  let internsByLastNAme = [];
-  pool.connect(function(error, db, done){
-    if(error) {
-      console.log(' importInterns error1=>', error);
-      res.sendStatus(400);
-    } else {
-      let resultSet = db.query( 'SELECT * FROM interns;');
-      resultSet.on( 'row', function( row ) {
-        internsByLastNAme.push( row );
-      }); // end on row
-      resultSet.on('end', function() {
-        done();
-        res.send( internsByLastName.last_name );
-      }); // end on end
-    }
-  });
-}); //end searchByLastName GET
 
 //route to delete an intern from the DB
 router.delete('/', function(req, res) {

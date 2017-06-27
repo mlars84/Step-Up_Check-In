@@ -24,13 +24,13 @@
       <button ng-click="IEC.searchByLastName(IEC.lastNameIn)" class="md-raised md-primary" style="background-color: #008AC0" type="button" name="button" md-button>Submit</button>
       <div ng-repeat="intern in IEC.lastNameMatch.name">
         <md-content flex layout-padding>
-          <p>Intern:</p>{{intern.first_name}} {{intern.last_name}}
+          <h4>{{intern.first_name}} {{intern.last_name}}</h4>
           <span ng-show="intern.editMode" ><md-input-container><label>{{intern.phone}}</label><input ng-model="intern.phoneIn" type="text" ng-value="IEC.phone"></md-input-container></span>
           <span ng-hide="intern.editMode" >{{intern.phone}}</span>
           <button ng-show="intern.editMode" ng-click="IEC.editPhone(intern.primarykey, intern.phoneIn)" class="md-raised md-primary" type="button" name="button" style="background-color: #008AC0">Save</button>
           <button ng-hide="intern.editMode" ng-click="intern.editMode = !intern.editMode" class="md-raised md-primary" type="button" name="edit" md-button style="background-color: #008AC0">Edit Phone Number</button>
           <button ng-show="intern.editMode" ng-click="intern.editMode = !intern.editMode" class="md-raised md-primary" type="button" name="button" md-button style="background-color: #F68628">Cancel Edit</button>
-          <button ng-hide="intern.editMode" ng-click="IEC.showConfirm($event); IEC.removeIntern(intern.primarykey)" class="md-raised md-warn" type="button" name="delete" md-button style="background-color: #F68628">Remove</button>
+          <button ng-hide="intern.editMode" ng-click="IEC.removeIntern($event, intern.primarykey, intern.last_name)" class="md-raised md-warn" type="button" name="delete" md-button style="background-color: #F68628">Remove</button>
         </md-content>
       </div>
     </md-input-container>
