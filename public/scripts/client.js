@@ -37,5 +37,6 @@ googleAuthApp.config(['$routeProvider', '$locationProvider', function ($routePro
   .otherwise({
     redirectTo: '/login',
   });
+
 },
 ]);

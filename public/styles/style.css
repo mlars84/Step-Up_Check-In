@@ -157,7 +157,7 @@ updateQuestion
 }
 
 .pickQuestions,
-.create {
+.create, .pickAdmin{
   text-align: center;
 }
 
