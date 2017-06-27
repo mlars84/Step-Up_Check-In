@@ -124,7 +124,7 @@ Import-Export
  }
 
  #progress_bar .percent {
-   background-color: #99ccff;
+   background-color: #008AC0;
    height: auto;
    width: 0;
  }
