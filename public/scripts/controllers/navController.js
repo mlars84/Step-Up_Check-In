@@ -15,6 +15,7 @@ googleAuthApp.controller('NavController', function (AuthFactory, $window) {
       _this.toolbar = true;
       authFactory.setLoggedIn(true);
       _this.username = response.data.name;
+      // window.location = "/#/admin-intern";
 
     } else { // is not logged in on server
       _this.displayLogout = false;
