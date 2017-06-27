@@ -36,7 +36,7 @@ googleAuthApp.service('adminHomeService', function($http, $mdDialog) {
 
  self.deleteAdmins = function(ev, id) {
   var confirm = $mdDialog.confirm()
-        .title('Would you like to delete this admin user from the system?')
+        .title('Would you like to delete this user from the system?')
         .ariaLabel('Delete admin')
         .targetEvent(ev)
         .ok('Delete Admin User')
