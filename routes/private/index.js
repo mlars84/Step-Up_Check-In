@@ -9,6 +9,7 @@
  const addQuestion = require('./updateq');
  const grabQuestion = require('./updateq'); // NOTE Add grabQuestion
  const twilio = require('./twilio'); // NOTE require twilio
+ const sendCSV = require('./importexport');
 
 
  // var questions = require('./questions');
@@ -33,6 +34,7 @@
  const interncomments = require('./comments');
  const interncheckbox = require('./checkbox');
  const internresponses = require('./numresponse');
+ const checkadmin = require('./checkadmin');
 
 
 
@@ -45,10 +47,12 @@ router.use('/searchByLastName', searchByLastName);
 router.use('/getAdmins', getAdmins);
 router.use('/postAdmins', postAdmins);
 router.use('/deleteAdmins', deleteAdmins);
+router.use('/checkadmin', checkadmin);
 
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
+router.use('/sendCSV', sendCSV);
 
 
 // var questions = require('./questions');

@@ -2,6 +2,8 @@ googleAuthApp.factory('AuthFactory', function ($http) {
   var Status = {
     loggedIn: false,
   };
+  console.log("this is the status:" , Status);
+
 
   // the public API
   return {
@@ -23,5 +25,6 @@ googleAuthApp.factory('AuthFactory', function ($http) {
       return $http.get('/auth/logout');
     },
   };
+
 
 });
