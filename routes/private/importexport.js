@@ -22,22 +22,16 @@ router.post('/', function(req, res, next) {
         } else {
           for (var i = 0; i < jsonArrObj.length; i++) {
             let jsonObject = jsonArrObj[i];
-            db.query('INSERT INTO interns (primarykey, first_name, last_name, email, phone, company, supervisor, stepup_group_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);',
+            db.query('INSERT INTO interns (primarykey, first_name, last_name, email, phone, company, supervisor, stepup_group_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) ON CONFLICT DO NOTHING;',
             [jsonObject.primarykey, jsonObject.first_name, jsonObject.last_name, jsonObject.email, jsonObject.phone, jsonObject.company, jsonObject.supervisor, jsonObject.stepup_group_id],
             function(error, result) {
              if (error) {
                console.log("queryError =>", error);
                message = 'Error importing interns.';
                res.sendStatus(500);
-               resultSet(result);
              }
            });
           } // end of for loop
-          let resulSet = function(result) {
-            console.log(result);
-            message = result.row.first_name + 'uploaded successfully!';
-            res.send(result.row);
-          };
         }
          done();
       }); // pool.connect
