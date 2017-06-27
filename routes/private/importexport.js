@@ -2,28 +2,69 @@ const express = require('express');
 const router = express.Router();
 // const path = require('path');
 const pool = require('../../modules/pool');
+const csvtojson = require('csvtojson');
+const json2csv = require('json2csv');
 
+// POST route to translate add interns to DB
+router.post('/', function(req, res, next) {
+  // console.log(req.body.fileContent);
+    var fileContent = req.body.fileContent;
+    var message = '';
+    // converts fileContent to JSON
+    csvtojson({noheader:false})
+    .fromString(fileContent)
+    .on('end_parsed',function(jsonArrObj) {
+      // Inserts into json_volunteer table
+      pool.connect(function(error, db , done) {
+        if(error) {
+          console.log('Error connecting to the database');
+          res.sendStatus(401);
+        } else {
+          for (var i = 0; i < jsonArrObj.length; i++) {
+            let jsonObject = jsonArrObj[i];
+            db.query('INSERT INTO interns (primarykey, first_name, last_name, email, phone, company, supervisor, stepup_group_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);',
+            [jsonObject.primarykey, jsonObject.first_name, jsonObject.last_name, jsonObject.email, jsonObject.phone, jsonObject.company, jsonObject.supervisor, jsonObject.stepup_group_id],
+            function(error, result) {
+             if (error) {
+               console.log("queryError =>", error);
+               message = 'Error importing interns.';
+               res.sendStatus(500);
+               resultSet(result);
+             }
+           });
+          } // end of for loop
+          let resulSet = function(result) {
+            console.log(result);
+            message = result.row.first_name + 'uploaded successfully!';
+            res.send(result.row);
+          };
+        }
+         done();
+      }); // pool.connect
+    }); // end of csvtojson
+});
 
-//Get to import all interns from DB
-router.get('/', function(req, res) {
-  console.log('in importInterns Route', req.body);
-  let interns = [];
+//importInterns GET route after CSV uploaded
+router.get('/:last', function(req, res) {
+  console.log('in importInterns route', req.params.last);
+  let internsByLast = [];
   pool.connect(function(error, db, done){
-    if(error) {
-      console.log(' importInterns error1=>', error);
-      res.sendStatus(400);
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
     } else {
-      let resultSet = db.query( 'SELECT * FROM interns;' );
-      resultSet.on( 'row', function( row ) {
-        interns.push( row );
-      }); // end on row
+      let resultSet = db.query('SELECT * FROM interns WHERE last_name=$1;', [req.params.last]);
+      resultSet.on('row', function(row) {
+        internsByLast.push(row);
+      }); //end on row
       resultSet.on('end', function() {
+        console.log('interns =>', internsByLast);
         done();
-        res.send( interns );
-      }); // end on end
-    }
-  });
-}); //end importInterns GET
+        res.send(internsByLast);
+      });
+    } //end else
+  }); //end pool.connect
+}); //end GET route to importInterns
 
 //route to delete an intern from the DB
 router.delete('/', function(req, res) {
@@ -57,26 +98,5 @@ router.put('/', function(req, res) {
     }
   });
 }); //editPhone PUT
-
-//get to search interns by last name
-// router.get('/', function(req, res) {
-//   console.log('in searchByLastName ROUTE =>', req.body);
-//   let internsByLastNAme = [];
-//   pool.connect(function(error, db, done){
-//     if(error) {
-//       console.log(' importInterns error1=>', error);
-//       res.sendStatus(400);
-//     } else {
-//       let resultSet = db.query( 'SELECT * FROM users WHERE last_name = $1', [id] );
-//       resultSet.on( 'row', function( row ) {
-//         internsByLastNAme.push( row );
-//       }); // end on row
-//       resultSet.on('end', function() {
-//         done();
-//         // res.send( internsByLastName.last_name );
-//       }); // end on end
-//     }
-//   });
-// }); //end searchByLastName GET
 
 module.exports = router;

@@ -1,94 +1,108 @@
 googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($http, $mdDialog) {
-  const vm = this;
+  const self = this;
 
-  vm.interns = [];
-  vm.lastNameMatch = {name: []};
-  vm.internCSV = [];
+  self.interns = [];
+  self.lastNameMatch = {name: []};
+  self.internCSV = [];
 
-  //function to upload intern CSV with filepicker
-  // vm.uploadInterns = function(interns) {
-  //   console.log('in uploadInterns function', interns);
-  //   vm.internCSV.push(interns);
-  //   console.log(vm.internCSV);
-  //   // let internCSV = angular.element(document.querySelector('#fileInput')).click();
-  //   // console.log(internCSV);
-  //   // vm.importInterns(internCSV);
-  // }; //end uploadInterns
-
-  vm.uploadInterns = function () {
-    angular.element(document.querySelector('#fileInput')).click();
+  self.showAlert = function(message) {
+    $mdDialog.show(
+      $mdDialog.alert()
+      .clickOutsideToClose(true)
+      .title(message)
+      .ariaLabel(message)
+      .ok('Ok')
+    );
   };
 
+  self.sendCSV = function(csv) {
+    let csvToPost = {};
+    csvToPost.fileContent = csv;
+    $http.post('/private/sendCSV', csvToPost).then(function(response) {
+      self.importInterns();
+      console.log(response.data);
+      self.showAlert(response.data);
+    });
+  };
 
-  //function to get all interns from database
-  vm.importInterns = function() {
+  //function to get all interns from database after CSV has been uploaded
+  self.importInterns = function() {
     console.log('in importInterns function');
     $http ({
       method: 'GET',
       url: '/private/importInterns'
     }).then(function(res) {
+      self.showAlert(res.data);
       console.log(res.data);
       for (var i = 0; i < res.data.length; i++) {
         console.log(res.data[i]);
       }
     });
-  }; // end importInterns POST function
+  }; // end importInterns GET function
 
   //function to export all intern response data
-  vm.exportResponseData = function() {
+  self.exportResponseData = function() {
     console.log('in exportResponseData function');
   }; //end exportResponseData
 
   //function to search for interns by lastname
-  vm.searchByLastName = function(lastName) {
-    console.log('in searchByLastName');
-    lastNameToSearchBy = lastName;
-    console.log(lastNameToSearchBy);
+  self.searchByLastName = function(lastName) {
+    console.log('in searchByLastName', lastName);
     $http({
       method: 'GET',
-      url: '/private/searchByLastName',
+      url: '/private/searchByLastName/' + lastName
     }).then(function(res) {
-      // console.log(res.data);
+      console.log(res.data);
+      self.lastNameMatch.name = [];
       for (var i = 0; i < res.data.length; i++) {
-        // console.log(res.data[i].last_name, lastNameToSearchBy);
-        if(res.data[i].last_name === lastNameToSearchBy){
-          vm.lastNameMatch.name.push(res.data[i]);
-          console.log("vm.lastNameMatch =>", vm.lastNameMatch);
+        console.log(res. data[i].last_name, lastName);
+        if(res.data[i].last_name === lastName){
+          self.lastNameMatch.name.push(res.data[i]);
+          console.log("self.lastNameMatch =>", self.lastNameMatch);
         }
       }
     });
   }; //end searchByLastName
 
   //function to completely remove an intern from the database
-  // vm.removeIntern = function(primarykey) {
-  //   console.log('in removeIntern');
-  //
-  //   vm.showConfirm = function(ev) {
-  //     // Appending dialog to document.body to cover sidenav in docs app
-  //     var confirm = $mdDialog.confirm()
-  //     .title('Are you sure you want to remove this intern?')
-  //     .textContent('They will be permanently deleted from the system.')
-  //     .ariaLabel('Lucky day')
-  //     .targetEvent(ev)
-  //     .ok('I am sure!', $http({
-  //       method: 'DELETE',
-  //       url: '/private/removeIntern',
-  //       params: { primarykey: primarykey }
-  //     }).then(function(res) {
-  //       console.log(res.data);
-  //     })); //end removeIntern DELETE)
-  //     .cancel('Cancel');
-  //     $mdDialog.show(confirm).then(function() {
-  //       vm.status = 'You decided to get rid of your debt.';
-  //     }, function() {
-  //       vm.status = 'You decided to keep your debt.';
-  //     });
-  //   };
-  //
+  self.removeIntern = function(ev, primarykey, lastname) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+      .title('Would you like to remove this intern?')
+      .textContent('They will be permanently removed from the system.')
+      .ariaLabel('Lucky day')
+      .targetEvent(ev)
+      .ok('Please do it!')
+      .cancel('Cancel!');
+    $mdDialog.show(confirm).then(function() {
+      self.status = 'You deleted the intern.';
+      $http({
+        method: 'DELETE',
+        url: '/private/removeIntern',
+        params: { primarykey: primarykey }
+      }).then(function(res) {
+        console.log(res.data);
+        self.searchByLastName(lastname);
+      });
+    }, function() {
+      self.status = 'You decided to keep the intern.';
+    });
+  }; //end removeIntern
+
+  // function to completely remove an intern from the database
+  // self.removeIntern = function(evprimarykey, lastname) {
+  //   console.log('in removeIntern', primarykey, lastname);
+  //   $http({
+  //     method: 'DELETE',
+  //     url: '/private/removeIntern',
+  //     params: { primarykey: primarykey }
+  //   }).then(function(res) {
+  //     console.log(res.data);
+  //   }); //end removeIntern DELETE)
   // }; //end removeIntern
 
   //function to edit an intern's phone number
-  vm.editPhone = function(primarykey, phone) {
+  self.editPhone = function(primarykey, phone) {
     console.log('in editPhone function =>', phone);
     let internToEdit = {
       primarykey: primarykey,
