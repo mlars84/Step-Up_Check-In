@@ -32,13 +32,13 @@ router.get('/', function(req, res){
       // }); // end resultSet 'row'
 
       // REVIEW Technical design
-      let twilioNum = ["+19522227366"];
+      let twilioNum = ["+19522227366", "+19522227366"];
       let phoneNumbers = [];
       for (let i = 0; i < twilioNum.length; i++) {
         console.log('---twilioNum.length---', twilioNum.length);
         let batchSize = 2;
         let offsetCount = 0;
-        let resultSet = connection.query('SELECT phone FROM psi LIMIT' + offsetCount + 'OFFSET' + offsetCount);
+        let resultSet = connection.query('SELECT phone FROM psi LIMIT $1 OFFSET $2', [batchSize, offsetCount]);
         // let resultSet = connection.query('SELECT phone FROM psi LIMIT 2 OFFSET 0');
         console.log('resultSet->', resultSet);
         resultSet.on( 'row', function(row) {
@@ -48,17 +48,16 @@ router.get('/', function(req, res){
         resultSet.on('end', function(){
           done();
           console.log('psi phone#', phoneNumbers);
-          psi(phoneNumbers);
-          // res.sendStatus(200); // sending the okay to stop to the client side
+          psi(phoneNumbers, twilioNum[i]);
         });// end resultSet 'end'
         // console.log('---phoneNumbers---', phoneNumbers);
         // NOTE Send SMS
-        let psi = function (newArray) {
+        let psi = function (newArray, fromNumber) {
         newArray.forEach(function(value){
           console.log('start of function ->', value);
           client.messages.create({
               to: value, // value here to iterate phoneNumbers array
-              from: twilioNum, // registered Twilio account number
+              from: fromNumber, // registered Twilio account number
               body: "This is a text from Jim's FIRST Twilio number!!!", // message to send
           }, function(err, message) {
             if (err) {
