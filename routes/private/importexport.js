@@ -120,7 +120,7 @@ router.get('/', function(req, res) {
             // converts json data to csv
             result = json2csv(responseData);
             // sends csv file to client
-            res.attachment('interns_responses.csv');
+            res.attachment('responses.csv');
             res.status(200).send(result);
           } // else
         }); // db.query
