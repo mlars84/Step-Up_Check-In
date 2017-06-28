@@ -25,20 +25,15 @@ router.get('/', function(req, res){
     else {
       // REVIEW Technical design
       let twilioNum = ["+19522227366", "+19522227366"];
-      let phoneNumbers = [];
+      let batchSize = 2;
+      let offsetCount = 0;
       for (let i = 0; i < twilioNum.length; i++) {
-        console.log('---twilioNum.length---', twilioNum.length);
-        let batchSize = 2;
-        let offsetCount = 0;
         let resultSet = connection.query('SELECT phone FROM psi LIMIT $1 OFFSET $2', [batchSize, offsetCount], function(err, result){
           done();
           console.log('result.rows->', result.rows);
           psi(result.rows, twilioNum[i]);
         });
-
         offsetCount += batchSize;
-        console.log('offsetCount-->', offsetCount);
-        console.log('batchSize-->', batchSize);
       }// end FOR LOOP
         res.sendStatus(200); // sending the okay to stop to the client side.
     } // end pool end else
@@ -50,7 +45,7 @@ router.get('/', function(req, res){
       client.messages.create({
           to: value.phone, // value here to iterate phoneNumbers array
           from: fromNumber, // registered Twilio account number
-          body: "This is a text from Jim's FIRST Twilio number!!!", // message to send
+          body: "This is a text from Jim's Twilio number!!!", // message to send
       }, function(err, message) {
         if (err) {
           console.log(err);
