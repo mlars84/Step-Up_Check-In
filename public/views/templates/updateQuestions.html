@@ -52,10 +52,6 @@
       </div>
   </md-card>
   <br>
-  <div class="sendSMS">
-    <!-- <md-button ng-click="UQC.sendQuestion()" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button> -->
-  </div>
-  <br>
   <md-card>
     <div class="create">
       <h2>Create New Question</h2>
@@ -63,7 +59,7 @@
     <div>
       <md-input-container class="md-block">
         <label>Enter Question</label>
-        <input ng-model="UQC.questionIn" type="text">
+        <input ng-model="UQC.questionIn" type="text" ng-value="UQC.value">
       </md-input-container>
       <md-input-container class="md-block">
         <md-checkbox name="tos" ng-model="UQC.flaggedIn">
@@ -71,10 +67,15 @@
         </md-checkbox>
       </md-input-container>
       <div class="addQuestion">
-        <md-button ng-click ="UQC.addQuestion(UQC.questionIn, UQC.flaggedIn)" class="md-raised md-primary" id="addQuestion">Add Question</md-button>
+        <md-button ng-click ="UQC.addQuestion($event, UQC.questionIn, UQC.flaggedIn)" class="md-raised md-primary" id="addQuestion">Add Question</md-button>
       </div>
     </div>
     </md-card>
+    <br>
+    <br>
+    <div class="sendSMS">
+      <md-button ng-click="UQC.sendQuestion($event)" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
+    </div>
     <br>
   </div>
 </main>
