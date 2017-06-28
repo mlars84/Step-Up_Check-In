@@ -1,12 +1,21 @@
-googleAuthApp.service('updateQuestionsService', function($http) {
+googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function($http, $mdDialog) {
   console.log('update question from service');
   //global
   const self = this;
   self.questionCont = {};
-  // self.questionCont = [];
+
+  self.showAlert = function(message) {
+    $mdDialog.show(
+      $mdDialog.alert()
+      .clickOutsideToClose(true)
+      .title(message)
+      .ariaLabel(message)
+      .ok('Ok')
+    );
+  };
 
   // begin addQuestion
-  self.addQuestion = function(questionIn, flaggedIn) {
+  self.addQuestion = function(ev, questionIn, flaggedIn) {
     console.log('add question button clicked', questionIn);
     if(flaggedIn === undefined){
       flaggedIn = false;
@@ -17,6 +26,15 @@ googleAuthApp.service('updateQuestionsService', function($http) {
       flagged: flaggedIn
     }; // end objectToSend
     console.log('update objectToSend', objectToSend);
+  var confirm = $mdDialog.confirm()
+    .title('Add Question to System?')
+    .textContent('Question will be added to System.')
+    .ariaLabel('Lucky day')
+    .targetEvent(ev)
+    .ok('ADD!')
+    .cancel('Cancel!');
+  $mdDialog.show(confirm).then(function() {
+    self.status = 'Question was not ADDED!';
     $http({
       method: 'POST',
       url: '/private/addQuestion',
@@ -24,25 +42,32 @@ googleAuthApp.service('updateQuestionsService', function($http) {
     }).then(function(res) {
       console.log('back from the server with', res.data);
     });// end $http
-    // NOTE not clearing input after adding question
-    // self.questionIn="";
-    // self.true="";
-    // self.flaggedIn="";
-    // NOTE swal
-    // swal("Question Added!", "A new question was added to your database!", "success");
+  }, function() {
+    self.status = 'Question Added!';
+  });
   }; // end updateQuestion
 
   // begin sendQuestion
-  self.sendQuestion = function (){
+  self.sendQuestion = function (ev){
     console.log('Send Question button clicked!');
+    var confirm = $mdDialog.confirm()
+      .title('Send Feedback Link?')
+      .textContent('SMS will be sent to Interns.')
+      .ariaLabel('Lucky day')
+      .targetEvent(ev)
+      .ok('Send!')
+      .cancel('Cancel!');
+    $mdDialog.show(confirm).then(function() {
+      self.status = 'Feedback Link NOT sent!';
     $http({
       method: 'GET',
       url: '/private/sendQuestion',
     }).then(function(response){
-      for (var i = 0; i < response.data.length; i++) {
-        console.log('response.data.[i].phone --->', response.data[i].phone);
-      }// end for loop
+      console.log('response.data for send question', response.data);
     }); // end $http
+  }, function() {
+    self.status = 'Feedback Link Sent!';
+  });
   };// end sendQuestion
 
   // begin grabQuestion
@@ -61,4 +86,23 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   // NOTE
   self.grabQuestion(); // call function in order to see questions being grab
 
-}); //end updateQuestionsService
+  self.submitQuestion = function (active1In, active2In, active3In, active4In, active5In){
+    console.log('Submit Question button clicked!->', active1In, active2In, active3In, active4In, active5In);
+    let questionToSubmit = {
+      active1: active1In,
+      active2: active2In,
+      active3: active3In,
+      active4: active4In,
+      active5: active5In
+    };// end questionToSubmit
+    console.log('questionToSubmit->', questionToSubmit);
+    $http({
+      method: 'PUT',
+      url: '/private/submitQuestion',
+      data: questionToSubmit
+    }).then(function(response){
+      console.log('active/inactive->', response.data);
+    });
+  };// end submitQuestion
+
+}]); //end updateQuestionsService

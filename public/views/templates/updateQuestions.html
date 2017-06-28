@@ -1,4 +1,3 @@
-<!-- Jim's Work -->
 <main class="container" ng-app="theGoogles">
   <md-toolbar id="toolbar" layout="column" style="height:50px">
     <h1 id="toolBarText">Update Weekly Questions</h1>
@@ -9,44 +8,41 @@
     <div class="pickQuestions">
       <h2>Choose questions for the upcoming week:</h2>
     </div>
-    <!-- <div ng-repeat="question in UQC.questionCont.questions">
-      {{question.q_text}}
-    </div> -->
     <md-card-content>
       <div layout="column">
         <md-input-container>
           <label>Question 1</label>
-          <md-select ng-model="UQC.active1">
+          <md-select ng-model="UQC.active1In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id">{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 2</label>
-          <md-select ng-model="UQC.active2">
+          <md-select ng-model="UQC.active2In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 3</label>
-          <md-select ng-model="UQC.active3">
+          <md-select ng-model="UQC.active3In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 4</label>
-          <md-select ng-model="UQC.active4">
+          <md-select ng-model="UQC.active4In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 5</label>
-          <md-select ng-model="UQC.active5">
+          <md-select ng-model="UQC.active5In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
      </div>
@@ -58,13 +54,20 @@
       <br>
   </md-card>
   <md-card flex="40" layout-padding layout-margin>
+
+      <div class="sendSMS">
+        <md-button ng-click="UQC.submitQuestion(UQC.active1In, UQC.active2In, UQC.active3In, UQC.active4In, UQC.active5In)" class="md-raised md-primary" id="submitQues">Submit Questions</md-button>
+      </div>
+  </md-card>
+  <br>
+  <md-card>
     <div class="create">
       <h2>Create New Question</h2>
     </div>
     <div>
       <md-input-container class="md-block">
         <label>Enter Question</label>
-        <input ng-model="UQC.questionIn" type="text">
+        <input ng-model="UQC.questionIn" type="text" ng-value="UQC.value">
       </md-input-container>
       <md-input-container class="md-block">
         <md-checkbox name="tos" ng-model="UQC.flaggedIn">
@@ -72,10 +75,15 @@
         </md-checkbox>
       </md-input-container>
       <div class="addQuestion">
-        <md-button ng-click ="UQC.addQuestion(UQC.questionIn, UQC.flaggedIn)" class="md-raised md-primary" id="addQuestion">Add Question</md-button>
+        <md-button ng-click ="UQC.addQuestion($event, UQC.questionIn, UQC.flaggedIn)" class="md-raised md-primary" id="addQuestion">Add Question</md-button>
       </div>
     </div>
     </md-card>
+    <br>
+    <br>
+    <div class="sendSMS">
+      <md-button ng-click="UQC.sendQuestion($event)" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
+    </div>
     <br>
   </div>
 </main>
