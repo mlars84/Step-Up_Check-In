@@ -36,6 +36,7 @@
  const internresponses = require('./numresponse');
  const checkadmin = require('./checkadmin');
  const exportResponseData = require('./importexport');
+ const internAllData = require('./getInternData');
 
 
 
@@ -65,13 +66,14 @@ router.use('/exportResponseData', exportResponseData);
 router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
-router.use('/grabQuestion', grabQuestion); // NOTE Add grabQuestion
-router.use('/sendQuestion', twilio); // NOTE Add twilio router here
+router.use('/grabQuestion', grabQuestion);
+router.use('/sendQuestion', twilio);
 router.use('/checkemail', checkemail);
 router.use('/interndata', interndata);
 router.use('/getComments', interncomments);
 router.use('/getCheckbox', interncheckbox);
 router.use('/getFlags', internresponses);
+router.use('/getNumericData', internAllData);
 
 
 

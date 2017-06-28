@@ -1,3 +1,4 @@
+
 googleAuthApp.controller('AuthController', ['$http', 'AuthFactory', '$window', function ($http, AuthFactory, $window) {
 
   // ('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', function ($http, AuthFactory, feedBackFormService)
@@ -72,3 +73,4 @@ googleAuthApp.controller('AuthController', ['$http', 'AuthFactory', '$window', f
   };
 
 }]);
+>>>>>>> master

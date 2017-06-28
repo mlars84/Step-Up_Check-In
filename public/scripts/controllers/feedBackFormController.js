@@ -1,4 +1,4 @@
-googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', function ($http, AuthFactory, feedBackFormService) {
+googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', '$mdDialog', function ($http, AuthFactory, feedBackFormService, $mdDialog) {
   //'feedBackFormService'
 
   console.log('loaded feedBackFormController');
@@ -30,8 +30,6 @@ self.getQuestions = function(){
 }; // end getQuestions
 
 
-// Getting user name and email from auth, we still need to go to the database, lookup by email,
-//find primary key id, bring back to client, then send intern ID with response
 authFactory.isLoggedIn()
 .then(function (response) {
   if (response.data.status) {
@@ -42,7 +40,6 @@ authFactory.isLoggedIn()
     console.log(response.data);
     console.log(response.data.email);
     checkEmail(response.data.email);
-    // console.log("IS THIS THE USER?!?! ->", self.username);
 
   } else { // is not logged in on server
     self.displayLogout = false;
@@ -75,7 +72,7 @@ self.submitFeedback = function(comment, checkbox){
 
   console.log(comment, checkbox);
   console.log(self.activeQuestions);
-
+  self.showAlert("Your feedback has been submitted.");
   let checkbox2 = false;
   if (checkbox === undefined) {
     checkbox2 = false;
@@ -111,6 +108,14 @@ self.submitFeedback = function(comment, checkbox){
   });
 };
 
-
+self.showAlert = function(message) {
+  $mdDialog.show(
+    $mdDialog.alert()
+    .clickOutsideToClose(true)
+    .title(message)
+    .ariaLabel(message)
+    .ok('Ok')
+  );
+};
 
 }]); //end feedBackFormController
