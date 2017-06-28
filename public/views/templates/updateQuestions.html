@@ -1,4 +1,3 @@
-<!-- Jim's Work -->
 <main class="container" ng-app="theGoogles">
   <div class="updateQuestions">
     <br>
@@ -6,44 +5,41 @@
     <div class="pickQuestions">
       <h1>Pick Questions</h1>
     </div>
-    <!-- <div ng-repeat="question in UQC.questionCont.questions">
-      {{question.q_text}}
-    </div> -->
     <md-card-content>
       <div layout="column">
         <md-input-container>
           <label>Question 1</label>
           <md-select ng-model="UQC.active1In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id">{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 2</label>
           <md-select ng-model="UQC.active2In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 3</label>
           <md-select ng-model="UQC.active3In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 4</label>
           <md-select ng-model="UQC.active4In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
         <md-input-container>
           <label>Question 5</label>
           <md-select ng-model="UQC.active5In">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.q_text" >{{question.q_text}}</md-option>
+            <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
      </div>

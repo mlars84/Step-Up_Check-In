@@ -4,6 +4,12 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   const self = this;
   self.questionCont = {};
 
+  // self.active1In = false;
+  // self.active2In = false;
+  // self.active3In = false;
+  // self.active4In = false;
+  // self.active5In = false;
+
   // begin addQuestion
   self.addQuestion = function(questionIn, flaggedIn) {
     console.log('add question button clicked', questionIn);
@@ -25,8 +31,6 @@ googleAuthApp.service('updateQuestionsService', function($http) {
     });// end $http
     // NOTE not clearing input after adding question
     // self.questionIn="";
-    // self.true="";
-    // self.flaggedIn="";
     // NOTE swal
     // swal("Question Added!", "A new question was added to your database!", "success");
   }; // end updateQuestion
@@ -60,10 +64,14 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   // NOTE
   self.grabQuestion(); // call function in order to see questions being grab
 
-  self.submitQuestion = function (){
-    console.log('Submit Question button clicked!');
+  self.submitQuestion = function (active1In, active2In, active3In, active4In, active5In){
+    console.log('Submit Question button clicked!->', active1In, active2In, active3In, active4In, active5In);
     let questionToSubmit = {
-      active: true
+      active1: active1In,
+      active2: active2In,
+      active3: active3In,
+      active4: active4In,
+      active5: active5In 
     };// end questionToSubmit
     console.log('questionToSubmit->', questionToSubmit);
     $http({
