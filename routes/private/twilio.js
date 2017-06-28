@@ -23,14 +23,6 @@ router.get('/', function(req, res){
       res.sendStatus(400);
     } //end if
     else {
-      // console.log('connected to database');
-      // let resultSet = connection.query('SELECT phone FROM psi LIMIT 2 OFFSET 0');
-      // console.log('resultSet->', resultSet);
-      // resultSet.on( 'row', function(row) {
-      //   console.log('row', row);
-      //   phoneNumbers.push(row.phone);
-      // }); // end resultSet 'row'
-
       // REVIEW Technical design
       let twilioNum = ["+19522227366", "+19522227366"];
       let phoneNumbers = [];
@@ -38,52 +30,37 @@ router.get('/', function(req, res){
         console.log('---twilioNum.length---', twilioNum.length);
         let batchSize = 2;
         let offsetCount = 0;
-        let resultSet = connection.query('SELECT phone FROM psi LIMIT $1 OFFSET $2', [batchSize, offsetCount]);
-        // let resultSet = connection.query('SELECT phone FROM psi LIMIT 2 OFFSET 0');
-        console.log('resultSet->', resultSet);
-        resultSet.on( 'row', function(row) {
-          console.log('row-->', row.phone);
-          phoneNumbers.push(row.phone);
-        }); // end resultSet 'row'
-        resultSet.on('end', function(){
+        let resultSet = connection.query('SELECT phone FROM psi LIMIT $1 OFFSET $2', [batchSize, offsetCount], function(err, result){
           done();
-          console.log('psi phone#', phoneNumbers);
-          psi(phoneNumbers, twilioNum[i]);
-        });// end resultSet 'end'
-        // console.log('---phoneNumbers---', phoneNumbers);
-        // NOTE Send SMS
-        let psi = function (newArray, fromNumber) {
-        newArray.forEach(function(value){
-          console.log('start of function ->', value);
-          client.messages.create({
-              to: value, // value here to iterate phoneNumbers array
-              from: fromNumber, // registered Twilio account number
-              body: "This is a text from Jim's FIRST Twilio number!!!", // message to send
-          }, function(err, message) {
-            if (err) {
-              console.log(err);
-            }// end if
-            else {
-              console.log('SMS message id ->', message.sid);
-            } // end else
-          });// end Jim's client.message.create
-        });// end phoneNumbers iteration
-      }; // end psi
+          console.log('result.rows->', result.rows);
+          psi(result.rows, twilioNum[i]);
+        });
 
         offsetCount += batchSize;
         console.log('offsetCount-->', offsetCount);
         console.log('batchSize-->', batchSize);
       }// end FOR LOOP
         res.sendStatus(200); // sending the okay to stop to the client side.
-
-      // resultSet.on('end', function(){
-      //   done();
-      //   console.log('psi phone#', phoneNumbers);
-      //   psi(phoneNumbers);
-      //   res.sendStatus(200); // sending the okay to stop to the client side.
-      // });// end resultSet 'end'
     } // end pool end else
 
+    // NOTE Send SMS
+    let psi = function (newArray, fromNumber) {
+    newArray.forEach(function(value){
+      console.log('start of function ->', value);
+      client.messages.create({
+          to: value.phone, // value here to iterate phoneNumbers array
+          from: fromNumber, // registered Twilio account number
+          body: "This is a text from Jim's FIRST Twilio number!!!", // message to send
+      }, function(err, message) {
+        if (err) {
+          console.log(err);
+        }// end if
+        else {
+          console.log('SMS message id ->', message.sid);
+        } // end else
+      });// end Jim's client.message.create
+    });// end phoneNumbers iteration
+  }; // end psi
 
     // //NOTE jim
     // let psi = function (numberArr){
