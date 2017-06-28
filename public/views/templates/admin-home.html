@@ -3,11 +3,13 @@
 		<md-toolbar id="toolbar" layout="column" style="height:50px">
 			<h1 id="toolBarText">Admin Home</h1>
 		</md-toolbar>
-		<md-card>
-			<div class="pickAdmin">
-				<h1>Step Up Admins</h1>
-			</div>
-		<md-content layout-gt-sm="row" layout-padding layout-align="center center">
+		<div layout="row">
+
+		<md-card flex="66">
+			<!-- <div class="pickAdmin">
+				<h2>Current Admin:</h2>
+			</div> -->
+		<md-content layout-gt-sm="row" layout-padding layout-align="start center">
 			<div ng-repeat="admin in AHC.adminObject.admins">
 				<h4>First Name:</h4>{{admin.firstname}}
 				<md-divider></md-divider>
@@ -20,14 +22,14 @@
 			       Remove
 			     </md-button>
 			</div>
-			<md-divider></md-divider>
+			<!-- <md-divider></md-divider> -->
 		</md-content>
 	</div>
 	</md-card>
-	<md-card>
-	<div layout-gt-sm="row" layout-padding  layout-align="center center">
+	<md-card flex="33">
+	<div layout-gt-sm="row" layout-padding  layout-align="start center">
 		<md-content>
-			<h1>Add New Admin</h1>
+			<h2>Add New Admin</h2>
 			<md-input-container>
 				<label>First Name</label>
 				<input ng-model="AHC.adminFirstNameIn" type="name">
@@ -46,4 +48,5 @@
 		</md-content>
 	</div>
 	</md-card>
+	</div>
 </div>
