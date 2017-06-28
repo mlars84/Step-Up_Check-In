@@ -3,7 +3,12 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   //global
   const self = this;
   self.questionCont = {};
-  // self.questionCont = [];
+
+  // self.active1In = false;
+  // self.active2In = false;
+  // self.active3In = false;
+  // self.active4In = false;
+  // self.active5In = false;
 
   // begin addQuestion
   self.addQuestion = function(questionIn, flaggedIn) {
@@ -26,8 +31,6 @@ googleAuthApp.service('updateQuestionsService', function($http) {
     });// end $http
     // NOTE not clearing input after adding question
     // self.questionIn="";
-    // self.true="";
-    // self.flaggedIn="";
     // NOTE swal
     // swal("Question Added!", "A new question was added to your database!", "success");
   }; // end updateQuestion
@@ -39,10 +42,10 @@ googleAuthApp.service('updateQuestionsService', function($http) {
       method: 'GET',
       url: '/private/sendQuestion',
     }).then(function(response){
-      for (var i = 0; i < response.data.length; i++) {
-        console.log('response.data.[i].phone --->', response.data[i].phone);
-      }// end for loop
+      console.log('response.data for send question', response.data);
     }); // end $http
+    // REVIEW SWAL
+    swal("Feedback Link Sent!", "A link to the feedback form was has beed sent to interns!", "success");
   };// end sendQuestion
 
   // begin grabQuestion
@@ -60,5 +63,24 @@ googleAuthApp.service('updateQuestionsService', function($http) {
 
   // NOTE
   self.grabQuestion(); // call function in order to see questions being grab
+
+  self.submitQuestion = function (active1In, active2In, active3In, active4In, active5In){
+    console.log('Submit Question button clicked!->', active1In, active2In, active3In, active4In, active5In);
+    let questionToSubmit = {
+      active1: active1In,
+      active2: active2In,
+      active3: active3In,
+      active4: active4In,
+      active5: active5In 
+    };// end questionToSubmit
+    console.log('questionToSubmit->', questionToSubmit);
+    $http({
+      method: 'PUT',
+      url: '/private/submitQuestion',
+      data: questionToSubmit
+    }).then(function(response){
+      console.log('active/inactive->', response.data);
+    });
+  };// end submitQuestion
 
 }); //end updateQuestionsService
