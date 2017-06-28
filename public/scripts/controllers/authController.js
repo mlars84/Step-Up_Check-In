@@ -73,4 +73,3 @@ googleAuthApp.controller('AuthController', ['$http', 'AuthFactory', '$window', f
   };
 
 }]);
->>>>>>> master

@@ -1,7 +1,14 @@
 var googleAuthApp = angular.module('theGoogles', ['ngRoute', 'ngMaterial']);
 
-googleAuthApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+googleAuthApp.config(['$routeProvider', '$locationProvider','$mdThemingProvider', function ($routeProvider, $locationProvider, $mdThemingProvider) {
   // $locationProvider.html5Mode(true);
+
+//tab palette for angular material
+  $mdThemingProvider
+    .theme('default')
+    .accentPalette('orange');
+
+
 
   $routeProvider
   .when('/login', {
