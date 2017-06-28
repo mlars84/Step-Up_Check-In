@@ -57,6 +57,7 @@ googleAuthApp.service('adminHomeService', function($http, $mdDialog) {
   });// end confirm dialogue
 }; //end showconfirm
 
+
 // self.deleteAdmins = function(id) {
 //  console.log('in deleteAdmins');
 //  $http({

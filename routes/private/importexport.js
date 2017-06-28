@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 // const path = require('path');
 const pool = require('../../modules/pool');
-const csvtojson = require('csvtojson');
-const json2csv = require('json2csv');
+// const csvtojson = require('csvtojson');
+// const json2csv = require('json2csv');
 
 // POST route to translate add interns to DB
 router.post('/', function(req, res, next) {
