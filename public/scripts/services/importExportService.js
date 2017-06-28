@@ -43,6 +43,12 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
   //function to export all intern response data
   self.exportResponseData = function() {
     console.log('in exportResponseData function');
+    $http({
+      method: 'GET',
+      url: '/private/exportResponseData'
+    }).then(function(res) {
+      console.log(res);
+    });
   }; //end exportResponseData
 
   //function to search for interns by lastname
