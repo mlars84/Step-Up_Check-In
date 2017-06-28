@@ -35,6 +35,9 @@
  const interncomments = require('./comments');
  const interncheckbox = require('./checkbox');
  const internresponses = require('./numresponse');
+ const checkadmin = require('./checkadmin');
+ const exportResponseData = require('./importexport');
+ const internAllData = require('./getInternData');
 
 
 
@@ -47,11 +50,13 @@ router.use('/searchByLastName', searchByLastName);
 router.use('/getAdmins', getAdmins);
 router.use('/postAdmins', postAdmins);
 router.use('/deleteAdmins', deleteAdmins);
+router.use('/checkadmin', checkadmin);
 
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
 router.use('/sendCSV', sendCSV);
+router.use('/exportResponseData', exportResponseData);
 
 
 // var questions = require('./questions');
@@ -70,6 +75,7 @@ router.use('/interndata', interndata);
 router.use('/getComments', interncomments);
 router.use('/getCheckbox', interncheckbox);
 router.use('/getFlags', internresponses);
+router.use('/getNumericData', internAllData);
 
 
 

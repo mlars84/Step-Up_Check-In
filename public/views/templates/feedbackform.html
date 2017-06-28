@@ -1,7 +1,9 @@
 <DIV class="feedbackform" ng-init="FBFC.getQuestions()">
 
 	<!-- FBFC.checkEmail(FBFC.useremail) -->
-
+	<md-toolbar id="toolbar" layout="column" style="height:50px">
+    <h1 id="toolBarText">Intern Weekly Feedback</h1>
+  </md-toolbar>
 	<!-- <md-button ng-click="FBFC.getQuestions()">Get Questions</md-button> -->
 	<div>
 		<form ng-submit="submit()" ng-cloak>
@@ -9,7 +11,7 @@
 			<div ng-repeat="question in FBFC.activeQuestions">
 				<div id="{{question.id}}">
 					<h3>Question {{question.count}}: {{question.q_text}}</h3>
-					<md-radio-group ng-model="question.data">
+					<md-radio-group ng-model="question.data" ng-required="true">
 
 						<md-radio-button value="1"> 1 </md-radio-button>
 						<md-radio-button value="2"> 2 </md-radio-button>
@@ -134,7 +136,7 @@
 			<h3>Do you want someone from STEP-UP to contact you this week?</h3>
 			<div flex-gt-sm="50">
 				<md-checkbox ng-model="cb1" aria-label="Checkbox 1">
-					Yes, please talk with me. 
+					Yes, please talk with me.
 				</md-checkbox>
 			</div>
 

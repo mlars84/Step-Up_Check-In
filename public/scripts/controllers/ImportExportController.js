@@ -1,54 +1,55 @@
 googleAuthApp.controller('importExportController', ['importExportService', function (importExportService) {
   console.log('loaded importExportController');
-  const self = this;
+  const vm = this;
 
   var reader;
   var progress = document.querySelector('.percent');
 
-  self.uploadInterns = importExportService.uploadInterns;
-  self.importInterns = importExportService.importInterns;
+  vm.interns = importExportService.interns;
+  vm.uploadInterns = importExportService.uploadInterns;
+  vm.importInterns = importExportService.importInterns;
 
-  self.exportResponseData = importExportService.exportResponseData;
+  vm.exportResponseData = importExportService.exportResponseData;
 
-  self.searchByLastName = importExportService.searchByLastName;
-  self.lastNameIn = importExportService.lastNameIn;
-  self.lastNameMatch = importExportService.lastNameMatch;
+  vm.searchByLastName = importExportService.searchByLastName;
+  vm.lastNameIn = importExportService.lastNameIn;
+  vm.lastNameMatch = importExportService.lastNameMatch;
 
-  self.removeIntern = importExportService.removeIntern;
-  self.editPhone = importExportService.editPhone;
-  self.showConfirm = importExportService.showConfirm;
-  self.confirm = importExportService.confirm;
+  vm.removeIntern = importExportService.removeIntern;
+  vm.editPhone = importExportService.editPhone;
+  vm.showConfirm = importExportService.showConfirm;
+  vm.confirm = importExportService.confirm;
 
   function abortRead() {
-  reader.abort();
-}
+    reader.abort();
+  }
 
-function errorHandler(fileEvent) {
-  switch(fileEvent.target.error.code) {
-   case fileEvent.target.error.NOT_FOUND_ERR:
-     alert('File Not Found!');
-     break;
-   case fileEvent.target.error.NOT_READABLE_ERR:
-     alert('File is not readable');
-     break;
-   case fileEvent.target.error.ABORT_ERR:
-     break;
-   default:
-     alert('An error occurred reading this file.');
-  };
-}
+  function errorHandler(fileEvent) {
+    switch(fileEvent.target.error.code) {
+      case fileEvent.target.error.NOT_FOUND_ERR:
+      alert('File Not Found!');
+      break;
+      case fileEvent.target.error.NOT_READABLE_ERR:
+      alert('File is not readable');
+      break;
+      case fileEvent.target.error.ABORT_ERR:
+      break;
+      default:
+      alert('An error occurred reading this file.');
+    };
+  }
 
-function updateProgress(fileEvent) {
-  // fileEvent is an ProgressEvent.
-  if (fileEvent.lengthComputable) {
-    var percentLoaded = Math.round((fileEvent.loaded / fileEvent.total) * 100);
-    // Increase the progress bar length.
-    if (percentLoaded < 100) {
-      progress.style.width = percentLoaded + '%';
-      progress.textContent = 'Importing data ' + percentLoaded + '%';
+  function updateProgress(fileEvent) {
+    // fileEvent is an ProgressEvent.
+    if (fileEvent.lengthComputable) {
+      var percentLoaded = Math.round((fileEvent.loaded / fileEvent.total) * 100);
+      // Increase the progress bar length.
+      if (percentLoaded < 100) {
+        progress.style.width = percentLoaded + '%';
+        progress.textContent = 'Importing data ' + percentLoaded + '%';
+      }
     }
   }
-}
 
   function handleFileSelect(fileEvent) {
     // Reset progress indicator on new file selection.

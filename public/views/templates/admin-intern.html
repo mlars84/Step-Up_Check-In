@@ -1,5 +1,8 @@
 <div class="adminIntern">
   <title>Admin Intern View</title>
+  <md-toolbar id="toolbar" layout="column" style="height:50px">
+    <h1 id="toolBarText">Intern Data Overview</h1>
+  </md-toolbar>
   <style>
   /*list styles*/
   ul.a {
@@ -9,7 +12,7 @@
   </style>
   <!-- contact interns list -->
 
-  <!-- <md-button ng-click="AIC.getData()">Get Data</md-button> -->
+  <!-- <md-button ng-click="AIC.getNumericData()">Get Data</md-button> -->
   <!-- <md-button ng-click="AIC.getComments()">Get Comments</md-button> -->
   <!-- <md-button ng-click="AIC.getCheckbox()">Get Checkbox</md-button> -->
   <!-- <md-button ng-click="AIC.getFlags()">Get Flags</md-button> -->
@@ -25,7 +28,7 @@
     {{AIC.checkbox[2].first_name}} {{AIC.checkbox[2].last_name}} {{AIC.checkbox[2].phone}} {{AIC.checkbox[2].email}} {{AIC.checkbox[2].created}} -->
 
     <div ng-repeat="checkbox in AIC.checkbox">
-        <p>{{checkbox.first_name}} {{checkbox.last_name}} {{checkbox.phone}} {{checkbox.email}} {{checkbox.created}}</p>
+        <p>{{checkbox.first_name}} {{checkbox.last_name}} {{checkbox.phone}} {{checkbox.email}}</p>
     </div>
     <md-button ng-click="AIC.getCheckbox()">View All</md-button>
 
@@ -38,7 +41,7 @@
   <md-content class="adminIntern">
     <h2>Flagged Interns:</h2>
     <div ng-repeat="flag in AIC.flags">
-        <p>{{flag.first_name}} {{flag.last_name}} {{flag.phone}} {{flag.email}} {{flag.created}}</p>
+        <p>{{flag.first_name}} {{flag.last_name}} {{flag.phone}} {{flag.email}} </p>
     </div>
     <md-button ng-click="AIC.getFlags()">View All</md-button>
 
@@ -53,6 +56,12 @@
       <p>"{{comment.response_comment}}" -  {{comment.first_name}} {{comment.last_name}} {{comment.phone}} {{comment.email}}</p>
   </div>
   <md-button ng-click="AIC.getComments()">View All</md-button>
+
+  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="myChart2" width="400" height="400"></canvas>
+  <canvas id="myChart3" width="400" height="400"></canvas>
+  <canvas id="myChart4" width="400" height="400"></canvas>
+  <canvas id="myChart5" width="400" height="400"></canvas>
 
 
   <!-- <md-tabs>

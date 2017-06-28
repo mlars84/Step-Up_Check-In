@@ -1,6 +1,12 @@
 <div class="adminHomeStyle">
 	<div ng-init="AHC.getAdmins()">
-		<h2 >Step Up Admins</h2>
+		<md-toolbar id="toolbar" layout="column" style="height:50px">
+			<h1 id="toolBarText">Admin Home</h1>
+		</md-toolbar>
+		<md-card>
+			<div class="pickAdmin">
+				<h1>Step Up Admins</h1>
+			</div>
 		<md-content layout-gt-sm="row" layout-padding layout-align="center center">
 			<div ng-repeat="admin in AHC.adminObject.admins">
 				<h4>First Name:</h4>{{admin.firstname}}
@@ -9,14 +15,19 @@
 				<md-divider></md-divider>
 				<h4>Email:</h4>{{admin.email}}
 				<md-divider></md-divider>
-				<button ng-click="AHC.deleteAdmins(admin.id)"  md-button style="background-color: #F68628" >Remove</button>
+				<div class="dialog-content" layout="row" layout-wrap layout-margin layout-align="center">
+					<md-button class="md-primary md-raised" ng-click="AHC.deleteAdmins($event, admin.id)" style="background-color: #F68628" >
+			       Remove
+			     </md-button>
 			</div>
 			<md-divider></md-divider>
 		</md-content>
 	</div>
+	</md-card>
+	<md-card>
 	<div layout-gt-sm="row" layout-padding  layout-align="center center">
 		<md-content>
-			<h2>Add New Admin</h2>
+			<h1>Add New Admin</h1>
 			<md-input-container>
 				<label>First Name</label>
 				<input ng-model="AHC.adminFirstNameIn" type="name">
@@ -34,4 +45,5 @@
 			<button ng-click="AHC.postAdmins(AHC.adminFirstNameIn, AHC.adminLastNameIn, AHC.adminEmailIn)" md-button class="md-raised md-primary" style="background-color: #008AC0">Add New Admin</button>
 		</md-content>
 	</div>
+	</md-card>
 </div>

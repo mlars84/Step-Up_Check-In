@@ -2,44 +2,80 @@
 General/Index
 ****************************/
 
-html, body, nav, .navPad {
-  background-color: #e8e8ee;
+html, body, nav {
+  background-color: white;
 }
 
 #toolbar {
   background-color: #008AC0;
   color: white;
+  margin: .5em;
 }
 
 #toolBarText {
   margin-left: 3vmin;
+  font-size: 1.2em;
 }
 
-.StepUp {
+/*.StepUp {
   text-align: center;
+}*/
+
+md-nav-bar md-nav-ink-bar {
+  display: inline;
+  /*background-color: green;*/
+}
+
+ .navPad {
+   /*background-color:;*/
+   display: inline;
+   clear: both;
+ }
+
+.navbar {
+  margin: 0px;
+  padding: 0px;
+  /*text-align: center;*/
+  display: inline;
+
+}
+
+.md-content {
+  margin:0px;
+  padding:0px;
+}
+
+.hello {
+  align-items: baseline;
 }
 
 .stepUp {
-  height: 35%;
-  width: 35%;
-  margin: auto;
+  height: auto;
+  width: 150px;
+  /*margin: auto;*/
+  display: inline;
+  align-self: left;
+  align-content: left;
+
+  /*position: absolute;*/
   /*margin: -1em;*/
   /*padding: 10px;*/
+  margin: 0px;
 }
 
 .CheckIn {
-  text-align: center;
+  /*text-align: center;*/
   font-family: 'Oswald', sans-serif;
   color: #008AC0;
   text-decoration: underline;
-  font-size: 5vw;
+  /*font-size: 5vw;*/
 }
 
 .CheckInSpan {
-  text-align: center;
+  /*text-align: center;*/
   font-family: 'Oswald', sans-serif;
   color: #F68628;
-  font-size: 5vw;
+  /*font-size: 5vw;*/
 }
 
 /* nav */
@@ -124,7 +160,7 @@ Import-Export
  }
 
  #progress_bar .percent {
-   background-color: #99ccff;
+   background-color: #008AC0;
    height: auto;
    width: 0;
  }
@@ -149,15 +185,15 @@ updateQuestion
 
 .updateQuestions {
   /*text-align: center;*/
-  font-family: 'Oswald', sans-serif;
+  /*font-family: 'Oswald', sans-serif;*/
 }
 
 .adminHomeStyle{
-  font-family: 'Oswald', sans-serif;
+  /*font-family: 'Oswald', sans-serif;*/
 }
 
 .pickQuestions,
-.create {
+.create, .pickAdmin{
   text-align: center;
 }
 

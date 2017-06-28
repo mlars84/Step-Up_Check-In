@@ -1,4 +1,4 @@
-googleAuthApp.service('adminHomeService', function($http) {
+googleAuthApp.service('adminHomeService', function($http, $mdDialog) {
   const self = this;
 
   self.adminObject = {};
@@ -11,12 +11,6 @@ googleAuthApp.service('adminHomeService', function($http) {
     }).then(function(response) {
       console.log('response =>', response.data);
       self.adminObject.admins = response.data;
-      // for (var i = 0; i < response.data.length; i++) {
-      //   console.log('this is the response log',response.data[i]);
-      //   vm.adminArray.push(response.data[i]);
-      //   console.log('vm.adminArray',vm.adminArray);
-      // return response.data;
-      // }//end for
     });
   }; //end getAdmins
 
@@ -40,8 +34,16 @@ googleAuthApp.service('adminHomeService', function($http) {
     }); //end response
   }; //end postAdmins
 
-  self.deleteAdmins = function(id) {
-    console.log('in deleteAdmins');
+ self.deleteAdmins = function(ev, id) {
+  var confirm = $mdDialog.confirm()
+        .title('Would you like to delete this user from the system?')
+        .ariaLabel('Delete admin')
+        .targetEvent(ev)
+        .ok('Delete Admin User')
+        .cancel('Cancel');
+
+  $mdDialog.show(confirm).then(function() {
+    self.status = 'Admin User is deleted';
     $http({
       method: 'DELETE',
       url: '/private/deleteAdmins',
@@ -49,7 +51,22 @@ googleAuthApp.service('adminHomeService', function($http) {
     }).then(function(response) {
       console.log(response);
       self.getAdmins();
-    });
-  }; //end deleteAdmins
+    }); //end then
+  }, function() {
+    self.status = 'user was not deleted, Thank you.';
+  });// end confirm dialogue
+}; //end showconfirm
 
+
+// self.deleteAdmins = function(id) {
+//  console.log('in deleteAdmins');
+//  $http({
+//    method: 'DELETE',
+//    url: '/private/deleteAdmins',
+//    params: {id : id}
+//  }).then(function(response) {
+//    console.log(response);
+//    self.getAdmins();
+//  }); //end then
+//  };
 }); //end adminHomeService

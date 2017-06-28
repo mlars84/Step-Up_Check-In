@@ -22,13 +22,6 @@ router.get('/', function(req, res) {
       console.log('connected to database');
       let allFlags = connection.query("SELECT response_num.response_num, response_num.created, interns.first_name, interns.last_name, interns.email, interns.phone FROM response_num INNER JOIN interns ON response_num.intern_id = interns.primarykey INNER JOIN questions ON response_num.question_id = questions.id WHERE questions.flagged=TRUE AND response_num.response_num = 1 OR response_num.response_num = 2");
 
-
-      // SELECT animal.ID, breed1.BreedName as BreedName1, breed2.BreadName as BreadName2
-      // FROM animal
-      //    LEFT JOIN breed as breed1 ON animal.breedID=breed1.ID
-      //    LEFT JOIN breed as breed2 ON animal.breedID=breed2.ID
-      // WHERE animal.ID='7';
-
       allFlags.on('row', function(row){
         internflags.push(row);
       });
