@@ -49,8 +49,6 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
     }).then(function(res) {
       console.log(res.data);
       window.open('/private/exportResponseData/');
-      // let route = '/private/exportResponseData/interns_responses.csv' + res.data;
-      // console.log(route);
     });
   }; //end exportResponseData
 
