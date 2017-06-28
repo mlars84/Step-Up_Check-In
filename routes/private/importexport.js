@@ -97,12 +97,35 @@ router.put('/', function(req, res) {
 router.get('/', function(req, res) {
   console.log('in exportResponseData GET route');
   pool.connect(function(error, db, done) {
-    if (error) {
-      console.log('exportResponseData error =>', error);
-    } else {
-      let resultSet = db.query('SELECT * FROM ')
-    }
-  });
+      if(" exportResponseData route error =>", error) {
+        res.sendStatus(500);
+      } else {
+        // query that selects all volunteer hours for a selected period of time
+        let jsonQuery = "SELECT interns.primarykey, interns.first_name, interns.last_name, interns.email, interns.phone, interns.supervisor, interns.company, stepup_group.group_name, response_num.response_num, response_num.created, questions.q_text FROM interns INNER JOIN stepup_group ON interns.stepup_group_id = stepup_group.id INNER JOIN response_num ON interns.primarykey = response_num.intern_id INNER JOIN questions ON response_num.question_id = questions.id;";
+        db.query(jsonQuery, function(queryError,result) {
+          done();
+          if (queryError) {
+            console.log('queryError =>', queryError);
+            res.sendStatus(500);
+          } else {
+            // converts query resutl to JSON
+            let jsonString = JSON.stringify(result.rows);
+            let json = JSON.parse(jsonString);
+            // parameters for json2csv function
+            let responseData = {
+              data: json,
+              fields: ['primarykey', 'first_name', 'last_name', 'email', 'phone', 'supervisor', 'company', 'group_name', 'response_num', 'created', 'q_text'],
+              quotes: ''
+            };
+            // converts json data to csv
+            result = json2csv(responseData);
+            // sends csv file to client
+            res.attachment('interns_responses.csv');
+            res.status(200).send(result);
+          } // else
+        }); // db.query
+      } // else
+    });
 }); //end exportResponseData GET route
 
 module.exports = router;

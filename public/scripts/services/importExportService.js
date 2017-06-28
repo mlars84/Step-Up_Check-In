@@ -47,7 +47,7 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       method: 'GET',
       url: '/private/exportResponseData'
     }).then(function(res) {
-      console.log(res);
+      console.log(res.data);
     });
   }; //end exportResponseData
 
