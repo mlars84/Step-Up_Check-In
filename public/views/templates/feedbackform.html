@@ -1,16 +1,16 @@
-<DIV class="feedbackform" ng-init="FBFC.getQuestions()">
+<DIV  ng-init="FBFC.getQuestions()">
 
 	<!-- FBFC.checkEmail(FBFC.useremail) -->
 	<md-toolbar id="toolbar" layout="column" style="height:50px">
     <h1 id="toolBarText">Intern Weekly Feedback</h1>
   </md-toolbar>
 	<!-- <md-button ng-click="FBFC.getQuestions()">Get Questions</md-button> -->
-	<div>
+	<md-content class="pageContent feedbackform">
 		<form ng-submit="submit()" ng-cloak>
 
 			<div ng-repeat="question in FBFC.activeQuestions">
 				<div id="{{question.id}}">
-					<h3>Question {{question.count}}: {{question.q_text}}</h3>
+					<h3 class= "questionFeedback" >Question {{question.count}}: {{question.q_text}}</h3>
 					<md-radio-group ng-model="question.data" ng-required="true">
 
 						<md-radio-button value="1"> 1 </md-radio-button>
@@ -148,6 +148,7 @@
 
 			<br />
 
-			<md-button ng-click="FBFC.submitFeedback(comment, cb1)">Submit</md-button>
+			<md-button class = "mainButtons" ng-click="FBFC.submitFeedback(comment, cb1)">Submit</md-button>
 <!-- group1, group2, group3, group4, group5,  -->
+</md-content>
 	</DIV>

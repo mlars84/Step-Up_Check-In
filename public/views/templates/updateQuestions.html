@@ -2,11 +2,11 @@
   <md-toolbar id="toolbar" layout="column" style="height:50px">
     <h1 id="toolBarText">Update Weekly Questions</h1>
   </md-toolbar>
-  <div class="updateQuestions">
+  <div class="updateQuestions" layout="row">
     <br>
-    <md-card>
+    <md-card flex="60" layout-padding layout-margin>
     <div class="pickQuestions">
-      <h1>Pick Questions</h1>
+      <h2>Choose questions for the upcoming week:</h2>
     </div>
     <md-card-content>
       <div layout="column">
@@ -47,6 +47,14 @@
         </md-input-container>
      </div>
     <md-card-content>
+      <br>
+      <div class="sendSMS">
+        <md-button ng-click="UQC.sendQuestion()" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
+      </div>
+      <br>
+  </md-card>
+  <md-card flex="40" layout-padding layout-margin>
+
       <div class="sendSMS">
         <md-button ng-click="UQC.submitQuestion(UQC.active1In, UQC.active2In, UQC.active3In, UQC.active4In, UQC.active5In)" class="md-raised md-primary" id="submitQues">Submit Questions</md-button>
       </div>
@@ -63,7 +71,7 @@
       </md-input-container>
       <md-input-container class="md-block">
         <md-checkbox name="tos" ng-model="UQC.flaggedIn">
-          Yes, this is a flagged question.
+          This is a flagged question.
         </md-checkbox>
       </md-input-container>
       <div class="addQuestion">
