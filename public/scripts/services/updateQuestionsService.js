@@ -3,18 +3,6 @@ googleAuthApp.service('updateQuestionsService', function($http) {
   //global
   const self = this;
   self.questionCont = {};
-  // self.questionCont = [];
-
-  self.showAlert = function(message) {
-     $mdDialog.show(
-       $mdDialog.alert()
-       .clickOutsideToClose(true)
-       .title('This is an alert title')
-       .textContent('You can specify some description text in here.')
-       .ariaLabel('Alert Dialog Demo')
-       .ok('Got it!')
-      );
- };
 
   // begin addQuestion
   self.addQuestion = function(questionIn, flaggedIn) {
@@ -71,5 +59,20 @@ googleAuthApp.service('updateQuestionsService', function($http) {
 
   // NOTE
   self.grabQuestion(); // call function in order to see questions being grab
+
+  self.submitQuestion = function (){
+    console.log('Submit Question button clicked!');
+    let questionToSubmit = {
+      active: true
+    };// end questionToSubmit
+    console.log('questionToSubmit->', questionToSubmit);
+    $http({
+      method: 'PUT',
+      url: '/private/submitQuestion',
+      data: questionToSubmit
+    }).then(function(response){
+      console.log('active/inactive->', response.data);
+    });
+  };// end submitQuestion
 
 }); //end updateQuestionsService

@@ -8,6 +8,7 @@
  const importInterns = require('./importexport');
  const addQuestion = require('./updateq');
  const grabQuestion = require('./updateq');
+ const submitQuestion = require('./updateq'); // NOTE add submitQuestion
  const twilio = require('./twilio');
  const sendCSV = require('./importexport');
 
@@ -62,6 +63,7 @@ router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
 router.use('/grabQuestion', grabQuestion);
+router.use('/submitQuestion', submitQuestion);// NOTE add submitQuestion
 router.use('/sendQuestion', twilio);
 router.use('/checkemail', checkemail);
 router.use('/interndata', interndata);
