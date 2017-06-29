@@ -13,33 +13,28 @@ googleAuthApp.config(['$routeProvider', '$locationProvider','$mdThemingProvider'
   $routeProvider
   .when('/login', {
     templateUrl: '/public/views/templates/login.html',
-    controller: 'AuthController',
-    controllerAs: 'auth',
+    controller: 'AuthController as auth',
   })
   .when('/admin-home', {
     templateUrl: '/public/views/templates/admin-home.html',
-    controller: 'adminHomeController',
-    controllerAs: 'AHC',
+    controller: 'adminHomeController as AHC',
   })
   .when('/admin-intern', {
     templateUrl: '/public/views/templates/admin-intern.html',
-    controller: 'adminInternController',
-    controllerAs: 'AIC',
+    controller: 'adminInternController as AIC',
   })
   .when('/updateQuestions', {
     templateUrl: '/public/views/templates/updateQuestions.html',
-    controller: 'updateQuestionsController',
-    controllerAs: 'UQC',
+    controller: 'updateQuestionsController as UQC',
   })
   .when('/importExport', {
     templateUrl: '/public/views/templates/importExport.html',
-    controller: 'importExportController',
-    controllerAs: 'IEC',
+    controller: 'importExportController as IEC',
   })
   .when('/feedbackform', {
     templateUrl: '/public/views/templates/feedbackform.html',
-    controller: 'feedBackFormController',
-    controllerAs: 'FBFC',
+    controller: 'feedBackFormController as FBFC',
+    hideNavBar: true,
   })
   .otherwise({
     redirectTo: '/login',

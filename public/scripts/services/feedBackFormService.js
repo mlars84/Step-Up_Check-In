@@ -1,6 +1,7 @@
-googleAuthApp.service('feedBackFormService', function($http){
+googleAuthApp.service('feedBackFormService', ['$http', function($http){
   console.log("feedback form service");
-//
+  const vm = this;
+
 //   this.getQuestions = function(){
 //     console.log("in get questions");
 //     return $http({
@@ -39,4 +40,4 @@ googleAuthApp.service('feedBackFormService', function($http){
 //     return response;
 //   });
 // };
-});
+}]);
