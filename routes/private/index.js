@@ -38,6 +38,7 @@
  const checkadmin = require('./checkadmin');
  const exportResponseData = require('./importexport');
  const internAllData = require('./getInternData');
+ const checkIntern = require('./checkIntern');
 
 
 
@@ -57,6 +58,7 @@ router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
 router.use('/sendCSV', sendCSV);
 router.use('/exportResponseData', exportResponseData);
+router.use('/checkintern', checkIntern);
 
 
 // var questions = require('./questions');
