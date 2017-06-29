@@ -1,11 +1,19 @@
 <!-- Consider this the main view -->
 <!-- <h2 class="login">Login Page</h2> -->
+<span layout="column" flex="33" class = "toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
+<!-- <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span> -->
+
+
 <md-toolbar id="toolbar" layout="column">
-  <h1 id="toolBarText">Please Log In to Step Up Check In</h1>
+  <h1 id="toolBarText" style="align:center">Please Log In to Step Up Check In:</h1>
 </md-toolbar>
 <!-- Shown for users that are NOT logged in -->
 <section ng-hide="auth.loggedIn" class="signGoogle">
   <!-- I got this button image from Googles sign-in button brand guidelines page -->
+  <br />
+  <br />
+
+
   <a href= "/auth/google" ><img src="/public/assets/btn_google_signin_dark_normal_web.png" /></a>
 </section>
 <!-- Shown for users that are logged in -->

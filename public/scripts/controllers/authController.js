@@ -4,9 +4,6 @@ googleAuthApp.controller('AuthController', ['$http', 'AuthFactory', '$window', f
   // ('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', function ($http, AuthFactory, feedBackFormService)
   const self = this;
   var authFactory = AuthFactory;
-  // self.useremail = '';
-  // self.username = '';
-
 
 
   self.loggedIn = authFactory.checkLoggedIn(); // NOTE: only updated on page load
@@ -21,6 +18,8 @@ googleAuthApp.controller('AuthController', ['$http', 'AuthFactory', '$window', f
       console.log(response.data);
       console.log(response.data.email);
       checkEmail(response.data.email);
+      // checkInternEmail(response.data.email);
+      // redirectUser();
 
     } else { // is not logged in on server
       self.displayLogout = false;
@@ -43,33 +42,54 @@ googleAuthApp.controller('AuthController', ['$http', 'AuthFactory', '$window', f
       url: '/private/checkadmin/'+email,
     }).then( function( response ){
       console.log("user info -->", response);
-      // self.internid = response.data[0].primarykey;
       console.log("email checked!!!");
-      // console.log(self.internid);
       if (response.data.length === 1){
         console.log("successful login, welcome admin");
+        admin = true;
+        console.log(admin);
         window.location = "/#/admin-intern";
 
       }
       if (response.data.length === 0){
         console.log("You're not an admin, and you will be logged out");
-        authFactory.logout()
-          .then(function (response) { // success
-            authFactory.setLoggedIn(false);
-            self.username = '';
-            $window.location.href = '/'; // forces a page reload which will update our NavController
-          },
+        console.log("in check email route on client for intern");
+        console.log("checking this email: ", email);
 
-          function (response) { // error
-            _this.message.text = 'Unable to logout';
-            _this.message.type = 'error';
-          });
-        // authFactory.setLoggedIn(false);
-        // authFactory.logout();
-        // window.location = "/#/login";
+        return $http({
+          method: 'GET',
+          url: '/private/checkintern/'+email,
+        }).then( function( response ){
+          console.log("user info -->", response);
+          // self.internid = response.data[0].primarykey;
+          console.log("email checked!!!");
+          // console.log(self.internid);
+          if (response.data.length === 1){
+            console.log("successful login, welcome intern");
+            intern = true;
+            window.location = "/#/feedbackform";
+
+          }
+          if (response.data.length === 0){
+            console.log("You're not an intern or an admin, and you will be logged out");
+            authFactory.logout()
+              .then(function (response) { // success
+                authFactory.setLoggedIn(false);
+                self.username = '';
+                $window.location.href = '/'; // forces a page reload which will update our NavController
+              },
+
+              function (response) { // error
+                _this.message.text = 'Unable to logout';
+                _this.message.type = 'error';
+              });
+
+          }
+        });
 
       }
     });
   };
+
+
 
 }]);
