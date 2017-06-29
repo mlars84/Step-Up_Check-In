@@ -10,6 +10,7 @@ googleAuthApp.config(['$routeProvider', '$locationProvider','$mdThemingProvider'
 
 
 
+
   $routeProvider
   .when('/login', {
     templateUrl: '/public/views/templates/login.html',

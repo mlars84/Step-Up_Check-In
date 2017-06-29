@@ -22,16 +22,14 @@ html, body, nav {
   text-align: center;
 }*/
 
-md-nav-bar md-nav-ink-bar {
-  display: inline;
-  /*background-color: green;*/
+md-nav-bar .md-button._md-nav-button.md-unselected {
+  color: rgb(0,138,192);
 }
-
- .navPad {
-   /*background-color:;*/
-   display: inline;
-   clear: both;
- }
+md-list {
+    padding: 10px 14;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(0,138,192);
+}
 
 .navbar {
   margin: 0px;
@@ -73,12 +71,11 @@ md-nav-bar md-nav-ink-bar {
   /*text-align: center;*/
   font-family: 'Oswald', sans-serif;
   color: #F68628;
-  /*font-size: 5vw;*/
 }
 
 /* nav */
 nav {
-  text-align: right;
+  text-align: left;
 }
 
 a:link {
@@ -91,6 +88,7 @@ a:hover {
 
 a:visited {
   color: #F68628;
+
 }
 
 body {
@@ -139,9 +137,7 @@ feddbackform
 
 }
 
-/***************************
-Import-Export
-****************************/
+
 .importExportMain {
   /*margin-left: 3vmin;*/
 }
@@ -186,25 +182,6 @@ Login
   text-align: center;
 }
 
-/***************************
-updateQuestion
-****************************/
-
-.updateQuestions {
-  /*text-align: center;*/
-  /*font-family: 'Oswald', sans-serif;*/
-}
-
-.adminHomeStyle{
-  /*font-family: 'Oswald', sans-serif;*/
-}
-
-.pickQuestions,
-.create, .pickAdmin{
-  /*text-align: center;*/
-  /*margin: 4vmin;*/
-
-}
 
 #addQuestion {
   background-color: #008AC0;
