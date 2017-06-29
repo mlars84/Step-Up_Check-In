@@ -1,30 +1,29 @@
 googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', '$mdDialog', function ($http, AuthFactory, feedBackFormService, $mdDialog) {
   //'feedBackFormService'
-
   console.log('loaded feedBackFormController');
-  const self = this;
-  self.activeQuestions = [];
+  const vm = this;
+
+  vm.activeQuestions = [];
   authFactory = AuthFactory;
-  self.internid = 0;
-  self.useremail = '';
-  self.username = '';
-  // self.getQuestions();
+  vm.internid = 0;
+  vm.useremail = '';
+  vm.username = '';
+  // vm.getQuestions();
 
-
-  self.getQuestions = function(){
+  vm.getQuestions = function(){
     console.log("in get questions!");
     return $http({
       method: 'GET',
       url: '/private/getQuestions'
     }).then(function(response){
       // console.log("response from server in get Questions", response.data);
-      self.activeQuestions = response.data;
-      console.log(self.activeQuestions);
-      for (var i = 0; i < self.activeQuestions.length; i++) {
-        self.activeQuestions[i].count = i+1;
-        self.activeQuestions[i].group = "group"+(i+1);
+      vm.activeQuestions = response.data;
+      console.log(vm.activeQuestions);
+      for (var i = 0; i < vm.activeQuestions.length; i++) {
+        vm.activeQuestions[i].count = i+1;
+        vm.activeQuestions[i].group = "group"+(i+1);
       }
-      console.log(self.activeQuestions);
+      console.log(vm.activeQuestions);
       return response.data;
     });
   }; // end getQuestions
@@ -33,16 +32,16 @@ googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feed
   authFactory.isLoggedIn()
   .then(function (response) {
     if (response.data.status) {
-      self.displayLogout = true;
+      vm.displayLogout = true;
       authFactory.setLoggedIn(true);
-      self.username = response.data;
-      self.useremail = response.data.email;
+      vm.username = response.data;
+      vm.useremail = response.data.email;
       console.log(response.data);
       console.log(response.data.email);
       checkEmail(response.data.email);
 
     } else { // is not logged in on server
-      self.displayLogout = false;
+      vm.displayLogout = false;
       authFactory.setLoggedIn(false);
     }
   },
@@ -62,17 +61,17 @@ googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feed
       url: '/private/checkemail/'+email,
     }).then( function( response ){
       console.log("student id -->", response.data[0].primarykey);
-      self.internid = response.data[0].primarykey;
+      vm.internid = response.data[0].primarykey;
       console.log("email checked!!!");
-      console.log(self.internid);
+      console.log(vm.internid);
     });
   };
 
-  self.submitFeedback = function(comment, checkbox){
+  vm.submitFeedback = function(comment, checkbox){
 
     console.log(comment, checkbox);
-    console.log(self.activeQuestions);
-    self.showAlert("Your feedback has been submitted.");
+    console.log(vm.activeQuestions);
+    vm.showAlert("Your feedback has been submitted.");
     let checkbox2 = false;
     if (checkbox === undefined) {
       checkbox2 = false;
@@ -82,19 +81,19 @@ googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feed
     }
 
     responseToSend = {
-      question1id: self.activeQuestions[0].id,
-      question1: self.activeQuestions[0].data,
-      question2id: self.activeQuestions[1].id,
-      question2: self.activeQuestions[1].data,
-      question3id: self.activeQuestions[2].id,
-      question3: self.activeQuestions[2].data,
-      question4id: self.activeQuestions[3].id,
-      question4: self.activeQuestions[3].data,
-      question5id: self.activeQuestions[4].id,
-      question5: self.activeQuestions[4].data,
+      question1id: vm.activeQuestions[0].id,
+      question1: vm.activeQuestions[0].data,
+      question2id: vm.activeQuestions[1].id,
+      question2: vm.activeQuestions[1].data,
+      question3id: vm.activeQuestions[2].id,
+      question3: vm.activeQuestions[2].data,
+      question4id: vm.activeQuestions[3].id,
+      question4: vm.activeQuestions[3].data,
+      question5id: vm.activeQuestions[4].id,
+      question5: vm.activeQuestions[4].data,
       comment: comment,
       checkbox: checkbox2,
-      internid: self.internid
+      internid: vm.internid
     };
     console.log(responseToSend);
 
@@ -108,7 +107,7 @@ googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feed
     });
   };
 
-  self.showAlert = function(message) {
+  vm.showAlert = function(message) {
     $mdDialog.show(
       $mdDialog.alert()
       .clickOutsideToClose(true)

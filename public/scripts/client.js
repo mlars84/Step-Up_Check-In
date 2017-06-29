@@ -34,7 +34,6 @@ googleAuthApp.config(['$routeProvider', '$locationProvider','$mdThemingProvider'
   .when('/feedbackform', {
     templateUrl: '/public/views/templates/feedbackform.html',
     controller: 'feedBackFormController as FBFC',
-    hideNavBar: true,
   })
   .otherwise({
     redirectTo: '/login',

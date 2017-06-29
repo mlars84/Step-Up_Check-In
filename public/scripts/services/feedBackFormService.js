@@ -1,6 +1,10 @@
 googleAuthApp.service('feedBackFormService', ['$http', function($http){
   console.log("feedback form service");
-  const vm = this;
+  const self = this;
+
+  self.navBar = false;
+
+
 
 //   this.getQuestions = function(){
 //     console.log("in get questions");
