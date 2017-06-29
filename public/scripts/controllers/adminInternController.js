@@ -144,18 +144,18 @@ var myChart = new Chart(ctx, {
             label: '# of responses',
             data: [theObject.one, theObject.two, theObject.three, theObject.four, theObject.five],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderWidth: 1
         }]
@@ -165,7 +165,7 @@ var myChart = new Chart(ctx, {
             display: true,
             text: theObject.question_text
         },
-        responsive: false,
+        responsive: true,
         scales: {
             yAxes: [{
                 ticks: {
@@ -188,18 +188,18 @@ var myChart2 = new Chart(ctx, {
             label: '# of responses',
             data: [theObject.one, theObject.two, theObject.three, theObject.four, theObject.five],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderWidth: 1
         }]
@@ -209,7 +209,7 @@ var myChart2 = new Chart(ctx, {
             display: true,
             text: theObject.question_text
         },
-        responsive: false,
+        responsive: true,
         scales: {
             yAxes: [{
                 ticks: {
@@ -232,18 +232,18 @@ var myChart3 = new Chart(ctx, {
             label: '# of responses',
             data: [theObject.one, theObject.two, theObject.three, theObject.four, theObject.five],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderWidth: 1
         }]
@@ -253,7 +253,7 @@ var myChart3 = new Chart(ctx, {
             display: true,
             text: theObject.question_text
         },
-        responsive: false,
+        responsive: true,
         scales: {
             yAxes: [{
                 ticks: {
@@ -276,18 +276,18 @@ var myChart4 = new Chart(ctx, {
             label: '# of responses',
             data: [theObject.one, theObject.two, theObject.three, theObject.four, theObject.five],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderWidth: 1
         }]
@@ -297,7 +297,7 @@ var myChart4 = new Chart(ctx, {
             display: true,
             text: theObject.question_text
         },
-        responsive: false,
+        responsive: true,
         scales: {
             yAxes: [{
                 ticks: {
@@ -320,18 +320,18 @@ var myChart4 = new Chart(ctx, {
             label: '# of responses',
             data: [theObject.one, theObject.two, theObject.three, theObject.four, theObject.five],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
+                '#03a9f4',
             ],
             borderWidth: 1
         }]
@@ -341,7 +341,7 @@ var myChart4 = new Chart(ctx, {
             display: true,
             text: theObject.question_text
         },
-        responsive: false,
+        responsive: true,
         scales: {
             yAxes: [{
                 ticks: {

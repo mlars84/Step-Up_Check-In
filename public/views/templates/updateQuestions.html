@@ -1,5 +1,5 @@
 <main class="container" ng-app="theGoogles">
-  <md-toolbar id="toolbar" layout="column" style="height:50px">
+  <md-toolbar id="toolbar" layout="column">
     <h1 id="toolBarText">Update Weekly Questions</h1>
   </md-toolbar>
   <div class="updateQuestions" layout="row">
@@ -45,26 +45,33 @@
             <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
+        <div class="sendSMS">
+          <md-button ng-click="UQC.submitQuestion(UQC.active1In, UQC.active2In, UQC.active3In, UQC.active4In, UQC.active5In)" class="md-raised md-primary" id="submitQues">Submit Questions</md-button>
+        </div>
+        <br />
+        <md-divider></md-divider>
+        <br />
+        <!-- <md-hr> -->
+        <div class="sendSMS">
+          <md-button ng-click="UQC.sendQuestion($event)" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
+        </div>
      </div>
     <md-card-content>
-      <br>
+      <!-- <br>
       <div class="sendSMS">
         <md-button ng-click="UQC.sendQuestion()" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
       </div>
-      <br>
+      <br> -->
   </md-card>
-  <md-card flex="40" layout-padding layout-margin>
+  <!-- <md-card flex="40" layout-padding layout-margin>
 
       <div class="sendSMS">
         <md-button ng-click="UQC.submitQuestion(UQC.active1In, UQC.active2In, UQC.active3In, UQC.active4In, UQC.active5In)" class="md-raised md-primary" id="submitQues">Submit Questions</md-button>
       </div>
-  </md-card>
-  <br>
-  <md-card>
-    <div class="create">
+  </md-card> -->
+  <!-- <br> -->
+  <md-card flex layout-padding layout-margin>
       <h2>Create New Question</h2>
-    </div>
-    <div>
       <md-input-container class="md-block">
         <label>Enter Question</label>
         <input ng-model="UQC.questionIn" type="text" ng-value="UQC.value">
@@ -77,13 +84,13 @@
       <div class="addQuestion">
         <md-button ng-click ="UQC.addQuestion($event, UQC.questionIn, UQC.flaggedIn)" class="md-raised md-primary" id="addQuestion">Add Question</md-button>
       </div>
-    </div>
     </md-card>
+    <!-- <br>
     <br>
-    <br>
-    <div class="sendSMS">
+     RIGHT BUTTON: -->
+    <!-- <div class="sendSMS">
       <md-button ng-click="UQC.sendQuestion($event)" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
     </div>
-    <br>
-  </div>
+    <br> -->
+  <!-- </div> -->
 </main>
