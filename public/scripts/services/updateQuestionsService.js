@@ -19,44 +19,51 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
     console.log('add question button clicked', questionIn);
     if(flaggedIn === undefined){
       flaggedIn = false;
-    }
+    }// end if
     let objectToSend = {
       q_text: questionIn,
       active: false,
       flagged: flaggedIn
     }; // end objectToSend
     console.log('update objectToSend', objectToSend);
-  var confirm = $mdDialog.confirm()
-    .title('Add Question to System?')
-    .textContent('Question will be added to System.')
-    .ariaLabel('Lucky day')
-    .targetEvent(ev)
-    .ok('ADD!')
-    .cancel('Cancel!');
-  $mdDialog.show(confirm).then(function() {
+    let confirm = $mdDialog.confirm()
+      .title('Add Question to System?')
+      .textContent('Question will be added to System.')
+      .ariaLabel('Lucky day')
+      .targetEvent(ev)
+      .ok('ADD')
+      .cancel('Cancel');
+    $mdDialog.show(confirm).then(function() {
     self.status = 'Question was not ADDED!';
     $http({
       method: 'POST',
       url: '/private/addQuestion',
       data: objectToSend
-    }).then(function(res) {
-      console.log('back from the server with', res.data);
+    }).then(function(response) {
+      console.log('back from the server with', response.data);
     });// end $http
-  }, function() {
-    self.status = 'Question Added!';
-  });
+
+    }, function() {
+      self.status = 'Question Added!';
+    });// end angular alert
+    self.clearInputs();
   }; // end updateQuestion
+
+  self.clearInputs = function () {
+    self.questionIn = '';
+    self.flaggedIn = '';
+  }; // end clearInputs
 
   // begin sendQuestion
   self.sendQuestion = function (ev){
     console.log('Send Question button clicked!');
-    var confirm = $mdDialog.confirm()
+    let confirm = $mdDialog.confirm()
       .title('Send Feedback Link?')
       .textContent('SMS will be sent to Interns.')
       .ariaLabel('Lucky day')
       .targetEvent(ev)
-      .ok('Send!')
-      .cancel('Cancel!');
+      .ok('Send')
+      .cancel('Cancel');
     $mdDialog.show(confirm).then(function() {
       self.status = 'Feedback Link NOT sent!';
     $http({
@@ -86,7 +93,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   // NOTE
   self.grabQuestion(); // call function in order to see questions being grab
 
-  self.submitQuestion = function (active1In, active2In, active3In, active4In, active5In){
+  self.submitQuestion = function (ev, active1In, active2In, active3In, active4In, active5In){
     console.log('Submit Question button clicked!->', active1In, active2In, active3In, active4In, active5In);
     let questionToSubmit = {
       active1: active1In,
@@ -102,6 +109,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
       data: questionToSubmit
     }).then(function(response){
       console.log('active/inactive->', response.data);
+      self.showAlert('Question Added to System.');
     });
   };// end submitQuestion
 
