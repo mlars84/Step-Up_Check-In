@@ -5,6 +5,7 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
   self.lastNameMatch = {name: []};
   self.internCSV = [];
 
+  //function for mdDialog alerts
   self.showAlert = function(message) {
     $mdDialog.show(
       $mdDialog.alert()
@@ -13,6 +14,11 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       .ariaLabel(message)
       .ok('Ok')
     );
+  }; //end showAlert
+
+  //function to clearInputs
+  self.clearInputs = function() {
+    self.lastNameIn = '';
   };
 
   self.sendCSV = function(csv) {
@@ -68,8 +74,10 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
           console.log("self.lastNameMatch =>", self.lastNameMatch);
         }
       }
+
     });
   }; //end searchByLastName
+  self.clearInputs();
 
   //function to completely remove an intern from the database
   self.removeIntern = function(ev, primarykey, lastname) {
