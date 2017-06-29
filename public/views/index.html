@@ -41,43 +41,26 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
-  <!-- Bring in the Angular app -->
   <main class="container" ng-app="theGoogles">
-    <!-- NavController is on every page -->
     <header ng-controller="NavController as nav">
-      <!-- <div class="StepUp"> -->
-        <!-- <img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"> -->
-        <!-- <h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2> -->
-      <!-- </div> -->
-
-
-      <!-- <md-list layout="row" layout-align="center" class="six columns" ng-show="nav.displayLogout">Hi {{nav.username}}! | <a href="#" ng-click="nav.logout()">Logout</a></md-list> -->
       <div layout="row" ng-show="nav.navBar" >
-
-          <md-nav-bar layout-padding layout-margin aria-label = "navigation " layout-align="end start">
-            <span layout="column" flex="33" class = "toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
-            <!-- <span layout="row" layout-align="space-between center"><img class="stepUp" style= "align: right" layout-align="left" src="public/image/STEP-UP logo no tag with white.jpg" ></span> -->
-              <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span>
+          <md-nav-bar class="navBar" layout-align="end start" layout-padding layout-margin aria-label="navigation">
+            <span layout="column" flex="33" class="toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
+            <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span>
             <span layout= "row"><md-nav-item md-nav-href="#admin-intern" name="Feedback">Feedback</md-nav-item>
             <md-nav-item md-nav-href="#updateQuestions" name="Update Questions">Questions</md-nav-item>
             <md-nav-item md-nav-href="#importExport" name="Import/Export">Import/Export</md-nav-item>
-            <md-nav-item md-nav-href="#admin-home" name="Admin">Admins</md-nav-item>
+            <md-nav-item md-nav-href="#admin-home" name="Admin">Admin</md-nav-item>
             <md-nav-item md-nav-href="#feedbackform" name="Feedback Form">Feedback Form</md-nav-item></span>
             <md-list layout="row" layout-align="end stretch" ng-show="nav.displayLogout">{{nav.username}}|<a href="#" ng-click="nav.logout()">Logout</a></md-list>
-
           </md-nav-bar>
       </div>
-
-
-  </nav>
   <!-- Show a helpful message when needed -->
   <section id="message" class="nav.message.type" ng-show="nav.message.text">
     {{nav.message.text}}
   </section>
 </header>
-<!-- Pull in views via ngRoutes here -->
 <ng-view></ng-view>
 </main>
 </body>
-
 </html>

@@ -1,9 +1,9 @@
-<DIV  ng-init="FBFC.getQuestions()">
+<div ng-init="FBFC.getQuestions()">
 
 	<!-- FBFC.checkEmail(FBFC.useremail) -->
 	<md-toolbar id="toolbar" layout="column">
-    <h1 id="toolBarText">Weekly Feedback</h1>
-  </md-toolbar>
+		<h1 id="toolBarText">Weekly Feedback</h1>
+	</md-toolbar>
 	<!-- <md-button ng-click="FBFC.getQuestions()">Get Questions</md-button> -->
 	<md-content class="pageContent feedbackform">
 		<form ng-submit="submit()" ng-cloak>
@@ -44,111 +44,116 @@
 
 			<!-- <md-radio-group ng-model="group1">
 
-				<md-radio-button value="1"> 1 </md-radio-button>
-				<md-radio-button value="2"> 2 </md-radio-button>
-				<md-radio-button value="3"> 3</md-radio-button>
-				<md-radio-button value="4"> 4</md-radio-button>
-				<md-radio-button value="5"> 5</md-radio-button>
-				<md-radio-button value="1"> not properly trained at all </md-radio-button>
-				<md-radio-button value="2"> not properly trained </md-radio-button>
-				<md-radio-button value="3"> somewhat properly trained</md-radio-button>
-				<md-radio-button value="4"> properly trained</md-radio-button>
-				<md-radio-button value="5"> very properly trained</md-radio-button>
 
-			</md-radio-group>
+			<md-button class = "mainButtons" ng-click="FBFC.submitFeedback(comment, cb1)" ng-href="/">Submit</md-button>
 
-			<h3 ng-model="q2" value="3">Question 2: How challenging are your daily work tasks? </h3>
-			<p>Selected Value: <span class="radioValue">{{ group2 }}</span> </p>
+			<md-radio-button value="1"> 1 </md-radio-button>
+			<md-radio-button value="2"> 2 </md-radio-button>
+			<md-radio-button value="3"> 3</md-radio-button>
+			<md-radio-button value="4"> 4</md-radio-button>
+			<md-radio-button value="5"> 5</md-radio-button>
+			<md-radio-button value="1"> not properly trained at all </md-radio-button>
+			<md-radio-button value="2"> not properly trained </md-radio-button>
+			<md-radio-button value="3"> somewhat properly trained</md-radio-button>
+			<md-radio-button value="4"> properly trained</md-radio-button>
+			<md-radio-button value="5"> very properly trained</md-radio-button>
 
-			<md-radio-group ng-model="group2">
+		</md-radio-group>
 
-				<md-radio-button value="1"> 1 </md-radio-button>
-				<md-radio-button value="2"> 2 </md-radio-button>
-				<md-radio-button value="3"> 3</md-radio-button>
-				<md-radio-button value="4"> 4</md-radio-button>
-				<md-radio-button value="5"> 5</md-radio-button>
-				<md-radio-button value="1">not challenging at all</md-radio-button>
-				<md-radio-button value="2">not very challenging</md-radio-button>
-				<md-radio-button value="3">somewhat challenging</md-radio-button>
-				<md-radio-button value="4">challenging</md-radio-button>
-				<md-radio-button value="5">very challenging</md-radio-button>
+		<h3 ng-model="q2" value="3">Question 2: How challenging are your daily work tasks? </h3>
+		<p>Selected Value: <span class="radioValue">{{ group2 }}</span> </p>
 
-			</md-radio-group>
+		<md-radio-group ng-model="group2">
 
-			<h3 ng-model="q3" value="4">Question 3: How supportive is your supervisor? </h3>
-			<p>Selected Value: <span class="radioValue">{{ group3 }}</span> </p>
+		<md-radio-button value="1"> 1 </md-radio-button>
+		<md-radio-button value="2"> 2 </md-radio-button>
+		<md-radio-button value="3"> 3</md-radio-button>
+		<md-radio-button value="4"> 4</md-radio-button>
+		<md-radio-button value="5"> 5</md-radio-button>
+		<md-radio-button value="1">not challenging at all</md-radio-button>
+		<md-radio-button value="2">not very challenging</md-radio-button>
+		<md-radio-button value="3">somewhat challenging</md-radio-button>
+		<md-radio-button value="4">challenging</md-radio-button>
+		<md-radio-button value="5">very challenging</md-radio-button>
 
-			<md-radio-group ng-model="group3">
+	</md-radio-group>
 
-				<md-radio-button value="1"> 1 </md-radio-button>
-				<md-radio-button value="2"> 2 </md-radio-button>
-				<md-radio-button value="3"> 3</md-radio-button>
-				<md-radio-button value="4"> 4</md-radio-button>
-				<md-radio-button value="5"> 5</md-radio-button>
-				<md-radio-button value="1">not supportive at all</md-radio-button>
-				<md-radio-button value="2">not very supportive</md-radio-button>
-				<md-radio-button value="3">somewhat supportive</md-radio-button>
-				<md-radio-button value="4">supportive</md-radio-button>
-				<md-radio-button value="5">very supportive</md-radio-button>
+	<h3 ng-model="q3" value="4">Question 3: How supportive is your supervisor? </h3>
+	<p>Selected Value: <span class="radioValue">{{ group3 }}</span> </p>
 
-			</md-radio-group>
+	<md-radio-group ng-model="group3">
 
-			<h3 ng-model="q4" value="5">Question 4: Do you like your internship? </h3>
-			<p>Selected Value: <span class="radioValue">{{ group4 }}</span> </p>
+	<md-radio-button value="1"> 1 </md-radio-button>
+	<md-radio-button value="2"> 2 </md-radio-button>
+	<md-radio-button value="3"> 3</md-radio-button>
+	<md-radio-button value="4"> 4</md-radio-button>
+	<md-radio-button value="5"> 5</md-radio-button>
+	<md-radio-button value="1">not supportive at all</md-radio-button>
+	<md-radio-button value="2">not very supportive</md-radio-button>
+	<md-radio-button value="3">somewhat supportive</md-radio-button>
+	<md-radio-button value="4">supportive</md-radio-button>
+	<md-radio-button value="5">very supportive</md-radio-button>
 
-			<md-radio-group ng-model="group4">
+</md-radio-group>
 
-				<md-radio-button value="1"> 1 </md-radio-button>
-				<md-radio-button value="2"> 2 </md-radio-button>
-				<md-radio-button value="3"> 3</md-radio-button>
-				<md-radio-button value="4"> 4</md-radio-button>
-				<md-radio-button value="5"> 5</md-radio-button>
-				<md-radio-button value="1">I do not like my internship at all</md-radio-button>
-				<md-radio-button value="2">I don't really like my internship</md-radio-button>
-				<md-radio-button value="3">My internship is okay</md-radio-button>
-				<md-radio-button value="4">I like my internship</md-radio-button>
-				<md-radio-button value="5">I like my internship very much!</md-radio-button>
+<h3 ng-model="q4" value="5">Question 4: Do you like your internship? </h3>
+<p>Selected Value: <span class="radioValue">{{ group4 }}</span> </p>
 
-			</md-radio-group>
+<md-radio-group ng-model="group4">
+
+<md-radio-button value="1"> 1 </md-radio-button>
+<md-radio-button value="2"> 2 </md-radio-button>
+<md-radio-button value="3"> 3</md-radio-button>
+<md-radio-button value="4"> 4</md-radio-button>
+<md-radio-button value="5"> 5</md-radio-button>
+<md-radio-button value="1">I do not like my internship at all</md-radio-button>
+<md-radio-button value="2">I don't really like my internship</md-radio-button>
+<md-radio-button value="3">My internship is okay</md-radio-button>
+<md-radio-button value="4">I like my internship</md-radio-button>
+<md-radio-button value="5">I like my internship very much!</md-radio-button>
+
+</md-radio-group>
 
 
-			<div ng-model="q5" ng-value="6">
-		<h3>Question 5: Do you feel welcome in your workplace? </h3>
-			</div>
-			<p>Selected Value: <span class="radioValue">{{ group5 }}</span> </p>
+<div ng-model="q5" ng-value="6">
+<h3>Question 5: Do you feel welcome in your workplace? </h3>
+</div>
+<p>Selected Value: <span class="radioValue">{{ group5 }}</span> </p>
 
-			<md-radio-group ng-model="group5">
+<md-radio-group ng-model="group5">
 
-				<md-radio-button value="1"> 1 </md-radio-button>
-				<md-radio-button value="2"> 2 </md-radio-button>
-				<md-radio-button value="3"> 3</md-radio-button>
-				<md-radio-button value="4"> 4</md-radio-button>
-				<md-radio-button value="5"> 5</md-radio-button>
-				<md-radio-button value="1">I do not feel welcome in my workplace at all</md-radio-button>
-				<md-radio-button value="2">I do not feel very welcome in my workplace</md-radio-button>
-				<md-radio-button value="3">I feel somewhat welcome in my workplace</md-radio-button>
-				<md-radio-button value="4">I feel welcome in my workplace</md-radio-button>
-				<md-radio-button value="5">I feel very welcome in my workplace</md-radio-button>
+<md-radio-button value="1"> 1 </md-radio-button>
+<md-radio-button value="2"> 2 </md-radio-button>
+<md-radio-button value="3"> 3</md-radio-button>
+<md-radio-button value="4"> 4</md-radio-button>
+<md-radio-button value="5"> 5</md-radio-button>
+<md-radio-button value="1">I do not feel welcome in my workplace at all</md-radio-button>
+<md-radio-button value="2">I do not feel very welcome in my workplace</md-radio-button>
+<md-radio-button value="3">I feel somewhat welcome in my workplace</md-radio-button>
+<md-radio-button value="4">I feel welcome in my workplace</md-radio-button>
+<md-radio-button value="5">I feel very welcome in my workplace</md-radio-button>
 
-			</md-radio-group> -->
+</md-radio-group> -->
 
-			<br />
-			<h3>Do you want someone from STEP-UP to contact you this week?</h3>
-			<div flex-gt-sm="50">
-				<md-checkbox ng-model="cb1" aria-label="Checkbox 1">
-					Yes, please talk with me.
-				</md-checkbox>
-			</div>
+<br />
+<h3>Do you want someone from STEP-UP to contact you this week?</h3>
+<div flex-gt-sm="50">
+	<md-checkbox ng-model="cb1" aria-label="Checkbox 1">
+		Yes, please talk with me.
+	</md-checkbox>
+</div>
 
-			<h3>Do you have any other comments?</h3>
-			<md-input-container>
-				<label>Write here:</label>
-				<input ng-model="comment">
-			</md-input-container>
+<h3>Do you have any other comments?</h3>
+<md-input-container>
+	<label>Write here:</label>
+	<input ng-model="comment">
+</md-input-container>
 
-			<br />
+<br />
 
-			<md-button class = "mainButtons" ng-click="FBFC.submitFeedback(comment, cb1)">Submit</md-button>
+<md-button class = "mainButtons" ng-click="FBFC.submitFeedback(comment, cb1)" ng-href="/">Submit</md-button>
+
+<!-- <md-button class = "mainButtons" ng-click="FBFC.submitFeedback(comment, cb1)">Submit</md-button> -->
 <!-- group1, group2, group3, group4, group5,  -->
 </md-content>
-	</DIV>
+</DIV>
