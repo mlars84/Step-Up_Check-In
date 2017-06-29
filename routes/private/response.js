@@ -11,7 +11,7 @@ router.post('/', function(req, res) {
   pool.connect(function(err, connection, done){
     if (err) {
       res.send("error in the post on creating responses");
-      res.send(400);
+      res.sendStatus(400);
     }
     else {
       console.log("this is a successful connection on the server, check DB for results");
@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
       connection.query('INSERT INTO response_num (question_id, intern_id, response_num) VALUES ($1, $2, $3)', [req.body.question5id, req.body.internid, req.body.question5]);
 
       done();
-      res.send(200);
+      res.sendStatus(200);
     }
   });
 });
