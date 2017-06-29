@@ -46,17 +46,20 @@
           </md-select>
         </md-input-container>
         <div class="sendSMS">
-          <md-button ng-click="UQC.submitQuestion(UQC.active1In, UQC.active2In, UQC.active3In, UQC.active4In, UQC.active5In)" class="md-raised md-primary" id="submitQues">Submit Questions</md-button>
+          <md-button ng-click="UQC.submitQuestion($event, UQC.active1In, UQC.active2In, UQC.active3In, UQC.active4In, UQC.active5In)" class="md-raised md-primary" id="submitQues">Submit Questions</md-button>
         </div>
         <br />
         <md-divider></md-divider>
         <br />
-        <!-- <md-hr> -->
         <div class="sendSMS">
+          <p>* This will send a text message with the feedback link to all interns *</p>
           <md-button ng-click="UQC.sendQuestion($event)" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
         </div>
      </div>
     <md-card-content>
+<<<<<<< HEAD
+  </md-card>
+=======
       <!-- <br>
       <div class="sendSMS">
         <md-button ng-click="UQC.sendQuestion()" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
@@ -70,6 +73,7 @@
       </div>
   </md-card> -->
   <!-- <br> -->
+>>>>>>> master
   <md-card flex layout-padding layout-margin>
       <h2>Create New Question</h2>
       <md-input-container class="md-block">
@@ -85,12 +89,4 @@
         <md-button ng-click ="UQC.addQuestion($event, UQC.questionIn, UQC.flaggedIn)" class="md-raised md-primary" id="addQuestion">Add Question</md-button>
       </div>
     </md-card>
-    <!-- <br>
-    <br>
-     RIGHT BUTTON: -->
-    <!-- <div class="sendSMS">
-      <md-button ng-click="UQC.sendQuestion($event)" class="md-raised md-primary" id="sendFeedback">Send Feedback Link</md-button>
-    </div>
-    <br> -->
-  <!-- </div> -->
 </main>
