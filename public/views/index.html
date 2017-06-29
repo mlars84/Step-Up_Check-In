@@ -52,7 +52,7 @@
 
 
       <!-- <md-list layout="row" layout-align="center" class="six columns" ng-show="nav.displayLogout">Hi {{nav.username}}! | <a href="#" ng-click="nav.logout()">Logout</a></md-list> -->
-      <div layout="row" ng-show="nav.navBar" >
+      <div layout="row" ng-show="nav.navBar">
         <md-content flex="100">
 
 <!-- class="md-padding navPad" layout-align="center" -->
@@ -61,17 +61,16 @@
           <!-- <span class = "toplogo"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span> -->
           <!-- <span layout="row" layout-align="space-between center"><img class="stepUp" style= "align: right" layout-align="left" src="public/image/STEP-UP logo no tag with white.jpg" ></span> -->
             <!-- <span layout="row" layout-align="space-between center"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span> -->
-          <md-nav-bar class="navBar" layout-align="end start" layout-padding layout-margin aria-label = "navigation " layout-align="end start">
-            <span layout="column" flex="33" class = "toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
+          <md-nav-bar class="navBar" layout-align="end start" layout-padding layout-margin aria-label="navigation">
+            <span layout="column" flex="33" class="toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
             <!-- <span layout="row" layout-align="space-between center"><img class="stepUp" style= "align: right" layout-align="left" src="public/image/STEP-UP logo no tag with white.jpg" ></span> -->
-              <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span>
+            <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span>
             <span layout= "row"><md-nav-item md-nav-href="#admin-home" name="Admin">Admin</md-nav-item>
             <md-nav-item md-nav-href="#admin-intern" name="Interns">Interns</md-nav-item>
             <md-nav-item md-nav-href="#updateQuestions" name="Update Questions">Update Questions</md-nav-item>
             <md-nav-item md-nav-href="#importExport" name="Import/Export">Import/Export</md-nav-item>
             <md-nav-item md-nav-href="#feedbackform" name="Feedback Form">Feedback Form</md-nav-item></span>
             <md-list layout="row"  layout-align="right" ng-show="nav.displayLogout">{{nav.username}} | <a href="#" ng-click="nav.logout()">Logout</a></md-list>
-
           </md-nav-bar>
           <!-- <md-list layout="row" layout-align="right" ng-show="nav.displayLogout">{{nav.username}} | <a href="#" ng-click="nav.logout()">Logout</a></md-list> -->
 
@@ -88,8 +87,6 @@
       <!-- <md-toolbar id="toolbar" layout="column" ng-show="nav.toolbar">
         <h1 id="toolBarText">Step-Up Check-In</h1>
       </md-toolbar> -->
-
-  </nav>
   <!-- Show a helpful message when needed -->
   <section id="message" class="nav.message.type" ng-show="nav.message.text">
     {{nav.message.text}}
