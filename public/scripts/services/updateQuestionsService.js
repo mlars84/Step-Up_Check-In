@@ -109,7 +109,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
       data: questionToSubmit
     }).then(function(response){
       console.log('active/inactive->', response.data);
-      self.showAlert('Feedback Survey Created');
+      self.showAlert('Feedback Survey Created.');
     });
   };// end submitQuestion
 
