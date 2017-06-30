@@ -22,6 +22,10 @@ html, body, nav {
   text-align: center;
 }*/
 
+md-card {
+  background-color: white;
+}
+
 md-nav-bar .md-button._md-nav-button.md-unselected {
   color: rgb(0,138,192);
 }
