@@ -18,11 +18,9 @@ html, body, nav {
   font-size: 1.2em;
 }
 
-/*.StepUp {
-  text-align: center;
-}*/
 
-md-card {
+md-card,
+md-content {
   background-color: white;
 }
 
@@ -149,6 +147,7 @@ feddbackform
 .mainButtons {
   background-color: #008AC0;
 }
+
 
 #progress_bar {
    margin: 10px 0;
