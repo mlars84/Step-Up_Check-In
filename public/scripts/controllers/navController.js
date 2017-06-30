@@ -1,6 +1,7 @@
-googleAuthApp.controller('NavController', function (AuthFactory, $window, $location) {
+googleAuthApp.controller('NavController', ['$scope', 'AuthFactory', '$window', '$location', function ($scope, AuthFactory, $window, $location) {
   var _this = this;
   var authFactory = AuthFactory;
+  $scope.$location = $location;
   _this.displayLogout = false; // should we display the logout option on the DOM?
   _this.message = {
     text: false,
@@ -42,4 +43,4 @@ googleAuthApp.controller('NavController', function (AuthFactory, $window, $locat
       });
   };
 
-});
+}]);

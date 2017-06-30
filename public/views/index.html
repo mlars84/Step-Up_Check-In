@@ -43,7 +43,7 @@
 <body>
   <main class="container" ng-app="theGoogles">
     <header ng-controller="NavController as nav">
-      <div layout="row" ng-show="nav.navBar" >
+      <div layout="row" ng-show="nav.navBar" ng-hide="$location.path() === '/feedbackform'">
           <md-nav-bar class="navBar" layout-align="end start" layout-padding layout-margin aria-label="navigation">
             <span layout="column" flex="33" class="toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
             <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span>
@@ -51,7 +51,7 @@
             <md-nav-item md-nav-href="#updateQuestions" name="Update Questions">Questions</md-nav-item>
             <md-nav-item md-nav-href="#importExport" name="Import/Export">Import/Export</md-nav-item>
             <md-nav-item md-nav-href="#admin-home" name="Admin">Admin</md-nav-item>
-            <md-nav-item md-nav-href="#feedbackform" name="Feedback Form">Feedback Form</md-nav-item></span>
+            <!-- <md-nav-item md-nav-href="#feedbackform" name="Feedback Form">Feedback Form</md-nav-item></span> -->
             <md-list layout="row" layout-align="end stretch" ng-show="nav.displayLogout">{{nav.username}}|<a href="#" ng-click="nav.logout()">Logout</a></md-list>
           </md-nav-bar>
       </div>
