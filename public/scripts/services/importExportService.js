@@ -74,7 +74,7 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
           console.log("self.lastNameMatch =>", self.lastNameMatch);
         }
       }
-
+      self.lastNameIn = '';
     });
   }; //end searchByLastName
   self.clearInputs();
@@ -130,6 +130,10 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       data: internToEdit
     }).then(function(res) {
       console.log('editPhone =>', res.data);
+      self.phoneIn = '';
+      self.searchByLastName();
+      self.showAlert('New phone number saved!');
+      self.lastNameIn = '';
     }); //end editPhone PUT
   }; //end editPhone function
 

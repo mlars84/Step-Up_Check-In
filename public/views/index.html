@@ -43,8 +43,8 @@
 <body>
   <main class="container" ng-app="theGoogles">
     <header ng-controller="NavController as nav">
-      <div layout="row" ng-show="nav.navBar" ng-hide="$location.path() === '/feedbackform'">
-          <md-nav-bar class="navBar" layout-align="end start" layout-padding layout-margin aria-label="navigation">
+      <div layout="row" ng-show="nav.navBar">
+          <md-nav-bar  ng-hide="$location.path() === '/feedbackform'" class="navBar" layout-align="end start" layout-padding layout-margin aria-label="navigation">
             <span layout="column" flex="33" class="toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
             <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span>
             <span layout= "row"><md-nav-item md-nav-href="#admin-intern" name="Feedback">Feedback</md-nav-item>
