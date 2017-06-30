@@ -36,6 +36,10 @@ googleAuthApp.config(['$routeProvider', '$locationProvider','$mdThemingProvider'
     templateUrl: '/public/views/templates/feedbackform.html',
     controller: 'feedBackFormController as FBFC',
   })
+  .when('/feedbackform2', {
+    templateUrl: '/public/views/templates/feedbackform2.html',
+    controller: 'feedBackFormController as FBFC',
+  })
   .otherwise({
     redirectTo: '/login',
   });
