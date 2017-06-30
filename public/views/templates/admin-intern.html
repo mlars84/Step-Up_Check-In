@@ -7,7 +7,7 @@
 
 
 <md-content class="pageContent" layout="row">
-    <md-card layout-padding flex>
+    <md-card layout-padding flex="33">
         <h2>Contact these Interns:</h2>
 
         <div ng-repeat="checkbox in AIC.checkbox">
@@ -17,7 +17,7 @@
         <!-- <md-button ng-click="AIC.getCheckbox()">View All</md-button> -->
     </md-card>
 
-    <md-card layout-padding flex>
+    <md-card layout-padding flex="33">
         <h2>Flagged Interns:</h2>
         <div ng-repeat="flag in AIC.flags">
             <p>{{flag.first_name}} {{flag.last_name}} {{flag.phone}} {{flag.email}} </p>
@@ -27,10 +27,10 @@
     </md-card>
 
     <!-- <md-content > -->
-    <md-card layout-padding>
+    <md-card layout-padding flex="33">
         <h2>Comments:</h2>
         <div ng-repeat="comment in AIC.comments">
-            <p>"{{comment.response_comment}}" - {{comment.first_name}} {{comment.last_name}} {{comment.phone}} {{comment.email}}</p>
+            <p>"{{comment.response_comment}}" - {{comment.first_name}} {{comment.last_name}} <br />{{comment.phone}} {{comment.email}}</p>
             <md-divider></md-divider>
         </div>
         <!-- <md-button ng-click="AIC.getComments()">View All</md-button> -->

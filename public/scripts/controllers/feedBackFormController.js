@@ -1,4 +1,4 @@
-googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', '$mdDialog', function ($http, AuthFactory, feedBackFormService, $mdDialog) {
+googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', '$mdDialog','$window', function ($http, AuthFactory, feedBackFormService, $mdDialog, $window) {
   //'feedBackFormService'
   console.log('loaded feedBackFormController');
   const vm = this;
@@ -103,6 +103,9 @@ googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feed
       data: responseToSend,
     }).then(function(response){
       console.log("response from server in get Questions", response.data);
+      // authFactory.setLoggedIn(false);
+      // $window.location.href = '/#/login'; // forces a page reload which will update our NavController
+
       return response.data;
     });
   };
