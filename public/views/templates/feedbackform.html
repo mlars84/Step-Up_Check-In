@@ -10,20 +10,20 @@
 			<div ng-repeat="question in FBFC.activeQuestions">
 				<div id="{{question.id}}">
 					<h3 class= "questionFeedback" >Question {{question.count}}: {{question.q_text}}</h3>
-					<md-radio-group ng-model="question.data" ng-required="true">
-
-						<md-radio-button value="1"> 1 </md-radio-button>
-						<md-radio-button value="2"> 2 </md-radio-button>
-						<md-radio-button value="3"> 3 </md-radio-button>
-						<md-radio-button value="4"> 4</md-radio-button>
-						<md-radio-button value="5"> 5</md-radio-button>
-						<!-- <md-radio-button value="1"> not properly trained at all </md-radio-button>
-						<md-radio-button value="2"> not properly trained </md-radio-button>
-						<md-radio-button value="3"> somewhat properly trained</md-radio-button>
-						<md-radio-button value="4"> properly trained</md-radio-button>
-						<md-radio-button value="5"> very properly trained</md-radio-button> -->
-
-					</md-radio-group>
+					<div class="radioGroup">
+						<md-radio-group ng-model="question.data" ng-required="true">
+							<md-radio-button class= value="1"> 1 <img style="height:2vmin; width: 2vmin;" src="public/image/Very_sad_emoji_icon_png.png" alt=""></md-radio-button>
+							<md-radio-button class="radioButtons" value="2"> 2 <img style="height:2vmin; width: 2vmin;" src="public/image/Confused_Face_Emoji.png" alt=""></md-radio-button>
+							<md-radio-button class="radioButtons" value="3"> 3 <img style="height:2vmin; width: 2vmin;" src="public/image/Neutral_Face_Emoji.png" alt=""></md-radio-button>
+							<md-radio-button class="radioButtons" value="4"> 4 <img style="height:2vmin; width: 2vmin;" src="public/image/Slightly_Smiling_Face_Emoji.png" alt=""></md-radio-button>
+							<md-radio-button class="radioButtons" value="5"> 5 <img style="height:2vmin; width: 2vmin;" src="public/image/Smiling_Emoji_with_Eyes_Opened.png" alt=""></md-radio-button>
+							<!-- <md-radio-button value="1"> not properly trained at all </md-radio-button>
+							<md-radio-button value="2"> not properly trained </md-radio-button>
+							<md-radio-button value="3"> somewhat properly trained</md-radio-button>
+							<md-radio-button value="4"> properly trained</md-radio-button>
+							<md-radio-button value="5"> very properly trained</md-radio-button> -->
+						</md-radio-group>
+					</div>
 				</div>
 
 			</div>
