@@ -7,8 +7,5 @@ googleAuthApp.controller('updateQuestionsController', ['updateQuestionsService',
   vm.questionCont = updateQuestionsService.questionCont;// exporting grabQuestion from updateQuestionsService.js
   vm.submitQuestion = updateQuestionsService.submitQuestion; // exporting submitQuestion from updateQuestionsService.js
   vm.clearInputs = updateQuestionsService.clearInputs;
-  vm.questionIn = updateQuestionsService.questionIn.question;
-
-  console.log('vm.questionIn=>', vm.questionIn);
 
 }]); //end updateQuestionsController

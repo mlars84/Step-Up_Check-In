@@ -3,7 +3,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   //global
   const self = this;
   self.questionCont = {};
-  self.questionIn = {question: ''};
 
   self.showAlert = function(message) {
     $mdDialog.show(
