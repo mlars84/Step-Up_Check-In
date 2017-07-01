@@ -50,7 +50,7 @@ router.get('/', function(req, res){
       client.messages.create({
           to: value.phone, // value here to iterate phoneNumbers array
           from: fromNumber, // registered Twilio account number
-          body: "Step-Up checking in for your weekly feedback. Please click the following link to take the survey. Thank you and have a wonderful weekend! Feedback link at www.stepup/checkin.com" , // message to send
+          body: "Step-Up checking in for your weekly feedback. Please click the following link to take the survey. Thank you and have a wonderful weekend! Feedback link at www.stepupcheckin.com" , // message to send
       }, function(err, message) {
         if (err) {
           console.log(err);
