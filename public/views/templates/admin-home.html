@@ -32,19 +32,25 @@
 			<h2>Add New Admin</h2>
 			<md-input-container>
 				<label>First Name</label>
-				<input ng-model="AHC.adminFirstNameIn" type="name">
+				<form name="clearForm1" action="index.html" method="post">
+					<input ng-model="AHC.adminFirstNameIn" type="name">
+				</form>
 			</md-input-container>
 
 			<md-input-container>
 				<label>Last Name</label>
-				<input ng-model="AHC.adminLastNameIn" type="name">
+				<form name="clearForm2" action="index.html" method="post">
+					<input ng-model="AHC.adminLastNameIn" type="name">
+				</form>
 			</md-input-container>
 
 			<md-input-container>
 				<label>Email</label>
-				<input ng-model="AHC.adminEmailIn" type="email">
+				<form name="clearForm3" action="index.html" method="post">
+					<input ng-model="AHC.adminEmailIn" type="email">
+				</form>
 			</md-input-container>
-			<button ng-click="AHC.postAdmins(AHC.adminFirstNameIn, AHC.adminLastNameIn, AHC.adminEmailIn)" md-button class="md-raised md-primary" style="background-color: #008AC0">Add New Admin</button>
+			<button ng-click="AHC.postAdmins(AHC.adminFirstNameIn, AHC.adminLastNameIn, AHC.adminEmailIn); AHC.getAdmins()" md-button class="md-raised md-primary" style="background-color: #008AC0">Add New Admin</button>
 		</md-content>
 	</div>
 	</md-card>

@@ -19,7 +19,6 @@ googleAuthApp.controller('importExportController', ['importExportService', funct
   vm.editPhone = importExportService.editPhone;
   vm.showConfirm = importExportService.showConfirm;
   vm.confirm = importExportService.confirm;
-  vm.clearInputs = importExportService.clearInputs;
 
   function abortRead() {
     reader.abort();
