@@ -5,6 +5,7 @@ googleAuthApp.service('adminHomeService', function($http, $mdDialog) {
 
   //admin to send info
   self.postAdmins = function(adminFirst, adminLast, adminEmail) {
+    self.getAdmins();
     console.log("in postAdmins");
     var adminToSend = {
       firstname: adminFirst,
@@ -19,7 +20,6 @@ googleAuthApp.service('adminHomeService', function($http, $mdDialog) {
       data: adminToSend
     }).then(function(response) {
       console.log('postAdmins to send response', response.data);
-      self.getAdmins();
       self.clearForm();
     }); //end response
   }; //end postAdmins
