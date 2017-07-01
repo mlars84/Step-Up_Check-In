@@ -1,8 +1,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div ng-init="FBFC.getQuestions()">
+	<span layout="column" flex="33" class="toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
+
 	<!-- FBFC.checkEmail(FBFC.useremail) -->
 	<md-toolbar id="toolbar" layout="column">
-		<h1 id="toolBarText">Weekly Feedback</h1>
+		<h1 id="toolBarText">Hi {{FBFC.username.name}}. Check-In with us!</h1>
 	</md-toolbar>
 	<!-- <md-button ng-click="FBFC.getQuestions()">Get Questions</md-button> -->
 	<md-content class="pageContent feedbackform">

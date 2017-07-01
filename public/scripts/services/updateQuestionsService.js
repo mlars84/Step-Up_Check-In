@@ -3,6 +3,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   //global
   const self = this;
   self.questionCont = {};
+  self.questionIn = {question: ''};
 
   self.showAlert = function(message) {
     $mdDialog.show(
@@ -15,13 +16,15 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   };
 
   // begin addQuestion
-  self.addQuestion = function(ev, questionIn, flaggedIn) {
-    console.log('add question button clicked', questionIn);
+  self.addQuestion = function(ev, question, flaggedIn) {
+    console.log(self.questionIn);
+    self.questionIn.question = '';
+    console.log('add question button clicked', question);
     if(flaggedIn === undefined){
       flaggedIn = false;
     }// end if
     let objectToSend = {
-      q_text: questionIn,
+      q_text: question,
       active: false,
       flagged: flaggedIn
     }; // end objectToSend
@@ -46,7 +49,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
     }, function() {
       self.status = 'Question Added!';
     });// end angular alert
-    self.clearInputs();
   }; // end updateQuestion
 
   self.clearInputs = function () {

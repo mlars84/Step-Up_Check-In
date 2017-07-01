@@ -1,6 +1,6 @@
 <!-- Consider this the main view -->
 <!-- <h2 class="login">Login Page</h2> -->
-<span layout="column" flex="33" class = "toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
+<span ng-hide="auth.loggedIn" layout="column" flex="33" class = "toplogo"><img class="stepUp" src="public/image/STEP-UP logo no tag with white.jpg"></span>
 <!-- <span layout="row" layout-padding layout-align="space-between right"><h2 class="CheckIn">Check-<span class="CheckInSpan">In</span></h2></span> -->
 
 
@@ -19,6 +19,6 @@
 <!-- Shown for users that are logged in -->
 <section ng-show="auth.loggedIn">
   <h3 class="enterLink">
-    <a href="#admin-home">You are logged in! Click to enter.</a>
+    <!-- <a href="#admin-home">You are logged in! Click to enter.</a> -->
   </h3>
 </section>
