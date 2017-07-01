@@ -16,11 +16,6 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
     );
   }; //end showAlert
 
-  //function to clearInputs
-  self.clearInputs = function() {
-    self.lastNameIn = '';
-  };
-
   self.sendCSV = function(csv) {
     let csvToPost = {};
     csvToPost.fileContent = csv;
@@ -74,10 +69,8 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
           console.log("self.lastNameMatch =>", self.lastNameMatch);
         }
       }
-      self.lastNameIn = '';
     });
   }; //end searchByLastName
-  self.clearInputs();
 
   //function to completely remove an intern from the database
   self.removeIntern = function(ev, primarykey, lastname) {
@@ -98,23 +91,12 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       }).then(function(res) {
         console.log(res.data);
         self.searchByLastName(lastname);
+        self.clearForm();
       });
     }, function() {
       self.status = 'You decided to keep the intern.';
     });
   }; //end removeIntern
-
-  // function to completely remove an intern from the database
-  // self.removeIntern = function(evprimarykey, lastname) {
-  //   console.log('in removeIntern', primarykey, lastname);
-  //   $http({
-  //     method: 'DELETE',
-  //     url: '/private/removeIntern',
-  //     params: { primarykey: primarykey }
-  //   }).then(function(res) {
-  //     console.log(res.data);
-  //   }); //end removeIntern DELETE)
-  // }; //end removeIntern
 
   //function to edit an intern's phone number
   self.editPhone = function(primarykey, phone) {
@@ -133,8 +115,13 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       self.phoneIn = '';
       self.searchByLastName();
       self.showAlert('New phone number saved!');
-      self.lastNameIn = '';
+      self.clearForm();
     }); //end editPhone PUT
   }; //end editPhone function
+
+  //function to clear input on button clicks
+  self.clearForm = function() {
+    clearForm.reset();
+  }; //end clearForm
 
 }]); //end importExportService

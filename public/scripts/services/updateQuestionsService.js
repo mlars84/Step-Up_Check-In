@@ -17,8 +17,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
 
   // begin addQuestion
   self.addQuestion = function(ev, question, flaggedIn) {
-    console.log(self.questionIn);
-    self.questionIn.question = '';
     console.log('add question button clicked', question);
     if(flaggedIn === undefined){
       flaggedIn = false;
@@ -44,6 +42,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
       data: objectToSend
     }).then(function(response) {
       console.log('back from the server with', response.data);
+      self.clearForm();
     });// end $http
 
     }, function() {
@@ -51,10 +50,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
     });// end angular alert
   }; // end updateQuestion
 
-  self.clearInputs = function () {
-    self.questionIn = '';
-    self.flaggedIn = '';
-  }; // end clearInputs
 
   // begin sendQuestion
   self.sendQuestion = function (ev){
@@ -114,5 +109,10 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
       self.showAlert('Feedback Survey Created.');
     });
   };// end submitQuestion
+
+  //function that clears form inputs after submit click
+  self.clearForm = function() {
+    clearForm.reset();
+  }; //end clearForm function
 
 }]); //end updateQuestionsService
