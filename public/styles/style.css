@@ -18,6 +18,10 @@ html, body, nav {
   font-size: 1.2em;
 }
 
+.logOut {
+  margin: auto;
+}
+
 
 md-card,
 md-content {

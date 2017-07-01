@@ -53,8 +53,8 @@
             <md-nav-item md-nav-href="#importExport" name="Import/Export">Import/Export</md-nav-item>
             <md-nav-item md-nav-href="#admin-home" name="Admin">Admin</md-nav-item>
             <!-- <md-nav-item md-nav-href="#feedbackform" name="Feedback Form">Feedback Form</md-nav-item></span> -->
-            <md-list layout="row" layout-align="end stretch" ng-show="nav.displayLogout">{{nav.username}}|<a href="#" ng-click="nav.logout()">Logout</a></md-list>
           </md-nav-bar>
+          <md-list class="logOut" layout="row" layout-align="end stretch" ng-show="nav.displayLogout">{{nav.username}}|<a href="#" ng-click="nav.logout()">Logout</a></md-list>
       </div>
   <!-- Show a helpful message when needed -->
   <section id="message" class="nav.message.type" ng-show="nav.message.text">
