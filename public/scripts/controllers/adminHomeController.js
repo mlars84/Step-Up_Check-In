@@ -13,5 +13,7 @@ googleAuthApp.controller('adminHomeController', ['adminHomeService', function (a
 
   vm.deleteAdmins = adminHomeService.deleteAdmins;
 
+  vm.clearForm = adminHomeService.clearForm;
+
 
 }]); //end adminHomeController
