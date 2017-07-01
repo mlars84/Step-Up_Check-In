@@ -62,8 +62,9 @@
       <h2>Create New Question</h2>
       <md-input-container class="md-block">
         <label>Enter Question</label>
+        <form name="clearForm" action="index.html" method="post">
         <input ng-model="UQC.questionIn" type="text" ng-value="UQC.value">
-        {{UQC.questionIn}}
+        </form>
       </md-input-container>
       <md-input-container class="md-block">
         <md-checkbox name="tos" ng-model="UQC.flaggedIn">

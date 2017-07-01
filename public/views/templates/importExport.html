@@ -29,7 +29,9 @@
     <!-- <h3>Last name: </h3> -->
     <md-input-container>
       <label>Search by last name</label>
+      <form name="clearForm" action="index.html" method="post">
       <input ng-model="IEC.lastNameIn" type="text">
+      </form>
       <button ng-click="IEC.searchByLastName(IEC.lastNameIn)" class="md-raised md-primary" style="background-color: #008AC0" type="button" name="button" md-button>Submit</button>
       <div ng-repeat="intern in IEC.lastNameMatch.name">
         <md-content flex layout-padding>

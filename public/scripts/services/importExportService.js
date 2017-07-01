@@ -16,11 +16,6 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
     );
   }; //end showAlert
 
-  //function to clearInputs
-  self.clearInputs = function() {
-    self.lastNameIn = '';
-  };
-
   self.sendCSV = function(csv) {
     let csvToPost = {};
     csvToPost.fileContent = csv;
@@ -74,10 +69,13 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
           console.log("self.lastNameMatch =>", self.lastNameMatch);
         }
       }
-      self.lastNameIn = '';
     });
   }; //end searchByLastName
-  self.clearInputs();
+
+  //function to reset input afer click
+  self.clearForm = function() {
+    clearForm.reset();
+  }; //end clearForm
 
   //function to completely remove an intern from the database
   self.removeIntern = function(ev, primarykey, lastname) {
@@ -96,6 +94,7 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
         url: '/private/removeIntern',
         params: { primarykey: primarykey }
       }).then(function(res) {
+        self.clearForm();
         console.log(res.data);
         self.searchByLastName(lastname);
       });
@@ -129,6 +128,7 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       url: '/private/editPhone',
       data: internToEdit
     }).then(function(res) {
+      self.clearForm();
       console.log('editPhone =>', res.data);
       self.phoneIn = '';
       self.searchByLastName();
