@@ -1,5 +1,5 @@
 googleAuthApp.service('adminHomeService', function($http, $mdDialog) {
-  const self = this;
+  var self = this;
 
   self.adminObject = {};
 

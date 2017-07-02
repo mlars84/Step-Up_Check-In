@@ -2,7 +2,7 @@
 googleAuthApp.controller('AuthController', ['$http', 'AuthFactory', '$window', function ($http, AuthFactory, $window) {
 
   // ('feedBackFormController', ['$http', 'AuthFactory','feedBackFormService', function ($http, AuthFactory, feedBackFormService)
-  const self = this;
+  var self = this;
   var authFactory = AuthFactory;
 
 

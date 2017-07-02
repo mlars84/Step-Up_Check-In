@@ -1,5 +1,5 @@
 googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($http, $mdDialog) {
-  const self = this;
+  var self = this;
 
   self.interns = [];
   self.lastNameMatch = {name: []};
@@ -17,7 +17,7 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
   }; //end showAlert
 
   self.sendCSV = function(csv) {
-    let csvToPost = {};
+    var csvToPost = {};
     csvToPost.fileContent = csv;
     $http.post('/private/sendCSV', csvToPost).then(function(response) {
       self.importInterns();
@@ -101,7 +101,7 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
   //function to edit an intern's phone number
   self.editPhone = function(primarykey, phone) {
     console.log('in editPhone function =>', phone);
-    let internToEdit = {
+    var internToEdit = {
       primarykey: primarykey,
       phone: phone
     };

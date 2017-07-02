@@ -1,6 +1,6 @@
 googleAuthApp.service('feedBackFormService', ['$http', function($http){
   console.log("feedback form service");
-  const self = this;
+  var self = this;
 
   self.navBar = false;
 
