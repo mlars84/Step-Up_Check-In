@@ -1,5 +1,5 @@
 googleAuthApp.service('adminInternService', function() {
-  const vm = this;
+  var vm = this;
 
 
 }); //end adminInternService

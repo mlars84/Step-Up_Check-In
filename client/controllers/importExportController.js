@@ -1,6 +1,6 @@
 googleAuthApp.controller('importExportController', ['importExportService', function (importExportService) {
   console.log('loaded importExportController');
-  const vm = this;
+  var vm = this;
 
   var reader;
   var progress = document.querySelector('.percent');

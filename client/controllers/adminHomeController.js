@@ -1,6 +1,6 @@
 googleAuthApp.controller('adminHomeController', ['adminHomeService', function (adminHomeService) {
   console.log('loaded adminHomeController');
-  const vm = this;
+  var vm = this;
 
   //getting admin GET info from service
   vm.getAdmins = adminHomeService.getAdmins;

@@ -92,7 +92,7 @@ googleAuthApp.controller('adminInternController', ['$http','adminInternService',
       var resultArray = [];
 
       for (var j of nameArray) {
-          console.log("this is the aset variable:", j);
+          console.log("this is the asset variable:", j);
           newObject = {
               question_id: j,
               question_text: anarray[j].q_text,

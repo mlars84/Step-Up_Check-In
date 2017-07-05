@@ -1,7 +1,7 @@
 googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function($http, $mdDialog) {
   console.log('update question from service');
   //global
-  const self = this;
+  var self = this;
   self.questionCont = {};
 
   self.showAlert = function(message) {
@@ -20,13 +20,13 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
     if(flaggedIn === undefined){
       flaggedIn = false;
     }// end if
-    let objectToSend = {
+    var objectToSend = {
       q_text: question,
       active: false,
       flagged: flaggedIn
     }; // end objectToSend
     console.log('update objectToSend', objectToSend);
-    let confirm = $mdDialog.confirm()
+    var confirm = $mdDialog.confirm()
       .title('Add Question to System?')
       .textContent('Question will be added to System.')
       .ariaLabel('Lucky day')
@@ -53,7 +53,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   // begin sendQuestion
   self.sendQuestion = function (ev){
     console.log('Send Question button clicked!');
-    let confirm = $mdDialog.confirm()
+    var confirm = $mdDialog.confirm()
       .title('Send Feedback Link?')
       .textContent('SMS will be sent to Interns.')
       .ariaLabel('Lucky day')
@@ -91,7 +91,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
 
   self.submitQuestion = function (ev, active1In, active2In, active3In, active4In, active5In){
     console.log('Submit Question button clicked!->', active1In, active2In, active3In, active4In, active5In);
-    let questionToSubmit = {
+    var questionToSubmit = {
       active1: active1In,
       active2: active2In,
       active3: active3In,
