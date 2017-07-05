@@ -80,8 +80,8 @@ googleAuthApp.service('importExportService', ['$http', '$mdDialog', function($ht
       .textContent('They will be permanently removed from the system.')
       .ariaLabel('Lucky day')
       .targetEvent(ev)
-      .ok('Please do it!')
-      .cancel('Cancel!');
+      .ok('Remove')
+      .cancel('Cancel');
     $mdDialog.show(confirm).then(function() {
       self.status = 'You deleted the intern.';
       $http({
