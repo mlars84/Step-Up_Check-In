@@ -32,7 +32,7 @@
       <form name="clearForm" action="index.html" method="post">
         <input ng-model="IEC.lastNameIn" type="text">
       </form>
-      <button ng-click="IEC.searchByLastName(IEC.lastNameIn)" class="md-raised md-primary" style="background-color: #008AC0" type="button" name="button" md-button>Submit</button>
+      <button ng-click="IEC.searchByLastName(IEC.lastNameIn)" class="md-raised md-primary" style="background-color: #008AC0" type="button" name="button" md-button>Search</button>
       <div ng-repeat="intern in IEC.lastNameMatch.name">
         <md-content flex layout-padding>
           <h4>{{intern.first_name}} {{intern.last_name}}</h4>
