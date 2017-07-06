@@ -36,7 +36,7 @@
     <md-radio-button value="4"> 4  <img style="height:6vmin; width: 6vmin;" src="public/image/Slightly_Smiling_Face_Emoji.png" alt=""></md-radio-button>
     <md-radio-button value="5"> 5  <img style="height:6vmin; width: 6vmin;" src="public/image/Smiling_Emoji_with_Eyes_Opened.png" alt=""></md-radio-button>
   </md-radio-group>
-  <h3 ng-model="q5" ng-value="6">How challenging are your daily work tasks?</h3><h5> 1 = not challenging - 5 = very challenging</h5>
+  <h3 ng-model="q5" ng-value="6">Are your daily work tasks appropriately challenging?</h3><h5> 1 = not appropriate - 5 = appropriate</h5>
   <md-radio-group ng-model="group5">
     <md-radio-button value="1"> 1  <img style="height:6vmin; width: 6vmin;" src="public/image/Very_sad_emoji_icon_png.png" alt=""></md-radio-button>
     <md-radio-button value="2"> 2  <img style="height:6vmin; width: 6vmin;" src="public/image/Confused_Face_Emoji.png" alt=""></md-radio-button>
@@ -52,11 +52,10 @@
 </md-checkbox>
 </div>
 <h3>Do you have any other comments?</h3>
-<md-input-container>
+<md-input-container class="comment">
 <label>Write here:</label>
-<input ng-model="comment">
+<textarea ng-model="comment" rows="3" flex></textarea>
 </md-input-container>
 <br />
-<!-- <a href="http://192.168.9.4:3000/#/login" ></a> -->
-<md-button class="md-raised md-primary" ng-click="FBFC.submitFeedback(comment, cb1)" href="http://192.168.9.4:3000/#/login">Submit</md-button>
+<md-button class="md-raised md-primary" ng-click="FBFC.submitFeedback(comment, cb1)" href="http://10.100.100.65:3000/#/login">Submit</md-button>
 </md-content>
