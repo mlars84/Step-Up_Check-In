@@ -3,8 +3,6 @@ Step-Up Check-In
 
 Our application, Step-Up Check-In, will allow students to give weekly feedback on their work experiences via their mobile devices. Application administrators will be able to access and analyze this data through the application dashboard and provide additional support to students as needed based on their responses.
 
-## Getting Started
-
 ### Prerequisites
 
 1. npm install twilio --save
@@ -21,20 +19,33 @@ Our application, Step-Up Check-In, will allow students to give weekly feedback o
 ### Installing
 
 ### Demo
-<p align= "center"><img src="walkthrough/part1.gif" alt = "feedback intern"/></p>
+Creating Feedback form and Intern mobile walkthrough:
+-------
+<p align= "center"><img src="walkthrough/part1_1.gif" alt = "feedback intern"/></p>
 
+Intern data overview:
+-------
+<p align= "center"><img src="walkthrough/part2.gif" alt = "intern overview"/></p>
+
+Import/Export:
+-------
+<p align= "center"><img src="walkthrough/part3.gif" alt = "import export "/></p>
+
+Admin View:
+-------
+<p align= "center"><img src="walkthrough/part4.gif" alt = "admin view"/></p>
 
 Technology Used:
 -------
-- HTML
-- CSS
+- HTML5
+- CSS3
 - JavaScript
-- PostgresSQL
-- Google OAuth
-- Postico
-- Twilio
-- ExpressJS
 - AngularJS
+- Twilio
+- Google OAuth
+- PostgresSQL
+- Postico
+- ExpressJS
 - Node.js
 - Heroku
 - Grunt
