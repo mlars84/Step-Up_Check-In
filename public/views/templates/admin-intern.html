@@ -1,7 +1,5 @@
-<!-- <div class="adminIntern"> -->
 <title>Admin Intern View</title>
 <md-toolbar id="toolbar" layout="column">
-    <!-- style="height:50px" -->
     <h1 id="toolBarText">Intern Data Overview</h1>
 </md-toolbar>
 
@@ -14,7 +12,6 @@
             <p>{{checkbox.first_name}} {{checkbox.last_name}} {{checkbox.phone}} {{checkbox.email}}</p>
             <md-divider></md-divider>
         </div>
-        <!-- <md-button ng-click="AIC.getCheckbox()">View All</md-button> -->
     </md-card>
 
     <md-card layout-padding flex="33">
@@ -23,19 +20,15 @@
             <p>{{flag.first_name}} {{flag.last_name}} {{flag.phone}} {{flag.email}} </p>
             <md-divider></md-divider>
         </div>
-        <!-- <md-button ng-click="AIC.getFlags()">View All</md-button> -->
     </md-card>
 
-    <!-- <md-content > -->
     <md-card layout-padding flex="33">
         <h2>Comments:</h2>
         <div ng-repeat="comment in AIC.comments">
             <p>"{{comment.response_comment}}" - {{comment.first_name}} {{comment.last_name}} <br />{{comment.phone}} {{comment.email}}</p>
             <md-divider></md-divider>
         </div>
-        <!-- <md-button ng-click="AIC.getComments()">View All</md-button> -->
     </md-card>
-    <!-- </md-content> -->
 </md-content >
 
 <md-content layout-padding layout-margin>
@@ -43,7 +36,6 @@
 
 <md-card>
     <h2 layout-padding layout-margin layout-align="center center">Responses Overview</h2></md-card>
-<!-- <md-divider></md-divider> -->
 
 <div class="charts" layout="row">
     <md-card layout-padding layout-margin flex>
