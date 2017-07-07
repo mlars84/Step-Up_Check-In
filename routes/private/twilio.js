@@ -7,8 +7,8 @@ var pg = require('pg'); // require pg
 var twilio = require('twilio'); // require twilio
 var pool = require('../../modules/pool.js'); // create pool to connect to the database
 var env = require('dotenv').config();
-var accountSid = process.env.accountSid;
-var authToken = process.env.authToken;
+var ACCOUNTSID = process.env.accountSid;
+var AUTHTOKEN = process.env.authToken;
 
 // Twilio
 let client = new twilio(accountSid, authToken);
