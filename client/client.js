@@ -8,9 +8,6 @@ googleAuthApp.config(['$routeProvider', '$locationProvider','$mdThemingProvider'
     .theme('default')
     .accentPalette('orange');
 
-
-
-
   $routeProvider
   .when('/login', {
     templateUrl: '/public/views/templates/login.html',
