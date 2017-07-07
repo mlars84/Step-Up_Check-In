@@ -4,6 +4,7 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   var self = this;
   self.questionCont = {};
 
+  // angular alert dialog
   self.showAlert = function(message) {
     $mdDialog.show(
       $mdDialog.alert()

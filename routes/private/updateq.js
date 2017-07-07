@@ -18,10 +18,8 @@ router.post('/', function(req, res){
     } else {
       console.log('connented to database');
       connection.query('INSERT INTO questions (q_text, active, flagged) VALUES ($1, $2, $3)', [req.body.q_text, req.body.active, req.body.flagged]);
-      // resultSet.on('end', function(){
         done();
         res.sendStatus(200);
-      // });
     } // end else
   }); // end pool connect
 });// end rounter.post
@@ -68,13 +66,8 @@ router.put('/', function (req, res){
           }// end if
           else {
             let resultSet = connection.query('UPDATE questions SET active=true WHERE id= ANY ($1)', [[req.body.active1, req.body.active2, req.body.active3, req.body.active4, req.body.active5]]);
-            // resultSet.on('end', function(){
-            //   done();
-            //   res.sendStatus(200);
-            // });// end resultSet.on
           }// end else
         });//end pool.connect
-
         done();
         res.sendStatus(200);
       });// end resultSet.on
