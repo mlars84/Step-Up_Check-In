@@ -9,10 +9,7 @@ var index = require('./routes/index');
 var auth = require('./routes/auth');
 var isLoggedIn = require('./utils/auth');
 var private = require('./routes/private/index');
-// var database = require('./utils/database');
-// var pg = require('pg');
-// var database = require('./modules/pool');
-// var userService = require('./services/user');
+var env = require('dotenv').config();
 /** ---------- EXPRESS APP CONFIG ---------- **/
 var app = express();
 
