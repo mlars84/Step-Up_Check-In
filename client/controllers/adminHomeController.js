@@ -4,12 +4,10 @@ googleAuthApp.controller('adminHomeController', ['adminHomeService', function (a
 
   //getting admin GET info from service
   vm.getAdmins = adminHomeService.getAdmins;
-// console.log(self.getAllAdmins);
 
   vm.postAdmins = adminHomeService.postAdmins;
 
   vm.adminObject = adminHomeService.adminObject;
-  // console.log('self.adminArray');
 
   vm.deleteAdmins = adminHomeService.deleteAdmins;
 
