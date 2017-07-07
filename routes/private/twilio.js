@@ -33,7 +33,7 @@ router.get('/', function(req, res){
         // loop through the first 200 numbers and then the next 200
         // NOTE Step-Up
         // let resultSet = connection.query('SELECT phone FROM interns LIMIT $1 OFFSET $2', [batchSize, offsetCount], function(err, result){
-        // NOTE PSI Testing 
+        // NOTE PSI Testing
         let resultSet = connection.query('SELECT phone FROM psi LIMIT $1 OFFSET $2', [batchSize, offsetCount], function(err, result){
           done();
           console.log('result.rows->', result.rows);
