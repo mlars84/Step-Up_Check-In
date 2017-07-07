@@ -20,6 +20,8 @@ Our application, Step-Up Check-In, will allow students to give weekly feedback o
 
 ### Installing
 
+### Demo
+<p align= "center"><img src="walkthrough/part1.gif" alt = "feedback intern"/></p>
 
 
 Technology Used:
