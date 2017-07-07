@@ -17,7 +17,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
 
   // begin addQuestion
   self.addQuestion = function(ev, question, flaggedIn) {
-    console.log('add question button clicked', question);
     if(flaggedIn === undefined){
       flaggedIn = false;
     }// end if
@@ -41,7 +40,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
       url: '/private/addQuestion',
       data: objectToSend
     }).then(function(response) {
-      console.log('back from the server with', response.data);
       self.clearForm();
     });// end $http
 
@@ -53,7 +51,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
 
   // begin sendQuestion
   self.sendQuestion = function (ev){
-    console.log('Send Question button clicked!');
     var confirm = $mdDialog.confirm()
       .title('Send Feedback Link?')
       .textContent('SMS will be sent to Interns.')
@@ -76,7 +73,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
 
   // begin grabQuestion
   self.grabQuestion = function(){
-    console.log('grabing question function running');
     $http({
       method: 'GET',
       url: '/private/grabQuestion'
@@ -91,7 +87,6 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   self.grabQuestion(); // call function in order to see questions being grab
 
   self.submitQuestion = function (ev, active1In, active2In, active3In, active4In, active5In){
-    console.log('Submit Question button clicked!->', active1In, active2In, active3In, active4In, active5In);
     var questionToSubmit = {
       active1: active1In,
       active2: active2In,
@@ -99,13 +94,11 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
       active4: active4In,
       active5: active5In
     };// end questionToSubmit
-    console.log('questionToSubmit->', questionToSubmit);
     $http({
       method: 'PUT',
       url: '/private/submitQuestion',
       data: questionToSubmit
     }).then(function(response){
-      console.log('active/inactive->', response.data);
       self.showAlert('Feedback Form Created.');
     });
   };// end submitQuestion
