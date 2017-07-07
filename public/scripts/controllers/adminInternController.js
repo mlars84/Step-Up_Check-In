@@ -45,16 +45,6 @@ googleAuthApp.controller('adminInternController', ['$http','adminInternService',
     }).then(function(response){
       console.log("response from server in get Intern Flagged Questions: ", response.data);
       flaggedstudents = response.data;
-
-      // for (var i = 0; i < flaggedstudents.length; i++) {
-      //   if (response.data[i].first_name ===
-      // }
-      // var nameArray = new Set();
-      // for (var i = 0; i < self.flags1.length; i++) {
-      //     nameArray.add(self.flags1[i].first_name, self.flags[1].last_name);
-      // }
-      // self.flags = nameArray;
-      // console.log(nameArray);
       self.flags = response.data;
       return response.data;
     });

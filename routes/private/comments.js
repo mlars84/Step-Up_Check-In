@@ -3,12 +3,6 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var pool = require('../../modules/pool.js');
 
-// go to database and get intern data
-// - how many interns in each category? achieve, discover
-//
-// - get all interns who want to be contacted (firstname, lastname, phone)
-// - get all interns who have chosen 1 or 2 in flagged Questions
-// - get all comments from interns
 
 router.get('/', function(req, res) {
   let internComments = [];

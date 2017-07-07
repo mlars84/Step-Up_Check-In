@@ -11,17 +11,6 @@
  const submitQuestion = require('./updateq'); // NOTE add submitQuestion
  const twilio = require('./twilio');
  const sendCSV = require('./importexport');
-
-
- // var questions = require('./questions');
- // var responses = require('./responses');
- // var admin = require('./admin');
- // var interns = require('./interns');
- // var questions = require('./questions');
- // // var responses = require('./responses');
- // var admin = require('./admin');
- // var interns = require('./interns');
-
  const questions = require('./questions');
  const response = require('./response');
  const searchByLastName = require('./importexport');
@@ -47,25 +36,16 @@
 router.use('/importInterns', importInterns);
 router.use('/importInterns', importInterns);
 router.use('/searchByLastName', searchByLastName);
-
 router.use('/getAdmins', getAdmins);
 router.use('/postAdmins', postAdmins);
 router.use('/deleteAdmins', deleteAdmins);
 router.use('/checkadmin', checkadmin);
-
 router.use('/importInterns', importInterns);
 router.use('/removeIntern', removeIntern);
 router.use('/editPhone', editPhone);
 router.use('/sendCSV', sendCSV);
 router.use('/exportResponseData', exportResponseData);
 router.use('/checkintern', checkIntern);
-
-
-// var questions = require('./questions');
-
-
-/** ---------- SUBROUTES ---------- **/
-
 router.use('/getquestions', questions);
 router.use('/postresponse', response);
 router.use('/addQuestion', addQuestion);
@@ -78,14 +58,6 @@ router.use('/getComments', interncomments);
 router.use('/getCheckbox', interncheckbox);
 router.use('/getFlags', internresponses);
 router.use('/getNumericData', internAllData);
-
-
-
-// router.use('/questions', questions);
-// router.use('/questions', questions);
-// router.use('/responses', responses);
-// router.use('/admin', admin);
-// router.use('/interns', interns);
 router.use('/postresponsecomments', response);
 
 
