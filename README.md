@@ -18,7 +18,10 @@ Our application, Step-Up Check-In, will allow students to give weekly feedback o
 
 ### Installing
 
-### Demo
+
+Demo
+-------
+
 Creating Feedback form and Intern mobile walkthrough:
 -------
 <p align= "center"><img src="walkthrough/part1_1.gif" alt = "feedback intern"/></p>
