@@ -7,38 +7,39 @@ var pg = require('pg'); // require pg
 var twilio = require('twilio'); // require twilio
 var pool = require('../../modules/pool.js'); // create pool to connect to the database
 
-//NOTE Anna
-// var accountSid = 'ACd751dd8870a891d1691af759af71e9a3';
-// var authToken = '858ee241368528e4fca710307e706a8b';
-// NOTE Jim
-let accountSid = 'ACe3b7110aacbc362697b8afcb4589cef3';
-let authToken = '49e75053e65684feb8c6a34dcf68f60d';
+// Account info
+var accountSid = 'ACd751dd8870a891d1691af759af71e9a3';
+var authToken = '858ee241368528e4fca710307e706a8b';
 
-//NOTE Twilio
+// Twilio
 let client = new twilio(accountSid, authToken);
 
 router.get('/', function(req, res){
   console.log('made to send question route');
-  // let phoneNumbers = [];
   pool.connect(function(err, connection, done){
     if (err){
       console.log(err);
       res.sendStatus(400);
     } //end if
     else {
-      // REVIEW Technical design
-      // let twilioNum = ["+17633249564", "+17637629952", "+17637036066"];
-      // let twilioNum = ["+17633249564"]; // NOTE Anna
-      let twilioNum = ["+19522227366"]; // NOTE Jim
-      let batchSize = 5;
-      let offsetCount = 0;
+      let twilioNum = ["+17633346209", "+17633346219", "+17633346131", "+17633346557", "+17633346194", "+17637036066", "+17633249564", "+17637629952", "+17633346209"];
+      // NOTE Step-Up
+      // let batchSize = 200; // the first set of numbers
+      // let offsetCount = 0; // the end of the set
+      // NOTE PSI Testing
+      let batchSize = 2; // the first set of numbers
+      let offsetCount = 0; // the end of the set
       for (let i = 0; i < twilioNum.length; i++) {
+        // loop through the first 200 numbers and then the next 200
+        // NOTE Step-Up
+        // let resultSet = connection.query('SELECT phone FROM interns LIMIT $1 OFFSET $2', [batchSize, offsetCount], function(err, result){
+        // NOTE PSI Testing 
         let resultSet = connection.query('SELECT phone FROM psi LIMIT $1 OFFSET $2', [batchSize, offsetCount], function(err, result){
           done();
           console.log('result.rows->', result.rows);
           psi(result.rows, twilioNum[i]);
-        });
-        offsetCount += batchSize;
+        }); // end resultSet
+        offsetCount += batchSize; // when batchSize increase offsetCount will also increase
       }// end FOR LOOP
         res.sendStatus(200); // giving the okay to stop sending SMS back to the client side.
     } // end pool end else
