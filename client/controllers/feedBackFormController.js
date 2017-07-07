@@ -103,8 +103,9 @@ googleAuthApp.controller('feedBackFormController', ['$http', 'AuthFactory','feed
       data: responseToSend,
     }).then(function(response){
       console.log("response from server in get Questions", response.data);
-      // authFactory.setLoggedIn(false);
-      // $window.location.href = '/#/login'; // forces a page reload which will update our NavController
+      authFactory.setLoggedIn(false);
+      authFactory.logout();
+      $window.location.href = '/#/login'; // forces a page reload which will update our NavController
 
       return response.data;
     });

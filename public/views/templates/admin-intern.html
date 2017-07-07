@@ -5,7 +5,7 @@
 
 
 <md-content class="pageContent" layout="row">
-    <md-card layout-padding flex="33">
+    <md-card layout-padding flex="33" style="height: 40vmin; overflow-y: auto">
         <h2>Contact these Interns:</h2>
 
         <div ng-repeat="checkbox in AIC.checkbox">
@@ -14,7 +14,7 @@
         </div>
     </md-card>
 
-    <md-card layout-padding flex="33">
+    <md-card layout-padding flex="33" style="height: 40vmin; overflow-y: auto">
         <h2>Flagged Interns:</h2>
         <div ng-repeat="flag in AIC.flags">
             <p>{{flag.first_name}} {{flag.last_name}} {{flag.phone}} {{flag.email}} </p>
@@ -22,7 +22,7 @@
         </div>
     </md-card>
 
-    <md-card layout-padding flex="33">
+    <md-card layout-padding flex="33" style="height: 40vmin; overflow-y: auto">
         <h2>Comments:</h2>
         <div ng-repeat="comment in AIC.comments">
             <p>"{{comment.response_comment}}" - {{comment.first_name}} {{comment.last_name}} <br />{{comment.phone}} {{comment.email}}</p>
