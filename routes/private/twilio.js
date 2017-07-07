@@ -7,11 +7,11 @@ var pg = require('pg'); // require pg
 var twilio = require('twilio'); // require twilio
 var pool = require('../../modules/pool.js'); // create pool to connect to the database
 var env = require('dotenv').config();
-var ACCOUNTSID = process.env.accountSid;
-var AUTHTOKEN = process.env.authToken;
+var ACCOUNTSID = process.env.ACCOUNTSID;
+var AUTHTOKEN = process.env.AUTHTOKEN;
 
 // Twilio
-let client = new twilio(accountSid, authToken);
+let client = new twilio(ACCOUNTSID, AUTHTOKEN);
 
 router.get('/', function(req, res){
   console.log('made to send question route');
