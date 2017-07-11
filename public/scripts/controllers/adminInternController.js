@@ -65,8 +65,8 @@ googleAuthApp.controller('adminInternController', ['$http','adminInternService',
       self.drawChart1(dataready[0]);
       self.drawChart2(dataready[1]);
       self.drawChart3(dataready[2]);
-      self.drawChart4(dataready[3]);
-      self.drawChart5(dataready[4]);
+      // self.drawChart4(dataready[3]);
+      // self.drawChart5(dataready[4]);
 
 
       return response.data;
