@@ -73,28 +73,3 @@ INSERT INTO questions (q_text, active, flagged) VALUES ('How supportive is your 
 INSERT INTO questions (q_text, active, flagged) VALUES ('Do you like your internship?', true, false);
 INSERT INTO questions (q_text, active, flagged) VALUES ('Do you feel welcome in your workplace?', true, true);
 INSERT INTO questions (q_text, active, flagged) VALUES ('Do you want someone from STEP-UP to contact you this week?', true, true, 'response_checkbox');
-
--- Dummy Test for Twilio SMS
-CREATE TABLE psi (
-    id serial primary key not null,
-    first_name VARCHAR(30),
-    phone VARCHAR(20)
-);
-
---OFFSET 0
-INSERT INTO psi (first_name, phone) VALUES ('jim', 6127085347);
-INSERT INTO psi (first_name, phone) VALUES ('zee', 6512468417);
-INSERT INTO psi (first_name, phone) VALUES ('tessa', 6083702621);
-INSERT INTO psi (first_name, phone) VALUES ('matt', 6122516818);
-INSERT INTO psi (first_name, phone) VALUES ('millie', 6125164822);
---OFFSET 5
-INSERT INTO psi (first_name, phone) VALUES ('amy', 8107016140);
-INSERT INTO psi (first_name, phone) VALUES ('ben', 7633701331);
-INSERT INTO psi (first_name, phone) VALUES ('ryan', 6122675655);
-INSERT INTO psi (first_name, phone) VALUES ('barb', 9528365601);
-INSERT INTO psi (first_name, phone) VALUES ('charlie', 6128128873);
---OFFSET 10
-INSERT INTO psi (first_name, phone) VALUES ('sean', 6512715408);
-INSERT INTO psi (first_name, phone) VALUES ('neota', 6124790137);
-INSERT INTO psi (first_name, phone) VALUES ('abby', 7636479486);
-INSERT INTO psi (first_name, phone) VALUES ('tiffany', 6122032823);
