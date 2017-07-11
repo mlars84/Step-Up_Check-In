@@ -6,16 +6,12 @@ var bodyParser = require('body-parser'); // require bodyParser
 var pg = require('pg'); // require pg
 var twilio = require('twilio'); // require twilio
 var pool = require('../../modules/pool.js'); // create pool to connect to the database
-
-// Account info
-// var accountSid = 'ACd751dd8870a891d1691af759af71e9a3';
-// var authToken = '858ee241368528e4fca710307e706a8b';
-//NOTE Jim
-var accountSid = 'ACe3b7110aacbc362697b8afcb4589cef3';
-var authToken = '49e75053e65684feb8c6a34dcf68f60d';
+var env = require('dotenv').config();
+var ACCOUNTSID = process.env.ACCOUNTSID;
+var AUTHTOKEN = process.env.AUTHTOKEN;
 
 // Twilio
-let client = new twilio(accountSid, authToken);
+let client = new twilio(ACCOUNTSID, AUTHTOKEN);
 
 router.get('/', function(req, res){
   console.log('made to send question route');
@@ -25,8 +21,7 @@ router.get('/', function(req, res){
       res.sendStatus(400);
     } //end if
     else {
-      // let twilioNum = ["+17633346209", "+17633346219", "+17633346131", "+17633346557", "+17633346194", "+17637036066", "+17633249564", "+17637629952", "+17633346209"];
-      let twilioNum = ["+19522227366"];
+      let twilioNum = ["+17633346209", "+17633346219", "+17633346131", "+17633346557", "+17633346194", "+17637036066", "+17633249564", "+17637629952", "+17633346209"];
       // NOTE Step-Up
       // let batchSize = 200; // the first set of numbers
       // let offsetCount = 0; // the end of the set

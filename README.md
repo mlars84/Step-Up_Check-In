@@ -24,23 +24,20 @@ npm install grunt-contrib-copy --save-dev
 npm install chartjs --save
 
 ```
+### Creating Feedback form and Intern mobile walkthrough:
 
-
-## Demo
-Creating Feedback form and Intern mobile walkthrough:
--------
 <p align= "center"><img src="walkthrough/part1_1.gif" alt = "feedback intern"/></p>
 
-Intern data overview:
--------
+### Intern data overview:
+
 <p align= "center"><img src="walkthrough/part2.gif" alt = "intern overview"/></p>
 
-Import/Export:
--------
+### Import/Export:
+
 <p align= "center"><img src="walkthrough/part3.gif" alt = "import export "/></p>
 
-Admin View:
--------
+### Admin View:
+
 <p align= "center"><img src="walkthrough/part4.gif" alt = "admin view"/></p>
 
 

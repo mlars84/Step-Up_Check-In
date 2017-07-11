@@ -9,10 +9,7 @@ var index = require('./routes/index');
 var auth = require('./routes/auth');
 var isLoggedIn = require('./utils/auth');
 var private = require('./routes/private/index');
-// var database = require('./utils/database');
-// var pg = require('pg');
-// var database = require('./modules/pool');
-// var userService = require('./services/user');
+var env = require('dotenv').config();
 /** ---------- EXPRESS APP CONFIG ---------- **/
 var app = express();
 
@@ -49,6 +46,6 @@ app.use('/private', isLoggedIn, private);
 app.use('/', index);
 
 /** ---------- SERVER START ---------- **/
-app.listen(3000, function () {
+app.listen(process.env.PORT, function () {
   console.log('Now running on port ', 3000);
 });
