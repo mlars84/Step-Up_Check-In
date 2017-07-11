@@ -65,7 +65,7 @@ router.put('/', function (req, res){
             res.send(400);
           }// end if
           else {
-            let resultSet = connection.query('UPDATE questions SET active=true WHERE id= ANY ($1)', [[req.body.active1, req.body.active2, req.body.active3, req.body.active4, req.body.active5]]);
+            let resultSet = connection.query('UPDATE questions SET active=true WHERE id= ANY ($1)', [[req.body.active1, req.body.active2, req.body.active3]]);
           }// end else
         });//end pool.connect
         done();

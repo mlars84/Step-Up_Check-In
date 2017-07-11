@@ -86,13 +86,11 @@ googleAuthApp.service('updateQuestionsService', ['$http', '$mdDialog', function(
   // NOTE
   self.grabQuestion(); // call function in order to see questions being grab
 
-  self.submitQuestion = function (ev, active1In, active2In, active3In, active4In, active5In){
+  self.submitQuestion = function (ev, active1In, active2In, active3In){
     var questionToSubmit = {
       active1: active1In,
       active2: active2In,
       active3: active3In,
-      active4: active4In,
-      active5: active5In
     };// end questionToSubmit
     $http({
       method: 'PUT',
