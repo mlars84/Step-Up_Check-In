@@ -31,7 +31,7 @@
             <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
         </md-input-container>
-        <md-input-container>
+        <!-- <md-input-container>
           <label>Question 4</label>
           <md-select ng-model="UQC.active4In">
             <md-option><em>None</em></md-option>
@@ -44,10 +44,10 @@
             <md-option><em>None</em></md-option>
             <md-option ng-repeat="question in UQC.questionCont.questions" ng-value="question.id" >{{question.q_text}}</md-option>
           </md-select>
-        </md-input-container>
+        </md-input-container> -->
         <div class="sendSMS">
           <p>* This will create the questions for the feedback form *</p>
-          <md-button ng-click="UQC.submitQuestion($event, UQC.active1In, UQC.active2In, UQC.active3In, UQC.active4In, UQC.active5In)" class="md-raised md-primary" id="submitQues">Create Feedback Form</md-button>
+          <md-button ng-click="UQC.submitQuestion($event, UQC.active1In, UQC.active2In, UQC.active3In)" class="md-raised md-primary" id="submitQues">Create Feedback Form</md-button>
         </div>
         <br />
         <md-divider></md-divider>
