@@ -6,8 +6,4 @@ node_modules
 # MacOS
 .DS_Store
 
-# Config
-#config/auth.js
-
-# Twilio
-#.env
+.env
